@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import axios from "axios";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { RecoilRoot } from "recoil";
 import AppRouter from "./AppRouter";
@@ -8,6 +9,15 @@ import { ReactQueryDevtools } from "react-query/devtools";
 
 function App() {
   const queryClient = new QueryClient();
+  useEffect(() => {
+    axios.post(
+      "http://localhost:8000/auth/verify",
+      {},
+      {
+        withCredentials: true,
+      }
+    );
+  });
   return (
     <>
       <GlobalStyles />

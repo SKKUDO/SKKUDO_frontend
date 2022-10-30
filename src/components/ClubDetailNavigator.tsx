@@ -34,6 +34,10 @@ const NavigateToManagePageButton = styled.button`
   border: none;
   text-align: start;
   padding-left: 15px;
+
+  :hover {
+    background-color: #fbf7f7;
+  }
 `;
 
 const navigationList = [
@@ -44,7 +48,7 @@ const navigationList = [
 
 function ClubDetailNavigator() {
   const { clubID } = useParams();
-
+  localStorage.setItem("currentClubID", clubID || "");
   const { data: clubData, isLoading: isClubLoading } = useQuery<ClubType>(
     "getOneClub",
     () => getOneClub(clubID || "")

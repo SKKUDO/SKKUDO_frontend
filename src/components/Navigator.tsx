@@ -2,9 +2,10 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { IoPersonOutline } from "react-icons/io5";
 import { useState } from "react";
-import ClubDetailNavigator from "./ClubDetailNavigator";
 import { useRecoilValue } from "recoil";
 import { isManageState } from "../atoms/NavigatorAtom";
+import { useMutation } from "react-query";
+import { logoutFromServer } from "../utils/fetch";
 
 interface INavigationConatiner {
   isManage: boolean;
@@ -13,7 +14,7 @@ const NavigatorContainer = styled.header<INavigationConatiner>`
   position: fixed;
   width: 100%;
   height: 80px;
-  background-color: whitesmoke;
+  background-color: #0c4426;
   display: ${(props) => (props.isManage ? "none" : "block")};
   z-index: 100;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
@@ -21,7 +22,7 @@ const NavigatorContainer = styled.header<INavigationConatiner>`
 
 const ItemsContainer = styled.div`
   margin: 0 auto;
-  /* background-color: bisque; */
+
   display: flex;
   height: 100%;
   max-width: 1400px;
@@ -30,7 +31,6 @@ const ItemsContainer = styled.div`
 const LogoContainer = styled(Link)`
   height: 100%;
   width: 200px;
-  /* background-color: aliceblue; */
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -38,8 +38,8 @@ const LogoContainer = styled(Link)`
 `;
 
 const Logo = styled.div`
-  color: black;
   font-size: 3rem;
+  color: #dde143;
 `;
 
 const NavigationContainer = styled.nav`
@@ -60,7 +60,7 @@ const NavigationLi = styled.li`
 
 const NavigationLink = styled(Link)`
   text-decoration: none;
-  color: black;
+  color: #dde143;
   font-size: 2rem;
 `;
 
@@ -70,6 +70,7 @@ const LoginBtn = styled.button`
   background-color: transparent;
   margin-left: auto;
   margin-right: 20px;
+  color: #dde143;
 `;
 
 interface ILoginOptionContainer {
@@ -82,6 +83,7 @@ const LoginOptionContainer = styled.ul<ILoginOptionContainer>`
   right: 0;
   border-radius: 5px;
   display: ${(props) => (props.isLoginOptionOpened ? "block" : "none")};
+  padding-bottom: 20px;
 `;
 
 const LoginOption = styled.li`
@@ -95,6 +97,7 @@ const LoginOption = styled.li`
 
 const LoginLink = styled(Link)`
   text-decoration: none;
+  color: black;
 `;
 
 function Navigator() {
@@ -102,6 +105,13 @@ function Navigator() {
   const isManage = useRecoilValue(isManageState);
   const handleLoginBtnClick = () => {
     setIsLoginOptionOpened((prev) => !prev);
+  };
+  const { mutate } = useMutation(logoutFromServer, {
+    onSuccess: (data) => console.log("success"),
+    onError: (data) => console.log("error"),
+  });
+  const handleLogoutBtnClick = () => {
+    mutate();
   };
   return (
     <NavigatorContainer isManage={isManage}>
@@ -130,6 +140,9 @@ function Navigator() {
             </LoginOption>
             <LoginOption>
               <LoginLink to="/signup">회원가입</LoginLink>
+            </LoginOption>
+            <LoginOption>
+              <div onClick={handleLogoutBtnClick}>로그아웃</div>
             </LoginOption>
           </LoginOptionContainer>
         </LoginBtn>

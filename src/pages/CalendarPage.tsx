@@ -4,9 +4,10 @@ import React, { useState } from "react";
 // import "react-calendar/dist/Calendar.css";
 import "./CustomCalendarStyle.css";
 import moment from "moment";
+import ClubDetailHeader from "../components/ClubDetailHeader";
 
 const CalendarContainer = styled.div`
-  padding-top: 200px;
+  padding-top: 80px;
   display: flex;
   justify-content: center;
 `;
@@ -57,6 +58,7 @@ function CalendarPage() {
   const [isDayDetailOpened, setIsDayDetailOpened] = useState(false);
   return (
     <>
+      <ClubDetailHeader pageType="일정" />
       <CalendarContainer>
         <Calendar
           onChange={onChange}

@@ -16,6 +16,14 @@ export interface ClubType {
   updatedAt: Date;
 }
 
+export interface NewClubType {
+  name: string;
+  location: LocationType;
+  type: {
+    name: string;
+  };
+  recruitType: RecruitType;
+}
 export interface ClubTypeType {
   _id: string;
   name: string; //프로그래밍, 경영

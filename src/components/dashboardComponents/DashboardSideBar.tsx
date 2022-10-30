@@ -1,27 +1,9 @@
-import PropTypes from "prop-types";
 import { useEffect } from "react";
 import { Link as RouterLink, useLocation } from "react-router-dom";
 // material
 import { styled } from "@mui/material/styles";
-import {
-  Box,
-  Link,
-  Button,
-  Drawer,
-  Typography,
-  Avatar,
-  Stack,
-} from "@mui/material";
-// mock
+import { Box, Link, Drawer, Typography, Avatar } from "@mui/material";
 
-// hooks
-// import useResponsive from "../../hooks/useResponsive";
-// components
-// import Logo from "../../components/Logo";
-// import Scrollbar from "../../components/Scrollbar";
-// import NavSection from "../../components/NavSection";
-//
-// import navConfig from "./NavConfig";
 import useResponsive from "../../hooks/useResponsive";
 import Scrollbar from "./Scrollbar";
 import NavSection from "./NavSection";
@@ -47,11 +29,6 @@ const AccountStyle = styled("div")(({ theme }) => ({
 }));
 
 // ----------------------------------------------------------------------
-
-DashboardSidebar.propTypes = {
-  isOpenSidebar: PropTypes.bool,
-  onCloseSidebar: PropTypes.func,
-};
 
 interface IDashboardSidebar {
   isOpenSidebar: boolean;
@@ -123,7 +100,10 @@ export default function DashboardSidebar({
           open={isOpenSidebar}
           onClose={onCloseSidebar}
           PaperProps={{
-            sx: { width: DRAWER_WIDTH },
+            sx: {
+              width: DRAWER_WIDTH,
+              bgcolor: "#0c4426",
+            },
           }}
         >
           {renderContent}
@@ -137,8 +117,10 @@ export default function DashboardSidebar({
           PaperProps={{
             sx: {
               width: DRAWER_WIDTH,
-              bgcolor: "background.default",
-              borderRightStyle: "dashed",
+              bgcolor: "#0c4426",
+              borderRight: "1px solid yellow",
+              color: "#dde143",
+              boxShadow: "-3px 0px 0px 0px #dde143 inset",
             },
           }}
         >

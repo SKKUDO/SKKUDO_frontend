@@ -8,6 +8,11 @@ export interface NoticeTagType {
   updatedAt: Date;
 }
 
+export interface NewNoticeType {
+  clubId: string;
+  title: string;
+  content: string;
+}
 export interface NoticeType {
   _id: string;
   writer: UserType;

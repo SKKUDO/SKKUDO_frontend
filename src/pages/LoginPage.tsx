@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useMutation, useQuery } from "react-query";
+import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
@@ -13,17 +13,29 @@ const LoginPageContainer = styled.div`
   height: 100vh;
   justify-content: center;
   align-items: center;
+`;
+
+const LoginCard = styled.div`
+  background-color: #0c4426;
+  width: 600px;
+  height: 300px;
+  border-radius: 5px;
+  display: flex;
   flex-direction: column;
+  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.5);
+  align-items: center;
 `;
 
 const Title = styled.div`
   font-size: 3rem;
-  margin-bottom: 25px;
+  margin-top: 20px;
+  color: #dde143;
 `;
 
 const LoginForm = styled.form`
   display: flex;
   gap: 20px;
+  margin-top: 20px;
 `;
 
 const LoginInputContainer = styled.div`
@@ -32,13 +44,22 @@ const LoginInputContainer = styled.div`
   gap: 20px;
 `;
 
-const LoginInput = styled.input``;
+const LoginInput = styled.input`
+  height: 30px;
+  width: 200px;
+`;
 
-const LoginButton = styled.button``;
+const LoginButton = styled.button`
+  width: 60px;
+  color: #dde143;
+  background-color: transparent;
+  border: 2px solid #dde143;
+  border-radius: 5px;
+`;
 
 function LoginPage() {
-  const setIsLoggedIn = useSetRecoilState(isLoggedInState);
-  const setUserID = useSetRecoilState(userIDState);
+  // const setIsLoggedIn = useSetRecoilState(isLoggedInState);
+  // const setUserID = useSetRecoilState(userIDState);
   const navigate = useNavigate();
   const [ID, setID] = useState("");
   const [PW, setPW] = useState("");
@@ -49,9 +70,9 @@ function LoginPage() {
       //need to fix
       onSuccess: (data) => {
         console.log(data);
-        localStorage.setItem("isLoggedIn", "true");
-        localStorage.setItem("userID", data.data.userID);
-        setUserID(data.data.userID);
+        // localStorage.setItem("isLoggedIn", "true");
+        // localStorage.setItem("userID", data.data.userID);
+        // setUserID(data.data.userID);
       },
       onError: (error) => console.log(error),
     }
@@ -67,22 +88,23 @@ function LoginPage() {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // console.log(ID, PW);
-    // setIsLoggedIn(true);
+
     mutate();
     navigate("/myPage");
   };
 
   return (
     <LoginPageContainer>
-      <Title>SKKUDO</Title>
-      <LoginForm onSubmit={handleSubmit}>
-        <LoginInputContainer>
-          <LoginInput onChange={handleIDChange}></LoginInput>
-          <LoginInput type="password" onChange={handlePWChange}></LoginInput>
-        </LoginInputContainer>
-        <LoginButton type="submit">Log In</LoginButton>
-      </LoginForm>
+      <LoginCard>
+        <Title>SKKUDO</Title>
+        <LoginForm onSubmit={handleSubmit}>
+          <LoginInputContainer>
+            <LoginInput onChange={handleIDChange}></LoginInput>
+            <LoginInput type="password" onChange={handlePWChange}></LoginInput>
+          </LoginInputContainer>
+          <LoginButton type="submit">Log In</LoginButton>
+        </LoginForm>
+      </LoginCard>
     </LoginPageContainer>
   );
 }

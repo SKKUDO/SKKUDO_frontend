@@ -141,7 +141,7 @@ function ClubsPage() {
       <Stack divider={<Divider />}>
         <div>
           <Typography variant="h4" sx={{ mb: 5 }}>
-            모집중인 동아리/학회
+            모든 동아리/학회
           </Typography>
           {/* {isLoading ? (
             <ClubsList clubs={ALL_CLUBS_LIST} />
@@ -152,7 +152,7 @@ function ClubsPage() {
         </div>
         <div>
           <Typography variant="h4" sx={{ mb: 5, marginTop: "40px" }}>
-            모든 동아리/학회
+            모집중인 동아리/학회
           </Typography>
           {recruitingClubs ? <ClubsList clubs={recruitingClubs} /> : null}
         </div>

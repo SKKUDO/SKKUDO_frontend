@@ -11,6 +11,8 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "react-query";
 import { UserType } from "../types/user";
 import { getClubMembers } from "../utils/fetch";
+import ClubDetailHeader from "../components/ClubDetailHeader";
+import { maxWidth } from "@mui/system";
 
 function createData(
   name: string,
@@ -40,7 +42,10 @@ function BasicTable() {
         justifyContent: "center",
         border: "none",
         boxShadow: "none",
-        marginTop: "40px",
+        width: "100%",
+        maxWidth: "1024px",
+        margin: "0 auto",
+        marginTop: "80px",
       }}
       component={Paper}
     >
@@ -90,12 +95,11 @@ function BasicTable() {
   );
 }
 
-const MembersPageContainer = styled.div`
-  padding-top: 80px;
-`;
+const MembersPageContainer = styled.div``;
 function MembersPage() {
   return (
     <MembersPageContainer>
+      <ClubDetailHeader pageType="동아리원" />
       <BasicTable />
     </MembersPageContainer>
   );

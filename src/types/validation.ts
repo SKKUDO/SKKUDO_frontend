@@ -1,5 +1,20 @@
 import { RoleType } from "./common";
 
+export type ValidationKeyType =
+  | "clubId"
+  | "noticeRead"
+  | "noticeWrite"
+  | "userRead"
+  | "userWrite"
+  | "userColumnWrite"
+  | "todoRead"
+  | "todoWrite"
+  | "applyRead"
+  | "applyWrite"
+  | "validationRead"
+  | "validationWrite"
+  | "clubRead"
+  | "clubWrite";
 export interface ValidationType {
   _id: string;
   clubId: string;

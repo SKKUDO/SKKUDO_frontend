@@ -1,17 +1,14 @@
 import { useTheme } from "@mui/material";
-import { Theme } from "@mui/system";
-import { Link, useNavigate } from "react-router-dom";
+
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-interface IBanner {
-  theme: Theme;
-}
-
+const HomePageContainer = styled.div``;
 const Banner = styled.div`
-  padding-top: 100px;
-  background-color: beige;
+  padding-top: 120px;
+  background-color: #aedb8d;
   width: 100%;
-  height: 500px;
+  /* height: 500px; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -39,24 +36,20 @@ const ButtonsContainer = styled.div`
 `;
 
 const MainPageBtn = styled.button`
-  width: 150px;
+  width: 170px;
   height: 80px;
-  background-color: transparent;
+  background-color: #0c4426;
   border-radius: 5px;
   font-size: 1rem;
+  /* border: 3px solid #dde143; */
+  border: none;
+  color: #dde143;
+  font-weight: 800;
 `;
-
-// const ButtonLink = styled(Link)`
-//   text-decoration: none;
-//   color: black;
-//   font-size: 1rem;
-//   width: 100%;
-//   height: 100%;
-// `;
 
 function HomePage() {
   const navigate = useNavigate();
-  const theme = useTheme();
+
   const handleMainPageBtnClick = (btnType: string) => {
     if (btnType == "search") {
       navigate("/clubs");
@@ -67,7 +60,7 @@ function HomePage() {
     }
   };
   return (
-    <>
+    <HomePageContainer>
       <Banner>
         <LineOne>동아리/학회 관리를</LineOne>
         <LineTwo>손쉽게!!</LineTwo>
@@ -81,7 +74,10 @@ function HomePage() {
           동아리 신청하기
         </MainPageBtn>
       </ButtonsContainer>
-    </>
+      {/* <div
+        style={{ height: "500px", width: "100%", backgroundColor: "" }}
+      ></div> */}
+    </HomePageContainer>
   );
 }
 

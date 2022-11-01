@@ -30,9 +30,8 @@ export const logoutFromServer = async () =>
 
 const VERIFY_URL = `${BASE_URL}/auth/verify`;
 
-export const verifyUser = async () => {
+export const verifyUser = async () =>
   axios.post(VERIFY_URL, {}).then((res) => res.data.data);
-};
 
 const GET_ALL_NOTICES_URL = `${BASE_URL}/notices/notices`;
 

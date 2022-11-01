@@ -7,7 +7,6 @@ import ClubManagePage from "./pages/managePages/ClubManagePage";
 import ClubsPage from "./pages/ClubsPage";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
-import ManageMain from "./pages/managePages/ManageMain";
 import ManageRecruit from "./pages/managePages/ManageRecruit";
 import ManageUser from "./pages/managePages/ManageUser";
 
@@ -21,8 +20,15 @@ import ManageNotes from "./pages/managePages/ManageNotes";
 import DashboardApp from "./pages/managePages/DashboardApp";
 import ApplyClubPage from "./pages/ApplyClubPage";
 import AddNoticePage from "./pages/AddNoticePage";
+import { useMutation } from "react-query";
+import { verifyUser } from "./utils/fetch";
 
 function AppRouter() {
+  const { mutate, data, isLoading } = useMutation(verifyUser, {
+    onSuccess: (data) => console.log(data),
+    onError: (error) => console.log("error"),
+  });
+
   return (
     <BrowserRouter>
       <Navigator />

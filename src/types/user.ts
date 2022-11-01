@@ -34,3 +34,8 @@ export interface UserType {
   createdAt: Date;
   updatedAt: Date;
 }
+
+export interface VerifyUserResponseType {
+  authToken: string;
+  authUser: UserType;
+}

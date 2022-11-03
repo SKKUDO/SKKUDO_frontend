@@ -12,7 +12,6 @@ import { useQuery } from "react-query";
 import { UserType } from "../types/user";
 import { getClubMembers } from "../utils/fetch";
 import ClubDetailHeader from "../components/ClubDetailHeader";
-import { maxWidth } from "@mui/system";
 
 function createData(
   name: string,
@@ -80,7 +79,7 @@ function BasicTable() {
                   <TableCell align="right">{member.studentId}</TableCell>
                   <TableCell align="right">
                     {
-                      member.registeredClubs.filter(
+                      Object.values(member.registeredClubs).filter(
                         (club) => club.clubId === clubID
                       )[0].role
                     }

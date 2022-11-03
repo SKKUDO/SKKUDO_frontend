@@ -40,6 +40,7 @@ export default function ManageAuth() {
   const [validationWrite, setValidationWrite] = useState("회장");
   const [clubRead, setClubRead] = useState("회장");
   const [clubWrite, setClubWrite] = useState("회장");
+  const [tagWrite, setTagWrite] = useState("회장");
 
   const { clubID } = useParams();
   const { data, isLoading } = useQuery<ValidationType>(
@@ -77,7 +78,7 @@ export default function ManageAuth() {
     } else if (authKey === "clubWrite") {
       return clubWrite;
     } else {
-      return noticeRead;
+      return tagWrite;
     }
   };
 
@@ -113,7 +114,7 @@ export default function ManageAuth() {
   //     setNoticeRead(event.target.value);
   //   }
   // };
-
+  console.log(data);
   const setIsAuthConfirmAlertOpen = useSetRecoilState(
     isAuthConfirmAlertOpenState
   );

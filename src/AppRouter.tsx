@@ -37,7 +37,7 @@ function AppRouter() {
       setIsLoggedIn(true);
       setUserName(data.authUser.name);
     },
-    onError: (error) => console.log("error"),
+    onError: (error: any) => console.log(error.response.data.error),
   });
 
   useEffect(() => {

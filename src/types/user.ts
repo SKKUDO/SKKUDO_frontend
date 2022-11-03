@@ -21,12 +21,17 @@ export interface NewUserType {
   location: string;
   major: string;
 }
+
+export interface RegisteredClubs {
+  [key: string]: RegisteredClubType;
+}
+
 export interface UserType {
   _id: string;
   studentId: string;
   password: string;
   location: LocationType;
-  registeredClubs: RegisteredClubType[];
+  registeredClubs: RegisteredClubs;
   name: string;
   major: string;
   token: string;

@@ -49,7 +49,8 @@ function MyPage() {
   const { mutate, data, isLoading } = useMutation<VerifyUserResponseType>(
     verifyUser,
     {
-      onSuccess: (data) => setUserClubs(data.authUser.registeredClubs),
+      onSuccess: (data) =>
+        setUserClubs(Object.values(data.authUser.registeredClubs)),
       onError: (error) => navigate("/login"),
     }
   );
@@ -59,6 +60,8 @@ function MyPage() {
   useEffect(() => {
     mutate();
   }, []);
+
+  // console.log(userClubs);
 
   const handleMyClubCardClick = (clubID: string) => {
     navigate(`/club/${clubID}/notice`);

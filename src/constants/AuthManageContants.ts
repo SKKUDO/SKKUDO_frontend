@@ -51,6 +51,10 @@ export const AUTH_LABEL_LIST = [
     key: "clubWrite",
     label: "동아리 정보 수정 권한",
   },
+  {
+    key: "tagWrite",
+    label: "카테고리 수정 권한",
+  },
 ];
 
 export const AUTH_LIST = ["회장까지", "부회장까지", "임원까지", "모든 사람이"];

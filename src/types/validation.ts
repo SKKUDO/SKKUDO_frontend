@@ -31,6 +31,7 @@ export interface ValidationType {
   validationWrite: "회장단";
   clubRead: RoleType;
   clubWrite: "회장단";
+  tagWrite: RoleType;
   createdAt: Date;
   updatedAt: Date;
 }

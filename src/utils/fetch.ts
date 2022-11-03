@@ -42,6 +42,11 @@ const GET_ALL_NOTICES_URL = `${BASE_URL}/notices/notices`;
 export const getAllNotices = async () =>
   axios.get(GET_ALL_NOTICES_URL).then((res) => res.data.data);
 
+export const getNoticesByClubID = async (clubID: string) =>
+  axios
+    .get(GET_ALL_NOTICES_URL.concat("/club/", clubID))
+    .then((res) => res.data.data);
+
 export const createNotice = async (newNotice: NewNoticeType) =>
   axios.post(GET_ALL_NOTICES_URL, newNotice).then((res) => res.data);
 

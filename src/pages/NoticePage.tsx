@@ -2,7 +2,11 @@ import { Paper, Stack, styled } from "@mui/material";
 import { useMutation, useQuery } from "react-query";
 import { BiMessageSquareAdd } from "react-icons/bi";
 
-import { deleteNotice, getAllNotices } from "../utils/fetch";
+import {
+  deleteNotice,
+  getAllNotices,
+  getNoticesByClubID,
+} from "../utils/fetch";
 import {
   ClickedNoticeInfoType,
   DeleteNoticetype,
@@ -13,12 +17,13 @@ import {
 
 import ClubDetailHeader from "../components/ClubDetailHeader";
 import { flexbox } from "@mui/system";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { useState } from "react";
 import NoticeDetail from "../components/noticeComponents/NoticeDetail";
 import { useRecoilState } from "recoil";
 import { isNoticeDetailOpenState } from "../atoms/utilAtom";
+import CategoryAddDialog from "../components/noticeComponents/CategoryAddDialog";
 
 const AddIconContainer = styled("div")({
   width: "100%",
@@ -77,11 +82,15 @@ const Item = styled(Paper)(({ theme }) => ({
   // maxWidth: "1024px",
 }));
 
+const AddCategoryBtn = styled("button")({});
+
 function NoticePage() {
   const navigate = useNavigate();
+  const { clubID } = useParams();
+  console.log(clubID);
   const { data: noticeData, isLoading: isNoticeLoading } = useQuery<
     NoticeType[]
-  >("getAllNotices", getAllNotices);
+  >("getNoticesByClubID", () => getNoticesByClubID(clubID || ""));
   const [clickedNoticeID, setClickedNoticeID] = useState("");
   const [isOptionOpened, setIsOptionOpened] = useState(false);
   const [clickedNoticeInfo, setClickedNotiiceInfo] =
@@ -90,6 +99,16 @@ function NoticePage() {
   const [isNoticeDetailOpen, setIsNoticeDetailOpen] = useRecoilState(
     isNoticeDetailOpenState
   );
+
+  const [isCategoryDialogOpen, setIsCategoryDialogOpen] = useState(false);
+
+  const handlClickOpen = () => {
+    setIsCategoryDialogOpen(true);
+  };
+
+  const handleClose = () => {
+    setIsCategoryDialogOpen(false);
+  };
   const onNoticeAddBtnClicked = () => {
     navigate("add");
   };
@@ -142,6 +161,8 @@ function NoticePage() {
       <AddIconContainer>
         <BiMessageSquareAdd size="2.5rem" onClick={onNoticeAddBtnClicked} />
       </AddIconContainer>
+      <AddCategoryBtn onClick={handlClickOpen}>카테고리 추가</AddCategoryBtn>
+      <CategoryAddDialog open={isCategoryDialogOpen} onClose={handleClose} />
       <Stack
         spacing={4}
         sx={{

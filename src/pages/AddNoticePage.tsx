@@ -8,6 +8,7 @@ import { useRecoilValue } from "recoil";
 import { userNameState } from "../atoms/userAtom";
 import { createNotice } from "../utils/fetch";
 import { GrFormAdd } from "react-icons/gr";
+import { FiDelete } from "react-icons/fi";
 
 // const Blank = styled("div")({
 //   paddingTop: "120px",
@@ -72,10 +73,19 @@ const CategoryViewer = styled("div")({
   justifyContent: "flex-end",
 });
 
+const CategoryContainer = styled("div")({
+  height: "100%",
+  display: "flex",
+});
+
 const Category = styled("div")({
-  width: "50px",
+  width: "70px",
   height: "100%",
   backgroundColor: "rgba(0,0,0,0.2)",
+});
+
+const CategoryDeleteBtn = styled("button")({
+  width: "20px",
 });
 
 const ContentInput = styled("textarea")({
@@ -96,14 +106,15 @@ const AddButton = styled(Button)({
   color: "#dde143",
   marginBottom: "40px",
 });
+
 function AddNoticePage() {
   const navigate = useNavigate();
   const { clubID } = useParams();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const userName = useRecoilValue(userNameState);
-
-  const categoryList = ["안녕"];
+  const [category, setCategory] = useState("");
+  const [categories, setCategories] = useState<string[]>([]);
 
   const { mutate } = useMutation(
     () =>
@@ -133,19 +144,44 @@ function AddNoticePage() {
     event.preventDefault();
     mutate();
   };
+
+  const handleCategoryInputChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    event.preventDefault();
+    setCategory(event.target.value);
+  };
+
+  const handleCategoryAddBtnClick = () => {
+    setCategories((prev) => [...prev, category]);
+    setCategory("");
+  };
+
+  const handleCategoryDeleteBtnClick = () => {
+    // setCategories(prev => )
+  };
   // const { mutate } = useMutation(() => );
   return (
     <AddNoticePageContainer onSubmit={handleNewNoticeSubmit}>
       <HeaderInptut>
         <TitleInput required onChange={handleTitleChange} />
         <CategoryInputContainer>
-          <CategoryInput />
-          <CategoryAddBtn>
+          <CategoryInput onChange={handleCategoryInputChange} />
+          <CategoryAddBtn onClick={handleCategoryAddBtnClick}>
             <GrFormAdd size="1.3em" />
           </CategoryAddBtn>
         </CategoryInputContainer>
       </HeaderInptut>
-      <CategoryViewer />
+      <CategoryViewer>
+        {categories.map((category, index) => (
+          <CategoryContainer key={index}>
+            <Category>{category}</Category>
+            <CategoryDeleteBtn>
+              <FiDelete />
+            </CategoryDeleteBtn>
+          </CategoryContainer>
+        ))}
+      </CategoryViewer>
       <ContentInput required rows={25} onChange={handleContentChange} />
       <ButtonContainer>
         <AddButton variant="contained" color="success" type="submit">

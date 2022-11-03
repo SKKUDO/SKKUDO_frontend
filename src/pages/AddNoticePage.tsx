@@ -7,6 +7,7 @@ import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { userNameState } from "../atoms/userAtom";
 import { createNotice } from "../utils/fetch";
+import { GrFormAdd } from "react-icons/gr";
 
 // const Blank = styled("div")({
 //   paddingTop: "120px",
@@ -21,14 +22,60 @@ const AddNoticePageContainer = styled("form")({
   position: "relative",
 });
 
+const HeaderInptut = styled("div")({
+  display: "flex",
+  marginBottom: "30px",
+  alignItems: "flex-end",
+  justifyContent: "space-between",
+});
+
 const TitleInput = styled("input")({
   width: "400px",
   height: "50px",
-  marginBottom: "50px",
+
   borderRadius: "5px",
   backgroundColor: "#fff",
   border: "2px solid #0c4426",
   fontSize: "1.5rem",
+});
+
+const CategoryInputContainer = styled("div")({
+  width: "200px",
+  height: "30px",
+  position: "relative",
+});
+
+const CategoryInput = styled("input")({
+  backgroundColor: "rgba(0,0,0,0.2)",
+  width: "100%",
+  height: "100%",
+  border: "none",
+  borderBottom: "1px solid",
+});
+
+const CategoryAddBtn = styled("button")({
+  position: "absolute",
+  height: "100%",
+  width: "30px",
+  bottom: 0,
+  right: 0,
+  backgroundColor: "transparent",
+  border: "none",
+});
+
+const CategoryViewer = styled("div")({
+  width: "100%",
+  height: "30px",
+  backgroundColor: "beige",
+  marginBottom: "10px",
+  display: "flex",
+  justifyContent: "flex-end",
+});
+
+const Category = styled("div")({
+  width: "50px",
+  height: "100%",
+  backgroundColor: "rgba(0,0,0,0.2)",
 });
 
 const ContentInput = styled("textarea")({
@@ -55,6 +102,8 @@ function AddNoticePage() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const userName = useRecoilValue(userNameState);
+
+  const categoryList = ["안녕"];
 
   const { mutate } = useMutation(
     () =>
@@ -87,7 +136,16 @@ function AddNoticePage() {
   // const { mutate } = useMutation(() => );
   return (
     <AddNoticePageContainer onSubmit={handleNewNoticeSubmit}>
-      <TitleInput required onChange={handleTitleChange} />
+      <HeaderInptut>
+        <TitleInput required onChange={handleTitleChange} />
+        <CategoryInputContainer>
+          <CategoryInput />
+          <CategoryAddBtn>
+            <GrFormAdd size="1.3em" />
+          </CategoryAddBtn>
+        </CategoryInputContainer>
+      </HeaderInptut>
+      <CategoryViewer />
       <ContentInput required rows={25} onChange={handleContentChange} />
       <ButtonContainer>
         <AddButton variant="contained" color="success" type="submit">

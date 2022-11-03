@@ -2,10 +2,11 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { IoPersonOutline } from "react-icons/io5";
 import { useState } from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { isManageState } from "../atoms/NavigatorAtom";
 import { useMutation } from "react-query";
 import { logoutFromServer } from "../utils/fetch";
+import { isLoggedInState } from "../atoms/loginAtom";
 
 interface INavigationConatiner {
   isManage: boolean;
@@ -101,17 +102,22 @@ const LoginLink = styled(Link)`
 `;
 
 function Navigator() {
+  const [isLoggedIn, setIsLoggedIn] = useRecoilState(isLoggedInState);
   const [isLoginOptionOpened, setIsLoginOptionOpened] = useState(false);
   const isManage = useRecoilValue(isManageState);
   const handleLoginBtnClick = () => {
     setIsLoginOptionOpened((prev) => !prev);
   };
-  const { mutate } = useMutation(logoutFromServer, {
-    onSuccess: (data) => console.log("success"),
+
+  const { mutate: logoutMutate } = useMutation(logoutFromServer, {
+    onSuccess: (data) => {
+      setIsLoggedIn(false);
+      alert("로그아웃 되었습니다");
+    },
     onError: (data) => console.log("error"),
   });
   const handleLogoutBtnClick = () => {
-    mutate();
+    logoutMutate();
   };
   return (
     <NavigatorContainer isManage={isManage}>
@@ -135,15 +141,20 @@ function Navigator() {
         <LoginBtn onClick={handleLoginBtnClick}>
           <IoPersonOutline size="2.3rem" />
           <LoginOptionContainer isLoginOptionOpened={isLoginOptionOpened}>
-            <LoginOption>
-              <LoginLink to="/login">로그인</LoginLink>
-            </LoginOption>
-            <LoginOption>
-              <LoginLink to="/signup">회원가입</LoginLink>
-            </LoginOption>
-            <LoginOption>
-              <div onClick={handleLogoutBtnClick}>로그아웃</div>
-            </LoginOption>
+            {!isLoggedIn ? (
+              <>
+                <LoginOption>
+                  <LoginLink to="/login">로그인</LoginLink>
+                </LoginOption>
+                <LoginOption>
+                  <LoginLink to="/signup">회원가입</LoginLink>
+                </LoginOption>
+              </>
+            ) : (
+              <LoginOption>
+                <div onClick={handleLogoutBtnClick}>로그아웃</div>
+              </LoginOption>
+            )}
           </LoginOptionContainer>
         </LoginBtn>
       </ItemsContainer>

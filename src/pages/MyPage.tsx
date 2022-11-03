@@ -108,7 +108,7 @@ function MyPage() {
                       />
                       <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
-                          user registered club
+                          {club.clubName}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
                           {club.role}

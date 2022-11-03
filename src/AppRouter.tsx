@@ -22,12 +22,27 @@ import ApplyClubPage from "./pages/ApplyClubPage";
 import AddNoticePage from "./pages/AddNoticePage";
 import { useMutation } from "react-query";
 import { verifyUser } from "./utils/fetch";
+import { useSetRecoilState } from "recoil";
+import { isLoggedInState } from "./atoms/loginAtom";
+import { useEffect } from "react";
+import { VerifyUserResponseType } from "./types/user";
+import { userNameState } from "./atoms/userAtom";
+import UpdateNoticePage from "./pages/UpdateNoticePage";
 
 function AppRouter() {
-  const { mutate, data, isLoading } = useMutation(verifyUser, {
-    onSuccess: (data) => console.log(data),
+  const setIsLoggedIn = useSetRecoilState(isLoggedInState);
+  const setUserName = useSetRecoilState(userNameState);
+  const { mutate } = useMutation<VerifyUserResponseType>(verifyUser, {
+    onSuccess: (data) => {
+      setIsLoggedIn(true);
+      setUserName(data.authUser.name);
+    },
     onError: (error) => console.log("error"),
   });
+
+  useEffect(() => {
+    mutate();
+  }, []);
 
   return (
     <BrowserRouter>
@@ -45,6 +60,7 @@ function AppRouter() {
           <Route path="calendar" element={<CalendarPage />} />
           <Route path="members" element={<MembersPage />} />
           <Route path="notice/add" element={<AddNoticePage />} />
+          <Route path="notice/:noticeID" element={<UpdateNoticePage />} />
         </Route>
         <Route path="/manage/:clubID" element={<ClubManagePage />}>
           <Route path="main" element={<DashboardApp />} />

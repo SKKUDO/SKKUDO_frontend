@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
+import { useRecoilState, useSetRecoilState } from "recoil";
 
 import styled from "styled-components";
+import { isLoggedInState } from "../atoms/loginAtom";
 
 import { loginFromServer } from "../utils/fetch";
 
@@ -61,12 +63,18 @@ function LoginPage() {
   const [ID, setID] = useState("");
   const [PW, setPW] = useState("");
 
+  const [isLoggedIn, setIsLoggedIn] = useRecoilState(isLoggedInState);
+  if (isLoggedIn) {
+    navigate("/");
+  }
+
   const { mutate, isLoading, data, isError } = useMutation(
     () => loginFromServer(ID, PW),
     {
       //need to fix
       onSuccess: (data) => {
         console.log(data);
+        setIsLoggedIn(true);
         navigate("/");
       },
       onError: (error) => console.log(error),

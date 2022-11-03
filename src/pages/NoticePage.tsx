@@ -87,7 +87,7 @@ const AddCategoryBtn = styled("button")({});
 function NoticePage() {
   const navigate = useNavigate();
   const { clubID } = useParams();
-  console.log(clubID);
+
   const { data: noticeData, isLoading: isNoticeLoading } = useQuery<
     NoticeType[]
   >("getNoticesByClubID", () => getNoticesByClubID(clubID || ""));
@@ -187,9 +187,9 @@ function NoticePage() {
                 spacing={2}
                 direction={"row"}
               >
-                <div>cate 1</div>
-                <div>cate 1</div>
-                <div>cate 1</div>
+                {notice.tags.map((tag) => (
+                  <div key={tag._id}>{tag.name}</div>
+                ))}
               </Stack>
               <Item
                 elevation={3}
@@ -235,6 +235,7 @@ function NoticePage() {
                           title: notice.title,
                           content: notice.content,
                           clubId: notice.clubId,
+                          tags: notice.tags,
                         })
                       }
                     >

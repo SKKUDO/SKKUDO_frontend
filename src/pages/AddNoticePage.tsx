@@ -2,13 +2,14 @@ import styled from "@emotion/styled";
 import { Button, TextField } from "@mui/material";
 import { display, flexbox } from "@mui/system";
 import React, { useState } from "react";
-import { useMutation } from "react-query";
+import { useMutation, useQuery } from "react-query";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { userNameState } from "../atoms/userAtom";
-import { createNotice } from "../utils/fetch";
+import { createNotice, getNoticeTagsByClubID } from "../utils/fetch";
 import { GrFormAdd } from "react-icons/gr";
 import { FiDelete } from "react-icons/fi";
+import { NoticeTagType } from "../types/notice";
 
 // const Blank = styled("div")({
 //   paddingTop: "120px",
@@ -44,9 +45,10 @@ const CategoryInputContainer = styled("div")({
   width: "200px",
   height: "30px",
   position: "relative",
+  display: "flex",
 });
 
-const CategoryInput = styled("input")({
+const CategorySelect = styled("select")({
   backgroundColor: "rgba(0,0,0,0.2)",
   width: "100%",
   height: "100%",
@@ -55,11 +57,9 @@ const CategoryInput = styled("input")({
 });
 
 const CategoryAddBtn = styled("button")({
-  position: "absolute",
   height: "100%",
   width: "30px",
-  bottom: 0,
-  right: 0,
+
   backgroundColor: "transparent",
   border: "none",
 });
@@ -113,12 +113,26 @@ function AddNoticePage() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const userName = useRecoilValue(userNameState);
-  const [category, setCategory] = useState("");
-  const [categories, setCategories] = useState<string[]>([]);
+  const [category, setCategory] = useState<NoticeTagType>();
+  const [categories, setCategories] = useState<NoticeTagType[]>([]);
+
+  const { data, isLoading } = useQuery<NoticeTagType[]>(
+    "getNoticeTagsByClubID",
+    () => getNoticeTagsByClubID(clubID || "")
+  );
+
+  console.log(data);
+  // console.log(data);
 
   const { mutate } = useMutation(
     () =>
-      createNotice({ clubId: clubID || "", title, content, writer: userName }),
+      createNotice({
+        clubId: clubID || "",
+        title,
+        content,
+        writer: userName,
+        tags: categories,
+      }),
     {
       onSuccess: (data) => {
         navigate(`/club/${clubID}/notice`);
@@ -140,33 +154,70 @@ function AddNoticePage() {
     setContent(event.target.value);
   };
 
-  const handleNewNoticeSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const handleNewNoticeSubmit = () => {
+    // event.preventDefault();
+    console.log(categories);
+    // const newCategories = categories.map((category) => {
+    //   delete category?.__v;
+    //   return category;
+    // });
+    // setCategories(newCategories);
+    // console.log(categories);
     mutate();
   };
 
-  const handleCategoryInputChange = (
-    event: React.ChangeEvent<HTMLInputElement>
+  const handleCategorySelect = (
+    event: React.ChangeEvent<HTMLSelectElement>
   ) => {
     event.preventDefault();
-    setCategory(event.target.value);
+    const categoryName = event.target.value;
+    if (data) {
+      const selectedCategory = data.filter(
+        (cate) => cate.name === categoryName
+      );
+      setCategory(selectedCategory[0]);
+    }
   };
 
-  const handleCategoryAddBtnClick = () => {
-    setCategories((prev) => [...prev, category]);
-    setCategory("");
+  const handleCategoryAddBtnClick = (event: React.MouseEvent<HTMLElement>) => {
+    event.preventDefault();
+    if (category) {
+      setCategories((prev) => [...prev, category]);
+      console.log(categories);
+    }
   };
 
-  const handleCategoryDeleteBtnClick = () => {
-    // setCategories(prev => )
+  const handleCategoryDeleteBtnClick = (
+    event: React.MouseEvent<HTMLElement>,
+    category: NoticeTagType
+  ) => {
+    event.preventDefault();
+    const idx = categories.indexOf(category);
+    if (idx === -1) {
+      console.log("nocategory found");
+    } else {
+      let newCategories = [...categories];
+      newCategories.splice(idx, 1);
+      setCategories(newCategories);
+    }
   };
   // const { mutate } = useMutation(() => );
   return (
-    <AddNoticePageContainer onSubmit={handleNewNoticeSubmit}>
+    <AddNoticePageContainer>
       <HeaderInptut>
         <TitleInput required onChange={handleTitleChange} />
         <CategoryInputContainer>
-          <CategoryInput onChange={handleCategoryInputChange} />
+          <CategorySelect onChange={handleCategorySelect}>
+            {isLoading ? (
+              <option disabled></option>
+            ) : (
+              data?.map((cate) => (
+                <option key={cate._id} value={cate.name}>
+                  {cate.name}
+                </option>
+              ))
+            )}
+          </CategorySelect>
           <CategoryAddBtn onClick={handleCategoryAddBtnClick}>
             <GrFormAdd size="1.3em" />
           </CategoryAddBtn>
@@ -175,8 +226,10 @@ function AddNoticePage() {
       <CategoryViewer>
         {categories.map((category, index) => (
           <CategoryContainer key={index}>
-            <Category>{category}</Category>
-            <CategoryDeleteBtn>
+            <Category>{category.name}</Category>
+            <CategoryDeleteBtn
+              onClick={(event) => handleCategoryDeleteBtnClick(event, category)}
+            >
               <FiDelete />
             </CategoryDeleteBtn>
           </CategoryContainer>
@@ -184,7 +237,11 @@ function AddNoticePage() {
       </CategoryViewer>
       <ContentInput required rows={25} onChange={handleContentChange} />
       <ButtonContainer>
-        <AddButton variant="contained" color="success" type="submit">
+        <AddButton
+          variant="contained"
+          color="success"
+          onClick={handleNewNoticeSubmit}
+        >
           공지 추가하기
         </AddButton>
       </ButtonContainer>

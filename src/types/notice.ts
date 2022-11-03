@@ -8,11 +8,17 @@ export interface NoticeTagType {
   updatedAt: Date;
 }
 
+export interface NewNoticeTagType {
+  clubId: string;
+  name: string;
+}
+
 export interface NewNoticeType {
   clubId: string;
   title: string;
   content: string;
   writer: string;
+  tags: NoticeTagType[];
 }
 export interface NoticeType {
   _id: string;

@@ -1,6 +1,7 @@
 import { NewClubType } from "./../types/club";
 import {
   DeleteNoticetype,
+  NewNoticeTagType,
   NewNoticeType,
   UpdateNoticeType,
 } from "./../types/notice";
@@ -62,6 +63,16 @@ export const updateNotice = async (newNotice: UpdateNoticeType) =>
     .patch(GET_ALL_NOTICES_URL.concat("/", newNotice.noticeID), newNotice)
     .then((res) => res.data);
 
+const GET_ALL_NOTICE_TAGS_URL = `${BASE_URL}/notices/noticeTags`;
+
+export const createNoticeTag = async (newNoticeTag: NewNoticeTagType) =>
+  axios.post(GET_ALL_NOTICE_TAGS_URL, newNoticeTag).then((res) => res.data);
+
+export const getNoticeTagsByClubID = async (clubID: string) =>
+  axios
+    .get(GET_ALL_NOTICE_TAGS_URL.concat("/", clubID))
+    .then((res) => res.data.data)
+    .catch((error) => console.log(error));
 const GET_ONE_USER_URL = `${BASE_URL}/users/`;
 
 export const getOneUser = async (userID: string) =>
@@ -90,4 +101,9 @@ export const getValidatonByClubID = async (clubID: string) =>
     .get(GET_VALIDATON_BY_CLUBID_URL.concat(clubID))
     .then((res) => res.data.data);
 
-// export const update
+const GET_ALL_TODOS_URL = `${BASE_URL}/todos/ToDos`;
+
+export const getTodosByClubID = async (clubID: string) =>
+  axios
+    .get(GET_ALL_TODOS_URL.concat("/club/", clubID))
+    .then((res) => res.data.data);

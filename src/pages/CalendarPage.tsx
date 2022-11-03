@@ -5,6 +5,9 @@ import React, { useState } from "react";
 import "./CustomCalendarStyle.css";
 import moment from "moment";
 import ClubDetailHeader from "../components/ClubDetailHeader";
+import { getTodosByClubID } from "../utils/fetch";
+import { useParams } from "react-router-dom";
+import { useQuery } from "react-query";
 
 const CalendarContainer = styled.div`
   padding-top: 80px;
@@ -50,9 +53,14 @@ const Dot = styled.div`
 
 function CalendarPage() {
   const [value, onChange] = useState(new Date());
+  const { clubID } = useParams();
   const handleDayClick = () => {
     setIsDayDetailOpened((prev) => !prev);
   };
+
+  // const { data, isLoading } = useQuery("getTodosByClubID", () =>
+  //   getTodosByClubID(clubID || "")
+  // );
 
   const mark = ["2022-10-02", "2022-10-23"];
   const [isDayDetailOpened, setIsDayDetailOpened] = useState(false);

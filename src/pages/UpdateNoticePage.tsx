@@ -67,6 +67,7 @@ function UpdateNoticePage() {
         writer: noticeData.writer,
         title,
         content,
+        tags: [],
       }),
     {
       onSuccess: (data) => {

@@ -11,15 +11,6 @@ import axios from "axios";
 
 function App() {
   const queryClient = new QueryClient();
-  useEffect(() => {
-    axios.post(
-      "http://localhost:8000/auth/verify",
-      {},
-      {
-        withCredentials: true,
-      }
-    );
-  });
   return (
     <>
       <GlobalStyles />

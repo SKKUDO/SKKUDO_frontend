@@ -115,14 +115,6 @@ export const updateClub = async (
     .patch(GET_ONE_CLUB_URL.concat(clubID), updateInfo)
     .then((res) => res.data);
 
-export const addClubUserColumn = async (
-  clubID: string,
-  newColumnInfo: NewClubColumnType
-) =>
-  axios
-    .post(GET_ONE_CLUB_URL.concat("userColumn/", clubID))
-    .then((res) => res.data);
-
 const GET_CLUB_MEMBERS_URL = `${BASE_URL}/users/byClub/`;
 
 export const getClubMembers = async (clubID: string) =>

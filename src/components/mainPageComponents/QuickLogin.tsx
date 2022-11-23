@@ -77,7 +77,6 @@ export default function QuickLogin() {
           "테스트 유저로 로그인했습니다. 마이페이지에서 내 동아리 정보를 확인하세요."
         );
         // navigate("/myPage");
-        window.location.reload();
       },
       onError: (error: { response: { data: { error: string } } }) =>
         alert(error.response.data.error),

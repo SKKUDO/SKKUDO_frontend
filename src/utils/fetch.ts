@@ -34,7 +34,7 @@ axios.defaults.withCredentials = true;
 // const BASE_URL = "http://54.180.91.71:8000";
 export const BASE_URL =
   process.env.NODE_ENV === "production"
-    ? "http://54.180.30.58:8000"
+    ? "http://api.skkudo.link"
     : "http://localhost:8000";
 
 const GET_ALL_CLUB_TYPES_URL = `${BASE_URL}/clubs/clubTypes`;

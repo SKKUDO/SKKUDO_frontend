@@ -79,7 +79,7 @@ export default function DashboardApp() {
     const tempNumberColumns = new Map();
     const tempBooleanColumns = new Map();
 
-    if (currentClubInfo) {
+    if (currentClubInfo && currentClubInfo.userColumns.length > 0) {
       if (clubMembersData) {
         clubMembersData.forEach((member) => {
           Object.values(member.registeredClubs).forEach(

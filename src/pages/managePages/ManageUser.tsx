@@ -241,7 +241,7 @@ export default function User() {
           startIcon={<Iconify icon="eva:plus-fill" />}
           onClick={() => setColumnModalOpen(true)}
         >
-          유저 열 추가
+          유저 열 편집
         </Button>
         <ColumnModal
           addColumnModalOpen={addColumnModalOpen}

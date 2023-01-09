@@ -14,6 +14,8 @@ import {
 } from "@mui/material";
 import { Tag } from "../../pages/NoticePage";
 import moment from "moment";
+import { useMutation } from "react-query";
+import { deleteTodo } from "../../utils/fetch/fetchTodo";
 
 interface TodoDetailDialogType {
   todoInfo: ToDoType | undefined;
@@ -25,8 +27,26 @@ export default function TodoDetailDialog({
   open,
   setOpen,
 }: TodoDetailDialogType) {
+  const { mutate } = useMutation(
+    () =>
+      deleteTodo({ clubId: todoInfo?.clubId || "", _id: todoInfo?._id || "" }),
+    {
+      onSuccess: (data) => {
+        console.log(data);
+      },
+      onError: (error: any) => {
+        alert(error.response.data.error);
+      },
+    }
+  );
+
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const handleDeleteBtnClick = () => {
+    mutate();
+    window.location.reload();
   };
 
   return (
@@ -106,7 +126,7 @@ export default function TodoDetailDialog({
         )}
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose} color="error" autoFocus>
+        <Button onClick={handleDeleteBtnClick} color="error" autoFocus>
           삭제하기
         </Button>
         <Button onClick={handleClose} autoFocus>

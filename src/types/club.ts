@@ -30,6 +30,7 @@ export interface NewClubType {
 
 export interface NotAcceptedClubType {
   accpeted: boolean;
+  initializer: string;
   name: string;
   location: string;
   recruitType: RecruitType;

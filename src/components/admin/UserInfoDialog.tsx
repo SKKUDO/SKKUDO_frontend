@@ -12,6 +12,8 @@ import { MdExpandLess, MdExpandMore } from "react-icons/md";
 import { useState } from "react";
 import styled from "styled-components";
 import AdminDeregisterDialog from "./AdminDeregisterDialog";
+import { useMutation } from "react-query";
+import { deleteUser } from "../../utils/fetch/fetchUser";
 
 const CollapseItem = styled.div`
   height: 33px;
@@ -32,6 +34,16 @@ export default function UserInfoDialog({
 }: UserInfoDialogType) {
   const [collapseOpen, setCollapseOpen] = useState(false);
   const [deregisterDialogOpen, setDeregisterDialogOpen] = useState(false);
+
+  const { mutate } = useMutation(() => deleteUser(clickedUser?._id || ""), {
+    onSuccess: (data) => console.log(data),
+    onError: (error) => console.log(error),
+  });
+
+  const handleUserDeleteBtnClick = () => {
+    mutate();
+    window.location.reload();
+  };
 
   const handleClick = () => {
     setCollapseOpen(!collapseOpen);
@@ -101,6 +113,9 @@ export default function UserInfoDialog({
                 </List>
               </Collapse>
             </List>
+            <Button color="error" onClick={handleUserDeleteBtnClick}>
+              유저 삭제
+            </Button>
           </DialogContent>
         </Card>
       ) : (

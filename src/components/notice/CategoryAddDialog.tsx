@@ -7,7 +7,7 @@ import { useMutation, useQuery, useQueryClient } from "react-query";
 
 import { useParams } from "react-router-dom";
 import styled from "@emotion/styled";
-import { DeleteNoticetype, NoticeTagType } from "../../types/notice";
+import { DeleteNoticeType, NoticeTagType } from "../../types/notice";
 import {
   createNoticeTag,
   deleteNoticeTag,
@@ -72,7 +72,7 @@ function CategoryAddDialog(props: SimpleDialogProps) {
   );
 
   const { mutate: deleteNoticeTagMutate } = useMutation(
-    (tagInfo: DeleteNoticetype) => deleteNoticeTag(tagInfo),
+    (tagInfo: DeleteNoticeType) => deleteNoticeTag(tagInfo),
     {
       onSuccess: (data) => {
         queryClient.invalidateQueries("getNoticeTagsByClubID");

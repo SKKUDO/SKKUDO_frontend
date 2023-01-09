@@ -1,6 +1,5 @@
 import {
   Table,
-  Checkbox,
   TableRow,
   TableBody,
   TableCell,
@@ -37,6 +36,8 @@ export default function AllNoticeTable() {
       title: "",
       content: "",
       noticeTags: [],
+      _id: "",
+      clubId: "",
     });
 
   const handleRequestSort = (event: any, property: any) => {
@@ -124,6 +125,7 @@ export default function AllNoticeTable() {
       return [];
     }
   }
+
   const filteredUsers = applySortFilter(
     data,
     getComparator(order, orderBy),
@@ -202,7 +204,7 @@ export default function AllNoticeTable() {
             {filteredUsers
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row) => {
-                const { _id, title, writer, noticeTags, content } = row;
+                const { _id, title, writer, noticeTags, content, clubId } = row;
                 const isItemSelected = selected.indexOf(title) !== -1;
 
                 return (
@@ -214,15 +216,23 @@ export default function AllNoticeTable() {
                     selected={isItemSelected}
                     aria-checked={isItemSelected}
                     onClick={() =>
-                      handleRowClick({ writer, title, content, noticeTags })
+                      handleRowClick({
+                        writer,
+                        title,
+                        content,
+                        noticeTags,
+                        _id,
+                        clubId,
+                      })
                     }
+                    sx={{ position: "relative" }}
                   >
-                    <TableCell padding="checkbox">
+                    {/* <TableCell padding="checkbox">
                       <Checkbox
                         checked={isItemSelected}
                         onChange={(event) => handleClick(event, title)}
                       />
-                    </TableCell>
+                    </TableCell> */}
                     <TableCell sx={{ fontSize: "13px" }} align="left">
                       {title}
                     </TableCell>
@@ -272,6 +282,7 @@ export default function AllNoticeTable() {
         noticeInfo={clickedNoticeInfo}
         detailOpened={open}
         setDetailOpened={setOpen}
+        isAdmin={true}
       />
     </>
   );

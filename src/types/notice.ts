@@ -38,9 +38,11 @@ export interface ClickedNoticeInfoType {
   title: string;
   content: string;
   noticeTags: string[]; //태그
+  _id?: string;
+  clubId?: string;
 }
 
-export interface DeleteNoticetype {
+export interface DeleteNoticeType {
   clubID: string;
   _id: string;
 }

@@ -3,7 +3,7 @@ import { useMutation, useQuery, useQueryClient } from "react-query";
 import { BiMessageSquareAdd } from "react-icons/bi";
 import {
   ClickedNoticeInfoType,
-  DeleteNoticetype,
+  DeleteNoticeType,
   NoticeType,
   UpdateNoticeType,
 } from "../types/notice";
@@ -195,7 +195,7 @@ function NoticePage() {
   };
 
   const { mutate } = useMutation(
-    (deleteNoticeInfo: DeleteNoticetype) => deleteNotice(deleteNoticeInfo),
+    (deleteNoticeInfo: DeleteNoticeType) => deleteNotice(deleteNoticeInfo),
     {
       onSuccess: (data) => {
         queryClient.invalidateQueries("getNoticesByClubID");
@@ -206,7 +206,7 @@ function NoticePage() {
     }
   );
 
-  const handleNoticeDeleteBtnClick = (deleteNoticeInfo: DeleteNoticetype) => {
+  const handleNoticeDeleteBtnClick = (deleteNoticeInfo: DeleteNoticeType) => {
     mutate(deleteNoticeInfo);
   };
   const localStorage = window.localStorage;
@@ -361,6 +361,7 @@ function NoticePage() {
         noticeInfo={clickedNoticeInfo}
         detailOpened={detailOpened}
         setDetailOpened={setDetailOpened}
+        isAdmin={false}
       />
     </>
   );

@@ -1,6 +1,8 @@
-import { Chip } from "@mui/material";
+import { Button, Chip } from "@mui/material";
+import { useState } from "react";
 import styled from "styled-components";
 import { ClickedNoticeInfoType } from "../../types/notice";
+import DeleteNoticeDialog from "../admin/DeleteNoticeDialog";
 
 interface NoticeDetailElementType {
   isNoticeDetailOpen: boolean;
@@ -83,14 +85,22 @@ interface NoticeDetailType {
   noticeInfo: ClickedNoticeInfoType;
   detailOpened: boolean;
   setDetailOpened: React.Dispatch<React.SetStateAction<boolean>>;
+  isAdmin: boolean;
 }
 function NoticeDetail({
   noticeInfo,
   detailOpened,
   setDetailOpened,
+  isAdmin,
 }: NoticeDetailType) {
+  // console.log(noticeInfo);
+  const [open, setOpen] = useState(false);
   const handleOverlayClick = () => {
     setDetailOpened(false);
+  };
+
+  const handleDelteBtnClick = () => {
+    setOpen(true);
   };
 
   return (
@@ -117,7 +127,28 @@ function NoticeDetail({
         </NoticeTagsContainer>
         <NoticeWriter>{noticeInfo.writer}</NoticeWriter>
         <NoticeContent>{noticeInfo.content}</NoticeContent>
+        {isAdmin && (
+          <Button
+            color="error"
+            onClick={handleDelteBtnClick}
+            sx={{
+              maxWidth: "200px",
+              position: "relative",
+              margin: "0 auto",
+              marginRight: "10px",
+              marginTop: "10px",
+            }}
+          >
+            삭제
+          </Button>
+        )}
       </NoticeBoard>
+      <DeleteNoticeDialog
+        open={open}
+        setOpen={setOpen}
+        _id={noticeInfo._id || ""}
+        clubId={noticeInfo.clubId || ""}
+      />
     </>
   );
 }

@@ -7,6 +7,9 @@ import DialogTitle from "@mui/material/DialogTitle";
 import { useMutation, useQueryClient } from "react-query";
 import { NotAcceptedClubType } from "../../types/club";
 import { accpetClub, deleteClub } from "../../utils/fetch/fetchClub";
+import { getOneUser } from "../../utils/fetch/fetchUser";
+import { useState, useEffect } from "react";
+import { UserType } from "../../types/user";
 
 interface NotAcceptedClubDialogType {
   open: boolean;
@@ -25,7 +28,6 @@ export default function NotAcceptedClubDialog({
     () => accpetClub(clickedClub!._id),
     {
       onSuccess: (data) => {
-        console.log(data);
         queryClient.invalidateQueries("getNotAcceptedClubs");
       },
       onError: (error) => console.log(error),
@@ -36,12 +38,19 @@ export default function NotAcceptedClubDialog({
     () => deleteClub(clickedClub!._id),
     {
       onSuccess: (data) => {
-        console.log(data);
         queryClient.invalidateQueries("getNotAcceptedClubs");
       },
       onError: (error) => console.log(error),
     }
   );
+
+  const [initializer, setInitializer] = useState<UserType>();
+
+  useEffect(() => {
+    getOneUser(clickedClub?.initializer as string)
+      .then((result) => setInitializer(result))
+      .catch((error) => alert("설립자를 가져오는데 문제가 발생했습니다."));
+  }, [clickedClub]);
 
   const onAcceptBtnClicked = () => {
     if (clickedClub) {
@@ -79,6 +88,16 @@ export default function NotAcceptedClubDialog({
             <DialogContentText id="alert-dialog-description">
               {`동아리 주제 : ${clickedClub.type.name}`}
             </DialogContentText>
+            <h3 style={{ marginTop: "20px" }}>신청자 정보</h3>
+            <div style={{ fontSize: "8px" }}>
+              <p></p>
+              <p>ID: {initializer?.userID}</p>
+              <p>STUDENT_ID: {initializer?.studentId}</p>
+              <p>MAJOR: {initializer?.major}</p>
+              <p>NAME: {initializer?.name}</p>
+              <p>LOCATION: {initializer?.location}</p>
+              <p>CONTACT: {initializer?.contact}</p>
+            </div>
           </DialogContent>
         </>
       ) : (

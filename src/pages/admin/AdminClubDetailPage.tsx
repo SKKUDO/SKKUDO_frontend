@@ -1,12 +1,12 @@
 import { Grid } from "@mui/material";
-import { useQuery } from "react-query";
+import { useMutation, useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { PageTitle } from "../../components/admin/PageTitle";
 import { ClubType } from "../../types/club";
 import { UserType } from "../../types/user";
 import { BASE_URL } from "../../utils/fetch/fetch";
-import { getOneClub } from "../../utils/fetch/fetchClub";
+import { deleteClub, getOneClub } from "../../utils/fetch/fetchClub";
 import Sunkyun from "./../../assets/images/sunkyun.png";
 import { getClubMembers } from "../../utils/fetch/fetchUser";
 import { AiTwotoneSetting } from "react-icons/ai";
@@ -58,12 +58,16 @@ const OptionContainer = styled.ul<{ isSettingOpen: boolean }>`
 `;
 const Option = styled.li`
   height: 70px;
-  background-color: aliceblue;
+
   font-size: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: 600;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
 `;
 
 export default function AdminClubDetailPage() {
@@ -74,8 +78,8 @@ export default function AdminClubDetailPage() {
     "getOneClub",
     () => getOneClub(clubID || ""),
     {
-      onSuccess: (data) => console.log(data),
-      onError: (error) => console.log(error),
+      onSuccess: (data) => {},
+      onError: (error: any) => alert(error.response.data.error),
     }
   );
 
@@ -83,10 +87,19 @@ export default function AdminClubDetailPage() {
     "getClubMembers",
     () => getClubMembers(clubID || ""),
     {
-      onSuccess: (data) => console.log(data),
-      onError: (error) => console.log(error),
+      onSuccess: (data) => {},
+      onError: (error: any) => alert(error.response.data.error),
     }
   );
+
+  const { mutate } = useMutation(() => deleteClub(clubID || ""), {
+    onSuccess: (data) => alert("동아리를 성공적으로 삭제했습니다"),
+    onError: (error: any) => alert(error.response.data.error),
+  });
+
+  const handleClubDeleteBtnClick = () => {
+    mutate();
+  };
 
   const handleSettingBtnClick = () => {
     setIsSettingOpen(!isSettingOpen);
@@ -98,7 +111,7 @@ export default function AdminClubDetailPage() {
       <SettingBtn onClick={handleSettingBtnClick}>
         <AiTwotoneSetting size="30px" />
         <OptionContainer isSettingOpen={isSettingOpen}>
-          <Option>삭제</Option>
+          <Option onClick={handleClubDeleteBtnClick}>삭제</Option>
         </OptionContainer>
       </SettingBtn>
       {clubData && (

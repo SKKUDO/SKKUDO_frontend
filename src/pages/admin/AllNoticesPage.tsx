@@ -16,7 +16,7 @@ export default function AllNoticesPage() {
       >
         <AllNoticeTable />
       </Box>
-      <PageTitle>동아리별로 보기</PageTitle>
+      {/* <PageTitle>동아리별로 보기</PageTitle> */}
     </>
   );
 }

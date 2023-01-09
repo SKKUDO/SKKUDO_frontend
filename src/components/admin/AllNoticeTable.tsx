@@ -217,12 +217,12 @@ export default function AllNoticeTable() {
                       handleRowClick({ writer, title, content, noticeTags })
                     }
                   >
-                    <TableCell padding="checkbox">
+                    {/* <TableCell padding="checkbox">
                       <Checkbox
                         checked={isItemSelected}
                         onChange={(event) => handleClick(event, title)}
                       />
-                    </TableCell>
+                    </TableCell> */}
                     <TableCell sx={{ fontSize: "13px" }} align="left">
                       {title}
                     </TableCell>

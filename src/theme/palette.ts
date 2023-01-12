@@ -221,7 +221,7 @@ const palette = {
   chart: CHART_COLORS,
   divider: GREY[500_24],
   text: { primary: GREY[800], secondary: GREY[600], disabled: GREY[500] },
-  background: { paper: "#fff", default: "#D4E7C6", neutral: GREY[200] },
+  background: { paper: "#fff", default: "#e0e7e9", neutral: GREY[200] },
   action: {
     active: GREY[600],
     hover: GREY[500_8],

@@ -1,4 +1,4 @@
-import { Paper, Stack, styled } from "@mui/material";
+import { Paper, Stack } from "@mui/material";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { BiMessageSquareAdd } from "react-icons/bi";
 import {
@@ -20,6 +20,7 @@ import {
   getNoticesByClubID,
   getNoticeTagsByClubID,
 } from "../utils/fetch/fetchNotice";
+import styled from "@emotion/styled";
 
 interface TagType {
   _id: string;
@@ -42,12 +43,12 @@ const BtnContainer = styled("div")({
 
 const AddCategoryBtn = styled(motion.button)({
   backgroundColor: "transparent",
-  color: "#0c4426",
+  color: "#000069",
   fontWeight: "600",
   paddingLeft: "10px",
   paddingRight: "10px",
   fontSize: "1vw",
-  border: "2px solid ",
+  border: "2px solid #000069",
   borderRadius: "10px",
   marginTop: "8px",
 });
@@ -109,11 +110,11 @@ const Option = styled(motion.div)({
 });
 
 const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
+  // backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+  // ...theme.typography.body2,
+  // padding: theme.spacing(1),
   textAlign: "center",
-  color: theme.palette.text.secondary,
+  // color: theme.palette.text.secondary,
   width: "100%",
   height: "60px",
 }));

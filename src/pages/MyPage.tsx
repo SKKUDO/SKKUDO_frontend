@@ -22,8 +22,8 @@ import DefaultClubCard from "../components/myPage/DefaultClubCard";
 const MyPageContainer = styled.div`
   margin: 0 auto;
   width: 100%;
-  max-width: 55vw;
-  padding-top: 10vh;
+  /* max-width: 55vw; */
+  padding-top: 8vh;
   padding-bottom: 10vh;
   @media screen and (max-width: 1024px) {
     max-width: 90vw;
@@ -41,7 +41,7 @@ const Title = styled.div`
   width: 100%;
   max-width: 55vw;
   font-size: 2em;
-  color: #0c4426;
+  color: #000069;
   margin-bottom: 5vh;
   font-weight: 600;
   padding-left: 0.5vw;
@@ -91,75 +91,78 @@ function MyPage() {
   };
 
   return (
-    <MyPageContainer>
-      <UserInfoViewer />
-      <SectionContainer>
-        <Title>내 동아리</Title>
-        <ClubCardsContainer>
-          {userClubs.length === 0 ? (
-            <DefaultClubCard text="소속된 동아리가 없습니다" />
-          ) : (
-            userClubs?.map((club) => (
-              <Card key={club.clubId} sx={{ width: 345 }}>
-                <CardActionArea
-                  onClick={() => handleMyClubCardClick(club.clubId)}
-                >
-                  <CardMedia
-                    component="img"
-                    height="140"
-                    image={BASE_URL + "/" + club.image}
-                    alt="green iguana"
-                    sx={{ objectFit: "contain" }}
-                  />
-                  <CardContent
-                    sx={{
-                      display: "flex",
-                      alignItems: "flex-end",
-                      gap: "20px",
-                    }}
+    <>
+      <MyPageContainer>
+        <UserInfoViewer />
+        <SectionContainer>
+          <Title>내 동아리</Title>
+          <ClubCardsContainer>
+            {userClubs.length === 0 ? (
+              <DefaultClubCard text="소속된 동아리가 없습니다" />
+            ) : (
+              userClubs?.map((club) => (
+                <Card key={club.clubId} sx={{ width: 345 }}>
+                  <CardActionArea
+                    onClick={() => handleMyClubCardClick(club.clubId)}
                   >
-                    <Typography variant="h5" component="div">
-                      {club.clubName}
-                    </Typography>
-                    <Typography variant="subtitle2" color="text.secondary">
-                      {club.role}
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-              </Card>
-            ))
-          )}
-        </ClubCardsContainer>
-      </SectionContainer>
+                    <CardMedia
+                      component="img"
+                      height="140"
+                      image={BASE_URL + "/" + club.image}
+                      alt="green iguana"
+                      sx={{ objectFit: "contain" }}
+                    />
+                    <CardContent
+                      sx={{
+                        display: "flex",
+                        alignItems: "flex-end",
+                        gap: "20px",
+                      }}
+                    >
+                      <Typography variant="h5" component="div">
+                        {club.clubName}
+                      </Typography>
+                      <Typography variant="subtitle2" color="text.secondary">
+                        {club.role}
+                      </Typography>
+                    </CardContent>
+                  </CardActionArea>
+                </Card>
+              ))
+            )}
+          </ClubCardsContainer>
+        </SectionContainer>
 
-      <SectionContainer>
-        <Title>지원중인 동아리</Title>
-        <ClubCardsContainer>
-          {appliedClubs && appliedClubs.length === 0 ? (
-            <DefaultClubCard text="지원한 동아리가 없습니다" />
-          ) : (
-            appliedClubs?.map((club) => (
-              <Card key={club.clubId} sx={{ width: 345 }}>
-                <CardActionArea>
-                  <CardMedia
-                    component="img"
-                    height="140"
-                    image={exampleImage}
-                    alt="green iguana"
-                    sx={{ objectFit: "contain" }}
-                  />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                      {club.clubName}
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-              </Card>
-            ))
-          )}
-        </ClubCardsContainer>
-      </SectionContainer>
-    </MyPageContainer>
+        <SectionContainer>
+          <Title>지원중인 동아리</Title>
+          <ClubCardsContainer>
+            {appliedClubs && appliedClubs.length === 0 ? (
+              // <DefaultClubCard text="지원한 동아리가 없습니다" />
+              <h2>지원중인 동아리가 없습니다.</h2>
+            ) : (
+              appliedClubs?.map((club) => (
+                <Card key={club.clubId} sx={{ width: 345 }}>
+                  <CardActionArea>
+                    <CardMedia
+                      component="img"
+                      height="140"
+                      image={exampleImage}
+                      alt="green iguana"
+                      sx={{ objectFit: "contain" }}
+                    />
+                    <CardContent>
+                      <Typography gutterBottom variant="h5" component="div">
+                        {club.clubName}
+                      </Typography>
+                    </CardContent>
+                  </CardActionArea>
+                </Card>
+              ))
+            )}
+          </ClubCardsContainer>
+        </SectionContainer>
+      </MyPageContainer>
+    </>
   );
 }
 

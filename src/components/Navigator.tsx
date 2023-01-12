@@ -17,10 +17,10 @@ const NavigatorContainer = styled.header<INavigationConatiner>`
   position: fixed;
   width: 100%;
   height: 8vh;
-  background-color: #0c4426;
+  /* background-color: white; */
   display: ${(props) => (props.isManage ? "none" : "block")};
   z-index: 100;
-  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
+  /* box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3); */
 `;
 
 const ItemsContainer = styled.div`
@@ -55,10 +55,11 @@ const LogoContainer = styled(Link)`
 const Logo = styled.div`
   font-size: 2em;
   font-family: "Poppins", sans-serif;
-  color: #dde143;
+  color: #000069;
   @media screen and (max-width: 490px) {
     font-size: 80%;
   }
+  font-weight: 600;
 `;
 
 const NavigationContainer = styled.nav`
@@ -84,7 +85,7 @@ const NavigationLi = styled.li`
 
 const NavigationLink = styled(Link)`
   text-decoration: none;
-  color: #dde143;
+  color: #000069;
   font-size: 1.3rem;
   white-space: nowrap;
   font-family: "Heebo", sans-serif;
@@ -102,7 +103,7 @@ const LoginBtn = styled.div`
   background-color: transparent;
   margin-right: 2vw;
   margin-left: auto;
-  color: #dde143;
+  color: #000069;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -118,8 +119,8 @@ interface ILoginOptionContainer {
 const LoginOptionContainer = styled.ul<ILoginOptionContainer>`
   position: absolute;
   width: 100px;
-  background-color: #d4e7c6;
-  border: 2px solid #0c4426;
+  background-color: #1c3879;
+  /* border: 2px solid #0c4426; */
   right: 0;
   top: 70px;
   border-radius: 5px;
@@ -134,8 +135,8 @@ const LoginOption = styled(motion.div)`
   text-align: start;
   width: 100%;
   background-color: transparent;
-  color: #0c4426;
-  border-bottom: 0.5px solid #0c4426;
+  color: white;
+  border-bottom: 0.5px solid white;
   padding: 10px;
   font-size: 1em;
   padding-top: 1.2vh;
@@ -151,7 +152,7 @@ const UserInfo = styled.h2`
   font-size: 1.2rem;
   white-space: nowrap;
   font-weight: 520;
-  color: #dde143;
+  color: #000069;
   margin-right: 1vw;
   cursor: pointer;
   @media screen and (max-width: 768px) {

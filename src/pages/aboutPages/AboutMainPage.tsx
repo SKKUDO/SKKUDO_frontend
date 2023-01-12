@@ -20,12 +20,13 @@ const Intro = styled.div`
     width: 80%;
     margin-left: 4vw;
   }
+  color: #000069;
 `;
 
 const IntroduceContainer = styled.div`
   border-top-style: solid;
   border-width: 1px;
-  border-color: #0c4426;
+  border-color: #000069;
   display: flex;
   flex-direction: row;
   padding-top: 10vh;
@@ -62,7 +63,7 @@ const Content = styled.div`
 `;
 
 const SloganContainer = styled.div`
-  background-color: #0c4426;
+  background-color: #000069;
   padding-top: 10vh;
   padding-bottom: 10vh;
   display: flex;
@@ -79,7 +80,7 @@ const SloganContainer = styled.div`
 const SloganMassage = styled.div`
   display: flex;
   justify-content: center;
-  color: #dde143;
+  color: #e0e7e9;
   font-size: 60px;
   font-weight: 700;
 
@@ -89,7 +90,7 @@ const SloganMassage = styled.div`
 `;
 
 const VisionContainer = styled.div`
-  border-color: #0c4426;
+  border-color: #000069;
   padding-top: 10vh;
   padding-bottom: 10vh;
   display: flex;
@@ -104,7 +105,7 @@ const VisionMassageContainer = styled.div`
   text-align: center;
   font-size: 30px;
   font-weight: 700;
-  color: #0c4426;
+  color: #000069;
   @media screen and (max-width: 1200px) {
     display: none;
   }
@@ -126,11 +127,11 @@ const MainIconContainer = styled.div`
   margin-right: 3vw;
   border-style: solid;
   border-width: 1px;
-  border-color: #0c4426;
+  border-color: #000069;
   display: flex;
   flex-direction: column;
   border-radius: 1rem;
-  color: #0c4426;
+  color: #000069;
 `;
 
 const MainIConMassageContainer = styled.div`
@@ -143,7 +144,7 @@ const MainIConMassageContainer = styled.div`
 const DistinctContainer = styled.div`
   border-top-style: solid;
   border-width: 1px;
-  border-color: #0c4426;
+  border-color: #000069;
   padding-top: 5%;
   padding-bottom: 5%;
   display: flex;
@@ -203,15 +204,15 @@ function AboutMainPage() {
         <VisionMassageContainer>SKKUDO의 비전</VisionMassageContainer>
         <IconContainer>
           <MainIconContainer>
-            <ImWrench size="150px" color="#0c4426"></ImWrench>
+            <ImWrench size="150px" color="#000069"></ImWrench>
             <MainIConMassageContainer>Customizable</MainIConMassageContainer>
           </MainIconContainer>
           <MainIconContainer>
-            <TiGroupOutline size="150px" color="#0c4426"></TiGroupOutline>
+            <TiGroupOutline size="150px" color="#000069"></TiGroupOutline>
             <MainIConMassageContainer>Communication</MainIConMassageContainer>
           </MainIconContainer>
           <MainIconContainer>
-            <TbPlugConnected size="150px" color="#0c4426"></TbPlugConnected>
+            <TbPlugConnected size="150px" color="#000069"></TbPlugConnected>
             <MainIConMassageContainer>Easy to Use</MainIConMassageContainer>
           </MainIconContainer>
         </IconContainer>

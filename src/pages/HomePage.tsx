@@ -7,6 +7,7 @@ import { isManageState } from "../atoms/NavigatorAtom";
 import QuickLogin from "../components/mainPage/QuickLogin";
 import myeong from "../assets/images/myeong.jpeg";
 import yul from "../assets/images/yul.png";
+import logo from "../assets/images/skkudo_logo.png";
 
 const HomePageContainer = styled.div`
   padding-top: 7vh;
@@ -31,22 +32,13 @@ const Phrase = styled.div`
 `;
 
 const ImgContainer = styled.img`
-  width: 25%;
-  @media screen and (max-width: 1024px) {
+  width: 45%;
+  /* @media screen and (max-width: 1024px) {
     width: 20%;
-  }
-  @media screen and (max-width: 768px) {
-    display: none;
-  }
+  } */
+
+  margin-bottom: -4%;
 `;
-
-// const LineOne = styled.div`
-//   font-size: 50px;
-// `;
-
-// const LineTwo = styled.div`
-//   font-size: 60px;
-// `;
 
 const Name = styled(motion.div)`
   font-size: 13em;
@@ -117,13 +109,14 @@ function HomePage() {
       <Banner>
         {/* <ImgContainer src={myeong} /> */}
         <Phrase>
-          <Name
+          {/* <Name
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
           >
             SKKUDO
-          </Name>
+          </Name> */}
+          <ImgContainer src={logo} />
           <SubName>
             {" "}
             복잡한 동아리 관리를 한번에! 성균관대학교 동아리 플랫폼 스꾸도

@@ -83,7 +83,7 @@ export default function UserListHead({
             key={headCell.id}
             align={headCell.alignRight ? "right" : "left"}
             sortDirection={orderBy === headCell.id ? order : false}
-            sx={{ padding: "10px" }}
+            sx={{ padding: "10px", color: "#000069" }}
           >
             <TableSortLabel
               hideSortIcon

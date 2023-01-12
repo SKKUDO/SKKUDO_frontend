@@ -200,8 +200,7 @@ function ManageAccountBook() {
 
   return (
     <AccountBookPageContainer>
-      {data ? // <DeleteBtn
-      //   color="error"
+      {data ? //   color="error" // <DeleteBtn
       //   variant="contained"
       //   onClick={handleDeleteBtnClick}
       // >
@@ -224,20 +223,37 @@ function ManageAccountBook() {
           <TableHead>
             <TableRow>
               <TableCell />
-              <TableCell sx={{ fontSize: "24px" }}>날짜</TableCell>
-              <TableCell sx={{ fontSize: "24px" }} align="right">
+              <TableCell sx={{ fontSize: "24px", color: "#000069" }}>
+                날짜
+              </TableCell>
+              <TableCell
+                sx={{ fontSize: "24px", color: "#000069" }}
+                align="right"
+              >
                 수입
               </TableCell>
-              <TableCell sx={{ fontSize: "24px" }} align="right">
+              <TableCell
+                sx={{ fontSize: "24px", color: "#000069" }}
+                align="right"
+              >
                 지출
               </TableCell>
-              <TableCell sx={{ fontSize: "24px" }} align="right">
+              <TableCell
+                sx={{ fontSize: "24px", color: "#000069" }}
+                align="right"
+              >
                 누가
               </TableCell>
-              <TableCell sx={{ fontSize: "24px" }} align="right">
+              <TableCell
+                sx={{ fontSize: "24px", color: "#000069" }}
+                align="right"
+              >
                 내용
               </TableCell>
-              <TableCell sx={{ fontSize: "24px" }} align="right">
+              <TableCell
+                sx={{ fontSize: "24px", color: "#000069" }}
+                align="right"
+              >
                 잔액
               </TableCell>
             </TableRow>

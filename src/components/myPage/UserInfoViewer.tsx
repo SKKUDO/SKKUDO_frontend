@@ -8,9 +8,7 @@ import { motion } from "framer-motion";
 
 const InfoContainer = styled.div`
   background-color: #1c3879;
-  /* border-radius: 10px; */
   width: 100%;
-  /* margin-top: 100px; */
   padding: 20px;
   color: #e0e7e9;
   padding-left: 40px;
@@ -18,8 +16,6 @@ const InfoContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* border: 2px solid; */
-  /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); */
 `;
 
 const RowContainer = styled.div`
@@ -92,10 +88,9 @@ export default function UserInfoViewer() {
     <InfoContainer>
       {loggedInUser ? (
         <>
-          {/* <RowContainer> */}
           <Name>{loggedInUser.name}</Name>
           <Major>{loggedInUser.major}</Major>
-          {/* </RowContainer> */}
+
           <StudentID>{`학번 : ${loggedInUser.studentId}`}</StudentID>
           <Location>{`소속 : ${loggedInUser.location}`}</Location>
           <Location>

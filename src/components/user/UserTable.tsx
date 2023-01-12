@@ -215,19 +215,28 @@ export default function UserTable({ isManage }: UserTableType) {
                     )} */}
 
                     <TableCell
-                      sx={{ fontSize: isManage ? "20px" : "13px" }}
+                      sx={{
+                        fontSize: isManage ? "20px" : "13px",
+                        color: "#1c3879",
+                      }}
                       align="left"
                     >
                       {name}
                     </TableCell>
                     <TableCell
-                      sx={{ fontSize: isManage ? "20px" : "13px" }}
+                      sx={{
+                        fontSize: isManage ? "20px" : "13px",
+                        color: "#1c3879",
+                      }}
                       align="left"
                     >
                       {studentId}
                     </TableCell>
                     <TableCell
-                      sx={{ fontSize: isManage ? "20px" : "13px" }}
+                      sx={{
+                        fontSize: isManage ? "20px" : "13px",
+                        color: "#1c3879",
+                      }}
                       align="left"
                     >
                       {clubID && data
@@ -236,20 +245,29 @@ export default function UserTable({ isManage }: UserTableType) {
                         : ""}
                     </TableCell>
                     <TableCell
-                      sx={{ fontSize: isManage ? "20px" : "13px" }}
+                      sx={{
+                        fontSize: isManage ? "20px" : "13px",
+                        color: "#1c3879",
+                      }}
                       align="left"
                     >
                       {major}
                     </TableCell>
                     <TableCell
-                      sx={{ fontSize: isManage ? "20px" : "13px" }}
+                      sx={{
+                        fontSize: isManage ? "20px" : "13px",
+                        color: "#1c3879",
+                      }}
                       align="left"
                     >
                       {location}
                     </TableCell>
                     {isManage && (
                       <TableCell
-                        sx={{ fontSize: isManage ? "20px" : "13px" }}
+                        sx={{
+                          fontSize: isManage ? "20px" : "13px",
+                          color: "#1c3879",
+                        }}
                         align="left"
                       >
                         {contact}
@@ -261,7 +279,10 @@ export default function UserTable({ isManage }: UserTableType) {
                           .moreColumns.map((item: IMoreColumn, index: any) => {
                             return (
                               <TableCell
-                                sx={{ fontSize: isManage ? "20px" : "13px" }}
+                                sx={{
+                                  fontSize: isManage ? "20px" : "13px",
+                                  color: "#1c3879",
+                                }}
                                 key={index}
                                 align="left"
                               >

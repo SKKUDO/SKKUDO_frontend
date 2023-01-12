@@ -12,7 +12,7 @@ const AboutSideBarContainer = styled.div`
 `;
 
 const NestedListHeader = styled.div`
-  color: #0c4426;
+  color: #000069;
   font-size: 20px;
   margin-top: 1vh;
   margin-left: 1vw;
@@ -21,7 +21,7 @@ const NestedListHeader = styled.div`
 `;
 
 const MenuLink = styled(Link)`
-  color: #0c4426;
+  color: #000069;
   text-decoration: none;
   font-size: 1.3rem;
   margin-left: 1vw;

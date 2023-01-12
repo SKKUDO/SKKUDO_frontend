@@ -1,15 +1,6 @@
-import PropTypes from "prop-types";
-// material
 import { Grid } from "@mui/material";
 import ClubCard from "./ClubCard";
 import { ClubType } from "../../types/club";
-
-interface IProduct {
-  id: number;
-  name: string;
-  cover: string;
-  status: string;
-}
 
 interface IClubsList {
   clubs: ClubType[];

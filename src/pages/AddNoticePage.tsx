@@ -28,7 +28,6 @@ const AddNoticePageContainer = styled("form")({
   width: "100%",
   maxWidth: "70%",
   margin: "0 auto",
-  paddingTop: "60px",
   display: "flex",
   flexDirection: "column",
   position: "relative",
@@ -39,9 +38,11 @@ const TitleInput = styled("input")({
   height: "50px",
   margin: "0 auto",
   marginBottom: "20px",
+  marginTop: "20px",
   borderRadius: "5px",
   backgroundColor: "#fff",
-  border: "2px solid #0c4426",
+  color: "#000069",
+  border: "2px solid",
   fontSize: "1.5rem",
   paddingLeft: "10px",
 });
@@ -50,7 +51,7 @@ const ContentInput = styled("textarea")({
   backgroundColor: "#fff",
   margin: "0 auto",
   marginTop: "20px",
-  border: "2px solid #0c4426",
+  border: "2px solid #000069",
   fontSize: "1.2rem",
   borderRadius: "5px",
   padding: "10px",
@@ -65,7 +66,7 @@ const ButtonContainer = styled("div")({
 });
 const AddButton = styled(Button)({
   width: "200px",
-  color: "#dde143",
+  color: "white",
   marginBottom: "40px",
 });
 

@@ -26,11 +26,11 @@ const AccountStyle = styled("div")(({ theme }) => ({
   alignItems: "center",
   padding: theme.spacing(2, 2.5),
   borderRadius: Number(theme.shape.borderRadius) * 1.5,
-  backgroundColor: theme.palette.grey[500],
+  backgroundColor: "#000069",
 }));
 
 const Logo = styled(RouterLink)({
-  color: "#dde143",
+  color: "white",
   textDecoration: "none",
   fontSize: "50px",
   fontWeight: 900,
@@ -104,10 +104,10 @@ export default function DashboardSidebar({
           <AccountStyle>
             <Avatar src={account.photoURL} alt="" />
             <Box sx={{ ml: 2 }}>
-              <Typography variant="h5" sx={{ color: "text.primary" }}>
+              <Typography variant="h5" sx={{ color: "#e0e7e9" }}>
                 {loggedInUser?.name}
               </Typography>
-              <Typography variant="subtitle1" sx={{ color: "#0c4426" }}>
+              <Typography variant="subtitle1" sx={{ color: "#e0e7e9" }}>
                 {specificInfo?.role}
               </Typography>
             </Box>
@@ -130,7 +130,7 @@ export default function DashboardSidebar({
           PaperProps={{
             sx: {
               width: DRAWER_WIDTH,
-              bgcolor: "#0c4426",
+              bgcolor: "#1c3879",
             },
           }}
         >
@@ -145,10 +145,8 @@ export default function DashboardSidebar({
           PaperProps={{
             sx: {
               width: DRAWER_WIDTH,
-              bgcolor: "#0c4426",
-              borderRight: "1px solid yellow",
-              color: "#dde143",
-              boxShadow: "-3px 0px 0px 0px #dde143 inset",
+              bgcolor: "#1c3879",
+              color: "white",
             },
           }}
         >

@@ -33,8 +33,8 @@ interface TagType {
 const BtnContainer = styled("div")({
   position: "relative",
   display: "flex",
-  width: "100%",
-  maxWidth: "70%",
+  width: "80%",
+
   margin: "0 auto",
   justifyContent: "flex-end",
   gap: "1%",
@@ -57,6 +57,7 @@ const AddIconContainer = styled(motion.div)({
   display: "flex",
   justifyContent: "right",
   marginTop: "8px",
+  color: "#000069",
 });
 
 const OptionBtn = styled(motion.button)({
@@ -91,7 +92,7 @@ const OptionContainer = styled("div")<OptionContainerType>(
     left: -20,
     zIndex: 3,
     borderRadius: "10px",
-    border: "1px solid #0c4426",
+    border: "1px solid #000069",
   },
   (props) => ({
     display: props.isOptionOpened ? "block" : "none",
@@ -99,7 +100,7 @@ const OptionContainer = styled("div")<OptionContainerType>(
 );
 
 const Option = styled(motion.div)({
-  color: "#0c4426",
+  color: "#000069",
   width: "100%",
   height: "50%",
   display: "flex",
@@ -121,7 +122,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export const Tag = styled("div")({
   height: "100%",
-  backgroundColor: "#0c4426",
+  backgroundColor: "#1c3879",
   color: "white",
   borderRadius: "4px",
   padding: "5px",
@@ -244,7 +245,7 @@ function NoticePage() {
         </FilterWrapper>
         <AddCategoryBtn
           whileHover={{
-            backgroundColor: "#0c4426",
+            backgroundColor: "#000069",
             color: "#FFFFFF",
             border: "1px solid #FFFFFF",
           }}
@@ -324,7 +325,7 @@ function NoticePage() {
                     }
                   >
                     <Option
-                      style={{ borderBottom: "1px solid #0c4426" }}
+                      style={{ borderBottom: "1px solid #000069" }}
                       onClick={() =>
                         handleNoticeDeleteBtnClick({
                           _id: notice._id,

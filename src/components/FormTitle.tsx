@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Title = styled("div")({
-  color: "#0c4426",
+  color: "#000069",
   fontSize: "35px",
   marginLeft: "40px",
   fontWeight: "600",

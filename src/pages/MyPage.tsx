@@ -1,4 +1,5 @@
 import {
+  Box,
   Card,
   CardActionArea,
   CardContent,
@@ -18,6 +19,7 @@ import { loggedInUserState } from "../atoms/userAtom";
 import { BASE_URL } from "../utils/fetch/fetch";
 import UserInfoViewer from "../components/myPage/UserInfoViewer";
 import DefaultClubCard from "../components/myPage/DefaultClubCard";
+import Sunkyun from "../assets/images/sunkyun.png";
 
 const MyPageContainer = styled.div`
   margin: 0 auto;
@@ -56,6 +58,14 @@ const ClubCardsContainer = styled.div`
   @media screen and (max-width: 490px) {
     max-width: 100%;
   }
+`;
+
+const ProductImgStyle = styled.img`
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
 `;
 
 function MyPage() {
@@ -101,17 +111,23 @@ function MyPage() {
               <DefaultClubCard text="소속된 동아리가 없습니다" />
             ) : (
               userClubs?.map((club) => (
-                <Card key={club.clubId} sx={{ width: 345 }}>
+                <Card key={club.clubId}>
                   <CardActionArea
                     onClick={() => handleMyClubCardClick(club.clubId)}
                   >
-                    <CardMedia
+                    {/* <CardMedia
                       component="img"
                       height="140"
                       image={BASE_URL + "/" + club.image}
                       alt="green iguana"
                       sx={{ objectFit: "contain" }}
-                    />
+                    /> */}
+                    <Box sx={{ pt: "100%", position: "relative" }}>
+                      <ProductImgStyle
+                        alt={club.clubName}
+                        src={club.image ? BASE_URL + "/" + club.image : Sunkyun}
+                      />
+                    </Box>
                     <CardContent
                       sx={{
                         display: "flex",
@@ -119,10 +135,18 @@ function MyPage() {
                         gap: "20px",
                       }}
                     >
-                      <Typography variant="h5" component="div">
+                      <Typography
+                        variant="h5"
+                        component="div"
+                        sx={{ color: "#000069" }}
+                      >
                         {club.clubName}
                       </Typography>
-                      <Typography variant="subtitle2" color="text.secondary">
+                      <Typography
+                        variant="subtitle2"
+                        color="text.secondary"
+                        sx={{ color: "#1c3879" }}
+                      >
                         {club.role}
                       </Typography>
                     </CardContent>

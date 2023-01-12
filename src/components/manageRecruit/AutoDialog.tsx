@@ -145,7 +145,7 @@ export default function AutoDialog({
 
   return (
     <Dialog open={open} onClose={handleClose}>
-      <DialogTitle>자동 합격 산출창</DialogTitle>
+      <DialogTitle sx={{ color: "#000069" }}>자동 합격 산출창</DialogTitle>
       <DialogContent>
         <DialogContentText>
           먼저 서류점수와 면접점수의 반영비율을 설정해주세요. 그 다음 합격시킬
@@ -188,7 +188,9 @@ export default function AutoDialog({
           required
         />
         <DialogActions>
-          <Button onClick={handleCalculateBtnClick}>계산</Button>
+          <Button onClick={handleCalculateBtnClick} color="success">
+            계산
+          </Button>
         </DialogActions>
         <ResultContainer>
           <List>
@@ -208,8 +210,12 @@ export default function AutoDialog({
         </ResultContainer>
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose}>취소</Button>
-        <Button onClick={handleDecideBtnClick}>결정</Button>
+        <Button onClick={handleClose} color="error">
+          취소
+        </Button>
+        <Button onClick={handleDecideBtnClick} color="success">
+          결정
+        </Button>
       </DialogActions>
     </Dialog>
   );

@@ -23,6 +23,7 @@ const MainWrapper = styled("div")({
   alignItems: "center",
   width: "400px",
   height: "200px",
+  margin: "0 auto",
 });
 
 const ButtonWrapper = styled("div")({
@@ -39,17 +40,18 @@ const CloseWrapper = styled("div")({
 });
 
 const ModalTitle = styled("h1")({
-  fontSize: 20,
+  fontSize: "20px",
   fontWeight: "bold",
   textAlign: "center",
-  color: "darkgreen",
+  color: "#000069",
   marginTop: "5px",
+  width: "512px",
 });
 
 const ModalDescription = styled("p")({
-  fontSize: 12,
+  fontSize: "15px",
   textAlign: "center",
-  color: "black",
+  color: "#000069",
   marginTop: "5px",
 });
 

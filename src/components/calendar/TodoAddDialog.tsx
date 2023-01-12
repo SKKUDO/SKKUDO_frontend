@@ -252,7 +252,7 @@ function TodoAddDialog(props: SimpleDialogProps) {
 
   return (
     <Dialog onClose={handleClose} open={open}>
-      <DialogTitle>일정 추가하기</DialogTitle>
+      <DialogTitle sx={{ color: "#000069" }}>일정 추가하기</DialogTitle>
       <NewTodoForm onSubmit={handleNewTodoSubmit}>
         <NewTodoInput
           id="standard-basic"

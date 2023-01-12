@@ -78,14 +78,17 @@ function ClubsPage() {
 
       <Stack divider={<Divider />}>
         <>
-          <Typography variant="h3" sx={{ mb: 5 }}>
+          <Typography variant="h3" sx={{ mb: 5, color: "#000069" }}>
             모든 동아리/학회
           </Typography>
 
           <ClubsList clubs={isLoading ? [] : items!} />
         </>
         <>
-          <Typography variant="h3" sx={{ mb: 5, marginTop: "40px" }}>
+          <Typography
+            variant="h3"
+            sx={{ mb: 5, marginTop: "40px", color: "#000069" }}
+          >
             모집중인 동아리/학회
           </Typography>
           {recruitingClubs ? <ClubsList clubs={recruitingClubs} /> : null}

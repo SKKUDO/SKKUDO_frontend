@@ -45,6 +45,7 @@ const ApplyInputContainer = styled("div")({
 const InputCell = styled("div")({});
 const InputTitle = styled("div")({
   marginBottom: "20px",
+  color: "#000069",
 });
 
 type answerType = Map<number, string>;
@@ -199,6 +200,7 @@ function ApplyPage() {
           // onClick={handleApplySubmit}
           type="submit"
           variant="outlined"
+          color="success"
         >
           submit
         </Button>

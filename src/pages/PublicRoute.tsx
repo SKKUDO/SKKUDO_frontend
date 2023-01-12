@@ -5,6 +5,7 @@ import { Outlet } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import { isLoggedInState } from "../atoms/loginAtom";
 import { loggedInUserState, userInfoState } from "../atoms/userAtom";
+import Footer from "../components/Footer";
 import { VerifyUserResponseType } from "../types/user";
 import { verifyUser } from "../utils/fetch/fetchAuth";
 
@@ -45,5 +46,10 @@ export default function PublicRoute() {
       mutate();
     }
   }, []);
-  return <Outlet />;
+  return (
+    <>
+      <Outlet />
+      <Footer />
+    </>
+  );
 }

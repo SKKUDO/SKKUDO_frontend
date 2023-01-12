@@ -11,13 +11,14 @@ import logo from "../assets/images/skkudo_logo.png";
 
 const HomePageContainer = styled.div`
   padding-top: 7vh;
+  height: 100vh;
 `;
 
 const Banner = styled.div`
   display: flex;
   /* background-color: white; */
   align-items: center;
-  height: 65vh;
+  height: 70vh;
 `;
 
 const Phrase = styled.div`
@@ -68,7 +69,6 @@ const ButtonsContainer = styled.div`
 const MainPageBtn = styled(motion.button)`
   width: 20vw;
   height: 10vh;
-  /* background-color: white; */
   border-radius: 3vw;
   font-size: 1.4em;
   border: none;

@@ -10,18 +10,19 @@ import yul from "../assets/images/yul.png";
 import logo from "../assets/images/skkudo_logo.png";
 
 const HomePageContainer = styled.div`
-  padding-top: 7vh;
+  /* padding-top: 7vh; */
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 `;
 
 const Banner = styled.div`
   display: flex;
-  /* background-color: white; */
   align-items: center;
-  height: 65vh;
+  height: 90%;
 `;
 
 const Phrase = styled.div`
-  padding-top: 50px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -58,18 +59,13 @@ const SubName = styled.div`
 const ButtonsContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 9vh;
-  gap: 12vw;
-  @media screen and (max-width: 490px) {
-    gap: 10%;
-  }
+  flex: 1;
+  /* margin-top: 9vh; */
 `;
 
 const MainPageBtn = styled(motion.button)`
-  width: 20vw;
-  height: 10vh;
-  /* background-color: white; */
-  border-radius: 3vw;
+  height: 100%;
+  flex: 1;
   font-size: 1.4em;
   border: none;
   color: #000069;
@@ -84,7 +80,12 @@ const MainPageBtn = styled(motion.button)`
     width: 30%;
     font-size: 80%;
   }
-  background-color: transparent;
+  background-color: #e0e7e9;
+
+  &:hover {
+    background-color: #1c3879;
+    color: white;
+  }
 `;
 
 function HomePage() {
@@ -125,22 +126,13 @@ function HomePage() {
         {/* <ImgContainer src={yul} /> */}
       </Banner>
       <ButtonsContainer>
-        <MainPageBtn
-          whileHover={{ scale: 1.1 }}
-          onClick={() => handleMainPageBtnClick("search")}
-        >
+        <MainPageBtn onClick={() => handleMainPageBtnClick("search")}>
           동아리 둘러보기
         </MainPageBtn>
-        <MainPageBtn
-          whileHover={{ scale: 1.1 }}
-          onClick={() => handleMainPageBtnClick("make")}
-        >
+        <MainPageBtn onClick={() => handleMainPageBtnClick("make")}>
           동아리 만들기
         </MainPageBtn>
-        <MainPageBtn
-          whileHover={{ scale: 1.1 }}
-          onClick={() => handleMainPageBtnClick("make")}
-        >
+        <MainPageBtn onClick={() => handleMainPageBtnClick("make")}>
           체험해보기
         </MainPageBtn>
       </ButtonsContainer>

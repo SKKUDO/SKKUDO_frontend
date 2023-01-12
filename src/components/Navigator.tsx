@@ -18,10 +18,10 @@ const NavigatorContainer = styled.header<INavigationConatiner>`
   position: fixed;
   width: 100%;
   height: 8vh;
-  /* background-color: white; */
+  background-color: #e0e7e9;
   display: ${(props) => (props.isManage ? "none" : "block")};
   z-index: 100;
-  /* box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3); */
+  opacity: 0.9;
 `;
 
 const ItemsContainer = styled.div`

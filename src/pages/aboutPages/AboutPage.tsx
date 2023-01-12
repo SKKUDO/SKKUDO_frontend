@@ -5,7 +5,7 @@ import AboutSideBar from "../../components/about/AboutSideBar";
 const AboutContainer = styled.div`
   overflow-x: hidden;
   display: flex;
-  background-color: white;
+  background-color: whitesmoke;
   width: 100%;
   max-width: 90vw;
   padding-top: 20vh;

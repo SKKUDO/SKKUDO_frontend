@@ -26,7 +26,7 @@ const NoticeBoard = styled.div<NoticeDetailElementType>`
   max-width: 1024px;
   height: 80%;
   background-color: white;
-  border-radius: 20px;
+  border-radius: 10px;
   display: ${(props) => (props.isNoticeDetailOpen ? "flex" : "none")};
   flex-direction: column;
   padding: 20px;
@@ -35,9 +35,9 @@ const NoticeBoard = styled.div<NoticeDetailElementType>`
 
 const NoticeTitle = styled.div`
   width: 100%;
-  border-radius: 20px;
+  border-radius: 10px;
   height: 60px;
-  color: #0c4426;
+  color: #000069;
   border: 1px solid;
   display: flex;
   justify-content: center;
@@ -58,13 +58,15 @@ const NoticeWriter = styled.div`
   width: 100%;
   text-align: end;
   font-size: 90%;
+  font-weight: 600;
+  color: #000069;
   padding-right: 40px;
   margin-bottom: 20px;
 `;
 const NoticeContent = styled.div`
   width: 100%;
-  border-radius: 20px;
-  color: #0c4426;
+  border-radius: 10px;
+  color: #000069;
   border: 1px solid;
   flex: 1;
   padding: 20px;
@@ -117,8 +119,8 @@ function NoticeDetail({
               key={tag}
               label={tag}
               sx={{
-                backgroundColor: "#0c4426",
-                color: "#dde143",
+                backgroundColor: "#1c3879",
+                color: "white",
                 padding: "10px",
                 fontSize: "80%",
               }}

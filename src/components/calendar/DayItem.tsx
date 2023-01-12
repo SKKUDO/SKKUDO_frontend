@@ -77,7 +77,7 @@ export default function DayItem({ todo, setDialogOpen }: DayItemType) {
       >
         <ListItemText
           disableTypography
-          sx={{ fontSize: "24px", fontWeight: 700 }}
+          sx={{ fontSize: "24px", fontWeight: 700, color: "#000069" }}
           primary={todo.title}
         />
         <Stack
@@ -100,14 +100,14 @@ export default function DayItem({ todo, setDialogOpen }: DayItemType) {
           <ListItemButton sx={{ pl: 4 }}>
             <ListItemText
               disableTypography
-              sx={{ fontSize: "20px" }}
+              sx={{ fontSize: "20px", color: "#000069" }}
               primary={todo.content}
             />
           </ListItemButton>
           <ListItemButton sx={{ pl: 4 }}>
             <ListItemText
               disableTypography
-              sx={{ fontSize: "20px" }}
+              sx={{ fontSize: "20px", color: "#000069" }}
               primary={`시작 시간 : ${moment(todo.startTime).format(
                 "YYYY-MM-DD HH:mm"
               )}`}
@@ -116,7 +116,7 @@ export default function DayItem({ todo, setDialogOpen }: DayItemType) {
           <ListItemButton sx={{ pl: 4 }}>
             <ListItemText
               disableTypography
-              sx={{ fontSize: "20px" }}
+              sx={{ fontSize: "20px", color: "#000069" }}
               primary={`종료 시간 : ${moment(todo.endTime).format(
                 "YYYY-MM-DD HH:mm"
               )}`}
@@ -125,7 +125,7 @@ export default function DayItem({ todo, setDialogOpen }: DayItemType) {
           <ListItemButton sx={{ pl: 4 }}>
             <ListItemText
               disableTypography
-              sx={{ fontSize: "20px" }}
+              sx={{ fontSize: "20px", color: "#000069" }}
               primary={`침여 인원 : ${todo.attendingUsers.join(" ")}`}
             />
           </ListItemButton>
@@ -165,7 +165,7 @@ export default function DayItem({ todo, setDialogOpen }: DayItemType) {
                 paddingBottom: 0,
               }}
               variant="outlined"
-              color="primary"
+              color="success"
             >
               수정
             </Button>

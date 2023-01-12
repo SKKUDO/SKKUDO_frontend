@@ -16,16 +16,16 @@ import {
 
 export const CategoryList = styled.ul`
   width: 100%;
-  border-top: 1px solid #0c4426;
+  border-top: 1px solid #000069;
 `;
 export const CategoryListItem = styled.li`
   width: 100%;
-
+  color: #000069;
   display: flex;
   justify-content: center;
   align-items: ceter;
   position: relative;
-  border-bottom: 1px solid #0c4426;
+  border-bottom: 1px solid;
   height: 60px;
   align-items: center;
 `;
@@ -103,7 +103,9 @@ function CategoryAddDialog(props: SimpleDialogProps) {
   };
   return (
     <Dialog onClose={handleClose} open={open}>
-      <DialogTitle>공지 카테고리 추가하기</DialogTitle>
+      <DialogTitle sx={{ width: "428px", color: "#000069" }}>
+        공지 카테고리 추가하기
+      </DialogTitle>
       <Box
         component="form"
         sx={{

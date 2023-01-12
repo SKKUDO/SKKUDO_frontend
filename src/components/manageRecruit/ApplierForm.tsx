@@ -256,6 +256,7 @@ function ApplierForm() {
                       variant="outlined"
                       sx={{ width: "100%" }}
                       onClick={() => handleAddBtnClick("document")}
+                      color="success"
                     >
                       질문 추가하기
                     </Button>
@@ -342,6 +343,7 @@ function ApplierForm() {
                       variant="outlined"
                       sx={{ width: "100%" }}
                       onClick={() => handleAddBtnClick("interview")}
+                      color="success"
                     >
                       질문 추가하기
                     </Button>
@@ -351,8 +353,8 @@ function ApplierForm() {
             </>
           )}
           <Dialog open={dialogOpen} onClose={handleDialogClose}>
-            <DialogTitle>질문 추가하기</DialogTitle>
-            <DialogContent style={{ width: "512px" }}>
+            <DialogTitle sx={{ color: "#000069" }}>질문 추가하기</DialogTitle>
+            <DialogContent sx={{ width: "512px" }}>
               <DialogContentText>
                 추가하고 싶은 질문을 적어주세요
               </DialogContentText>

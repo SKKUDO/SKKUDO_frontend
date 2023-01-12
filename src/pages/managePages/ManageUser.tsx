@@ -16,7 +16,7 @@ export default function User() {
         justifyContent="space-between"
         mb={5}
       >
-        <Typography variant="h4" gutterBottom>
+        <Typography variant="h4" gutterBottom sx={{ color: "#000069" }}>
           User
         </Typography>
         <div>

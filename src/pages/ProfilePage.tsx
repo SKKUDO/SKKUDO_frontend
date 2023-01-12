@@ -31,10 +31,12 @@ const ProfileContainer = styled.div`
 const Name = styled.span`
   font-size: 160%;
   margin-right: 20px;
+  color: #000069;
 `;
 const Role = styled.span`
   font-size: 150%;
   font-weight: 600;
+  color: #000069;
 `;
 
 const BtnContainer = styled(motion.button)`
@@ -102,6 +104,7 @@ function ProfilePage() {
                     textAlign: "center",
                     fontSize: "22px",
                     fontWeight: "600",
+                    color: "#000069",
                   }}
                 >
                   정보
@@ -113,6 +116,7 @@ function ProfilePage() {
                     textAlign: "center",
                     fontSize: "22px",
                     fontWeight: "600",
+                    color: "#000069",
                   }}
                 >
                   답변
@@ -131,7 +135,11 @@ function ProfilePage() {
                   <TableCell
                     component="th"
                     scope="row"
-                    sx={{ textAlign: "center", fontSize: "20px" }}
+                    sx={{
+                      textAlign: "center",
+                      fontSize: "20px",
+                      color: "#1c3879",
+                    }}
                   >
                     {ele.column.key}
                   </TableCell>
@@ -140,6 +148,7 @@ function ProfilePage() {
                       textAlign: "center",
                       position: "relative",
                       fontSize: "20px",
+                      color: "#1c3879",
                     }}
                     align="right"
                   >

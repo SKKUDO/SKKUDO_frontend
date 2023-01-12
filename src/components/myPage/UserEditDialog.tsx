@@ -53,7 +53,9 @@ export default function UserEditDialog({ open, setOpen }: UserEditDialogType) {
 
   return (
     <Dialog open={open} onClose={handleClose}>
-      <DialogTitle width="500px">연락처 수정 (번호만 입력해주세요)</DialogTitle>
+      <DialogTitle width="500px" sx={{ color: "#000069" }}>
+        연락처 수정 (번호만 입력해주세요)
+      </DialogTitle>
       <form onSubmit={handleContactSubmit}>
         <DialogContent>
           <TextField
@@ -68,8 +70,12 @@ export default function UserEditDialog({ open, setOpen }: UserEditDialogType) {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>취소</Button>
-          <Button type="submit">수정</Button>
+          <Button onClick={handleClose} color="error">
+            취소
+          </Button>
+          <Button type="submit" color="success">
+            수정
+          </Button>
         </DialogActions>
       </form>
     </Dialog>

@@ -40,14 +40,6 @@ const ImgContainer = styled.img`
   margin-bottom: -4%;
 `;
 
-// const LineOne = styled.div`
-//   font-size: 50px;
-// `;
-
-// const LineTwo = styled.div`
-//   font-size: 60px;
-// `;
-
 const Name = styled(motion.div)`
   font-size: 13em;
   font-weight: 700;

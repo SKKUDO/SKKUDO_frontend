@@ -56,8 +56,10 @@ export default function DeregisterDialog({
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose}>아니요</Button>
-        <Button color="error" onClick={handleYesBtnClick} autoFocus>
+        <Button color="error" onClick={handleClose}>
+          아니요
+        </Button>
+        <Button color="success" onClick={handleYesBtnClick} autoFocus>
           네
         </Button>
       </DialogActions>

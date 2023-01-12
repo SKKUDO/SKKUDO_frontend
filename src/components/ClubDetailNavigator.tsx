@@ -28,6 +28,7 @@ const NavigationButton = styled(motion.button)`
   border: none;
   border-radius: 10px;
   padding: 10px;
+  color: #000069;
 `;
 
 const DrawerTitle = styled.div`
@@ -37,11 +38,9 @@ const DrawerTitle = styled.div`
   align-items: center;
   height: 50px;
 
-  background: linear-gradient(45deg, #0c4426, #206d44);
-  color: #dde143;
+  color: #000069;
   font-size: 25px;
   font-weight: 900;
-  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.6);
 `;
 
 const NavigateToManagePageButton = styled.button`
@@ -82,7 +81,7 @@ function ClubDetailNavigator() {
 
   const list = () => (
     <Box
-      sx={{}}
+      // sx={{ backgroundColor: "#e0e7e9" }}
       role="presentation"
       onClick={() => toggleDrawer(false)}
       onKeyDown={() => toggleDrawer(false)}
@@ -92,7 +91,7 @@ function ClubDetailNavigator() {
       <List>
         {navigationList.map((navigationItem, index) => (
           <ListItem
-            sx={{ color: "#0c4426", marginBottom: "10px" }}
+            sx={{ color: "#000069", marginBottom: "10px" }}
             key={navigationItem.navigationTitle}
             disablePadding
           >
@@ -115,7 +114,7 @@ function ClubDetailNavigator() {
         <ListItemText
           disableTypography
           sx={{
-            color: "#0c4426",
+            color: "#000069",
             fontWeight: 800,
             fontSize: "22px",
             paddingLeft: "10px",

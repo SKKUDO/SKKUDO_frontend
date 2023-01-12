@@ -56,12 +56,12 @@ const INFO = {
 };
 
 const SUCCESS = {
-  lighter: "#E9FCD4",
-  light: "#AAF27F",
-  main: "#0c4426",
-  dark: "#229A16",
-  darker: "#08660D",
-  contrastText: "#dde143",
+  lighter: "#1c3879",
+  light: "#1c3879",
+  main: "#000069",
+  dark: "#1c3879",
+  darker: "#1c3879",
+  contrastText: "#e0e7e9",
 };
 
 const WARNING = {

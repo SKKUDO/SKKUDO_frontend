@@ -7,15 +7,19 @@ import { FaPen } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 const InfoContainer = styled.div`
-  background-color: #0c4426;
-  border-radius: 10px;
+  background-color: #1c3879;
+  /* border-radius: 10px; */
   width: 100%;
-  margin-top: 100px;
+  /* margin-top: 100px; */
   padding: 20px;
-  color: #dde143;
+  color: #e0e7e9;
   padding-left: 40px;
-  border: 2px solid;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* border: 2px solid; */
+  /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); */
 `;
 
 const RowContainer = styled.div`
@@ -26,24 +30,27 @@ const RowContainer = styled.div`
 `;
 
 const Name = styled.div`
-  font-size: 40px;
+  font-size: 45px;
   font-weight: 700;
   @media screen and (max-width: 490px) {
     font-size: 150%;
   }
+  margin-bottom: 5px;
+  margin-top: 10px;
 `;
 
 const Major = styled.div`
-  font-size: 25px;
+  font-size: 30px;
   font-weight: 600;
   @media screen and (max-width: 490px) {
     font-size: 100%;
   }
+  margin-bottom: 30px;
 `;
 
 const StudentID = styled.div`
   font-size: 25px;
-  margin-bottom: 30px;
+  margin-bottom: 22px;
   font-weight: 600;
   @media screen and (max-width: 490px) {
     font-size: 100%;
@@ -53,7 +60,7 @@ const StudentID = styled.div`
 const Location = styled.div`
   font-size: 25px;
   font-weight: 600;
-  margin-bottom: 30px;
+  margin-bottom: 22px;
   display: flex;
   @media screen and (max-width: 490px) {
     font-size: 100%;
@@ -69,8 +76,8 @@ const EditBtnContainer = styled(motion.div)`
   align-items: center;
   border-radius: 7px;
   @media screen and (max-width: 490px) {
-    width:10%;
-    height:10%;
+    width: 10%;
+    height: 10%;
   }
 `;
 
@@ -85,10 +92,10 @@ export default function UserInfoViewer() {
     <InfoContainer>
       {loggedInUser ? (
         <>
-          <RowContainer>
-            <Name>{loggedInUser.name}</Name>
-            <Major>{loggedInUser.major}</Major>
-          </RowContainer>
+          {/* <RowContainer> */}
+          <Name>{loggedInUser.name}</Name>
+          <Major>{loggedInUser.major}</Major>
+          {/* </RowContainer> */}
           <StudentID>{`학번 : ${loggedInUser.studentId}`}</StudentID>
           <Location>{`소속 : ${loggedInUser.location}`}</Location>
           <Location>

@@ -14,7 +14,7 @@ const HomePageContainer = styled.div`
 
 const Banner = styled.div`
   display: flex;
-  background-color: white;
+  /* background-color: white; */
   align-items: center;
   height: 65vh;
 `;
@@ -26,16 +26,17 @@ const Phrase = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 40px;
+  /* gap: 10px; */
+  color: #000069;
 `;
 
 const ImgContainer = styled.img`
   width: 25%;
-    @media screen and (max-width: 1024px){
-  width: 20%;
+  @media screen and (max-width: 1024px) {
+    width: 20%;
   }
-  @media screen and (max-width: 768px){
-  display: none;
+  @media screen and (max-width: 768px) {
+    display: none;
   }
 `;
 
@@ -48,12 +49,18 @@ const ImgContainer = styled.img`
 // `;
 
 const Name = styled(motion.div)`
-  font-size: 7em;
+  font-size: 13em;
   font-weight: 700;
   font-family: "Poppins", sans-serif;
   @media screen and (max-width: 490px) {
     font-size: 4em;
   }
+  margin-bottom: -3%;
+`;
+
+const SubName = styled.div`
+  font-size: 1.7em;
+  top: -2px;
 `;
 
 const ButtonsContainer = styled.div`
@@ -69,11 +76,11 @@ const ButtonsContainer = styled.div`
 const MainPageBtn = styled(motion.button)`
   width: 20vw;
   height: 10vh;
-  background-color: #0c4426;
+  /* background-color: white; */
   border-radius: 3vw;
-  font-size: 1.2em;
+  font-size: 1.4em;
   border: none;
-  color: #dde143;
+  color: #000069;
   font-weight: 550;
   cursor: pointer;
   @media screen and (max-width: 768px) {
@@ -85,6 +92,7 @@ const MainPageBtn = styled(motion.button)`
     width: 30%;
     font-size: 80%;
   }
+  background-color: transparent;
 `;
 
 function HomePage() {
@@ -107,7 +115,7 @@ function HomePage() {
   return (
     <HomePageContainer>
       <Banner>
-        <ImgContainer src={myeong} />
+        {/* <ImgContainer src={myeong} /> */}
         <Phrase>
           <Name
             initial={{ opacity: 0, scale: 0.5 }}
@@ -116,8 +124,12 @@ function HomePage() {
           >
             SKKUDO
           </Name>
+          <SubName>
+            {" "}
+            복잡한 동아리 관리를 한번에! 성균관대학교 동아리 플랫폼 스꾸도
+          </SubName>
         </Phrase>
-        <ImgContainer src={yul} />
+        {/* <ImgContainer src={yul} /> */}
       </Banner>
       <ButtonsContainer>
         <MainPageBtn
@@ -132,8 +144,14 @@ function HomePage() {
         >
           동아리 만들기
         </MainPageBtn>
+        <MainPageBtn
+          whileHover={{ scale: 1.1 }}
+          onClick={() => handleMainPageBtnClick("make")}
+        >
+          체험해보기
+        </MainPageBtn>
       </ButtonsContainer>
-      <QuickLogin />
+      {/* <QuickLogin /> */}
     </HomePageContainer>
   );
 }

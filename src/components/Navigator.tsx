@@ -9,6 +9,7 @@ import { isLoggedInState } from "../atoms/loginAtom";
 import { userInfoState } from "../atoms/userAtom";
 import { motion } from "framer-motion";
 import { logoutFromServer } from "../utils/fetch/fetchAuth";
+import logo from "../assets/images/skkudo_logo.png";
 
 interface INavigationConatiner {
   isManage: boolean;
@@ -163,6 +164,13 @@ const UserInfo = styled.h2`
   }
 `;
 
+const ImgContainer = styled.img`
+  width: 100%;
+
+  margin-top: -5%;
+  /* margin-bottom: -4%; */
+`;
+
 function Navigator() {
   const [isLoggedIn, setIsLoggedIn] = useRecoilState(isLoggedInState);
   const user = useRecoilValue(userInfoState);
@@ -199,7 +207,8 @@ function Navigator() {
     <NavigatorContainer isManage={isManage}>
       <ItemsContainer>
         <LogoContainer to="/">
-          <Logo>SKKUDO</Logo>
+          {/* <Logo>SKKUDO</Logo> */}
+          <ImgContainer src={logo} />
         </LogoContainer>
         <NavigationContainer>
           <NavigationUl>

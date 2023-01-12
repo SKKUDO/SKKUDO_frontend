@@ -57,6 +57,7 @@ const AddIconContainer = styled(motion.div)({
   display: "flex",
   justifyContent: "right",
   marginTop: "8px",
+  color: "#000069",
 });
 
 const OptionBtn = styled(motion.button)({
@@ -244,7 +245,7 @@ function NoticePage() {
         </FilterWrapper>
         <AddCategoryBtn
           whileHover={{
-            backgroundColor: "#0c4426",
+            backgroundColor: "#000069",
             color: "#FFFFFF",
             border: "1px solid #FFFFFF",
           }}

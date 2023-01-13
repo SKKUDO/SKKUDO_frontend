@@ -38,7 +38,7 @@ const ImgContainer = styled.img`
     width: 20%;
   } */
 
-  margin-bottom: -4%;
+  /* margin-bottom: -4%; */
 `;
 
 const Name = styled(motion.div)`
@@ -101,6 +101,8 @@ function HomePage() {
       navigate("/clubs");
     } else if (btnType === "make") {
       navigate("/applyClub");
+    } else if (btnType === "test") {
+      navigate("/test");
     } else {
       return;
     }
@@ -132,7 +134,7 @@ function HomePage() {
         <MainPageBtn onClick={() => handleMainPageBtnClick("make")}>
           동아리 만들기
         </MainPageBtn>
-        <MainPageBtn onClick={() => handleMainPageBtnClick("make")}>
+        <MainPageBtn onClick={() => handleMainPageBtnClick("test")}>
           체험해보기
         </MainPageBtn>
       </ButtonsContainer>

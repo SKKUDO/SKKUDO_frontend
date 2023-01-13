@@ -40,6 +40,7 @@ import AllClubsPage from "./pages/admin/AllClubsPage";
 import AdminClubDetailPage from "./pages/admin/AdminClubDetailPage";
 import PrivateRoute from "./pages/PrivateRoute";
 import PublicRoute from "./pages/PublicRoute";
+import TestPage from "./pages/TestPage";
 
 function AppRouter() {
   const isLoggedIn = useRecoilValue(isLoggedInState);
@@ -58,6 +59,7 @@ function AppRouter() {
             <Route path="mypage" element={<AboutMyPage />} />
             <Route path="manage" element={<AboutClubManagePage />} />
           </Route>
+          <Route path="/test" element={<TestPage />} />
         </Route>
 
         <Route

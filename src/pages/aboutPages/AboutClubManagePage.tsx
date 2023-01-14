@@ -14,6 +14,7 @@ import club from "../../assets/images/clubmanage/club.png";
 import question from "../../assets/images/clubmanage/question.png";
 import ratio from "../../assets/images/clubmanage/ratio.png";
 import account from "../../assets/images/account/account.png";
+import { useEffect } from "react";
 
 const AboutClubManagePageContainer = styled.div`
   display: flex;
@@ -36,8 +37,8 @@ const Message = styled.div`
   line-height: 2.3em;
   font-weight: 600;
   width: 50%;
-  @media screen and (max-width: 1024px){
-     font-size: 0.7em;
+  @media screen and (max-width: 1024px) {
+    font-size: 0.7em;
   }
 `;
 
@@ -55,6 +56,10 @@ const ImageContainer = styled.div<ImageContainerType>`
 `;
 
 function AboutClubManagePage() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <AboutClubManagePageContainer>
       <InfoContainer>

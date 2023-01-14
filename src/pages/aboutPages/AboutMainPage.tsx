@@ -4,6 +4,7 @@ import { TiGroupOutline } from "react-icons/ti";
 import { TbPlugConnected } from "react-icons/tb";
 import myeong from "../../assets/images/myeong.jpeg";
 import yul from "../../assets/images/yul.png";
+import { useEffect } from "react";
 
 const Intro = styled.div`
   width: 100%;
@@ -161,6 +162,9 @@ const DistinctMassageContainer = styled.div`
 `;
 
 function AboutMainPage() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <Intro>안녕하세요, SKKUDO 입니다.</Intro>

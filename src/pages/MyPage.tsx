@@ -68,6 +68,13 @@ const ProductImgStyle = styled.img`
   position: absolute;
 `;
 
+const NoClubLable = styled.div`
+  color: #000069;
+  font-size: 20px;
+  font-weight: 600;
+  padding-left: 0.5vw;
+`;
+
 function MyPage() {
   const navigate = useNavigate();
   const [userClubs, setUserClubs] = useState<RegisteredClubType[]>([]);
@@ -100,6 +107,12 @@ function MyPage() {
     navigate(`/club/${clubID}/notice`);
   };
 
+  const handleImageError = (
+    event: React.SyntheticEvent<HTMLImageElement, Event>
+  ) => {
+    event.currentTarget.src = Sunkyun;
+  };
+
   return (
     <>
       <MyPageContainer>
@@ -108,7 +121,7 @@ function MyPage() {
           <Title>내 동아리</Title>
           <ClubCardsContainer>
             {userClubs.length === 0 ? (
-              <DefaultClubCard text="소속된 동아리가 없습니다" />
+              <NoClubLable>지원중인 동아리가 없습니다.</NoClubLable>
             ) : (
               userClubs?.map((club) => (
                 <Card key={club.clubId}>
@@ -126,6 +139,7 @@ function MyPage() {
                       <ProductImgStyle
                         alt={club.clubName}
                         src={club.image ? BASE_URL + "/" + club.image : Sunkyun}
+                        onError={handleImageError}
                       />
                     </Box>
                     <CardContent
@@ -162,7 +176,7 @@ function MyPage() {
           <ClubCardsContainer>
             {appliedClubs && appliedClubs.length === 0 ? (
               // <DefaultClubCard text="지원한 동아리가 없습니다" />
-              <h2>지원중인 동아리가 없습니다.</h2>
+              <NoClubLable>지원중인 동아리가 없습니다.</NoClubLable>
             ) : (
               appliedClubs?.map((club) => (
                 <Card key={club.clubId} sx={{ width: 345 }}>

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
@@ -59,6 +60,10 @@ const usingInfo: LoginInfo[] = [
 export default function TestPage() {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useRecoilState(isLoggedInState);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const { mutate } = useMutation(
     ({ userID, password }: LoginInfo) => loginFromServer(userID, password),

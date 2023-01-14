@@ -76,7 +76,7 @@ export default function ClubCard({ club }: IClubCard) {
                 color: "#1c3879",
               }}
             >
-              {type.name}
+              {type && type.hasOwnProperty("name") && type.name}
             </Typography>
             <Typography
               component="span"

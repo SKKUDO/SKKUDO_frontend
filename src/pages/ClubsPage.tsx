@@ -1,6 +1,6 @@
 import { Divider, Stack, Typography } from "@mui/material";
 import moment from "moment";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import styled from "styled-components";
 
@@ -72,6 +72,10 @@ function ClubsPage() {
       onError: (error: any) => alert(error.response.data.error),
     }
   );
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <Container>

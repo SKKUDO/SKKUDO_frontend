@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import styled from "styled-components";
 import apply1 from "../../assets/images/apply/apply1.png";
 import apply2 from "../../assets/images/apply/apply2.png";
@@ -13,21 +14,21 @@ const FirstApplyMassageContainer = styled.div`
   margin-left: 17vw;
   margin-bottom: 10%;
   width: 80%;
-   @media screen and (max-width: 1660px){
-      margin-left: 10vw;
+  @media screen and (max-width: 1660px) {
+    margin-left: 10vw;
   }
-   @media screen and (max-width: 768px){
-      font-size: 1rem;
-      line-height: 2rem;
-      margin-left: 6vw;
-      width: 90%;
+  @media screen and (max-width: 768px) {
+    font-size: 1rem;
+    line-height: 2rem;
+    margin-left: 6vw;
+    width: 90%;
   }
 `;
 const FirstApplyImageContainer = styled.div`
   width: 80%;
   margin-left: 20%;
-   @media screen and (max-width: 1660px){
-      margin-left: 13%;
+  @media screen and (max-width: 1660px) {
+    margin-left: 13%;
   }
 `;
 const SecondApplyContainer = styled.div`
@@ -43,23 +44,27 @@ const SecondApplyMassageContainer = styled.div`
   text-align: center;
   margin-bottom: 14vh;
   margin-top: 5vh;
-   @media screen and (max-width: 768px){
-      font-size: 0.9rem;
-      line-height: 2rem;
+  @media screen and (max-width: 768px) {
+    font-size: 0.9rem;
+    line-height: 2rem;
   }
 `;
 const SecondApplyImageContainer = styled.div`
-   margin-left: 15%;
-   margin-right: 10vw;
-   display: flex;
-   margin-bottom: 10vh;
-   @media screen and (max-width: 1660px){
+  margin-left: 15%;
+  margin-right: 10vw;
+  display: flex;
+  margin-bottom: 10vh;
+  @media screen and (max-width: 1660px) {
     margin-left: 10%;
     margin-right: 6vw;
   }
 `;
 
 function AboutApplyPage() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       <FirstApplyContainer>

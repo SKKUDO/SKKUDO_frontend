@@ -107,6 +107,12 @@ function MyPage() {
     navigate(`/club/${clubID}/notice`);
   };
 
+  const handleImageError = (
+    event: React.SyntheticEvent<HTMLImageElement, Event>
+  ) => {
+    event.currentTarget.src = Sunkyun;
+  };
+
   return (
     <>
       <MyPageContainer>
@@ -133,6 +139,7 @@ function MyPage() {
                       <ProductImgStyle
                         alt={club.clubName}
                         src={club.image ? BASE_URL + "/" + club.image : Sunkyun}
+                        onError={handleImageError}
                       />
                     </Box>
                     <CardContent

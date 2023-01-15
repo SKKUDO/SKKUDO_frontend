@@ -1,15 +1,13 @@
 import { useEffect, useState } from "react";
-import { Link as RouterLink, useLocation, useParams } from "react-router-dom";
+import { Link as RouterLink, useParams } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import { Box, Link, Drawer, Typography, Avatar } from "@mui/material";
 import useResponsive from "../../hooks/useResponsive";
 import Scrollbar from "./Scrollbar";
 import NavSection from "./NavSection";
 import navConfig from "../../config/NavConfig";
-
 import { useRecoilValue } from "recoil";
 import { loggedInUserState } from "../../atoms/userAtom";
-
 import { ColumnType, RoleType } from "../../types/common";
 
 const DRAWER_WIDTH = 280;

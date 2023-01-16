@@ -121,7 +121,7 @@ function MyPage() {
           <Title>내 동아리</Title>
           <ClubCardsContainer>
             {userClubs.length === 0 ? (
-              <NoClubLable>지원중인 동아리가 없습니다.</NoClubLable>
+              <NoClubLable>소속된 동아리가 없습니다.</NoClubLable>
             ) : (
               userClubs?.map((club) => (
                 <Card key={club.clubId}>

@@ -38,9 +38,11 @@ import DialogTitle from "@mui/material/DialogTitle";
 import Iconify from "../Iconify";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { applierState, currentClubInfoState } from "../../atoms/utilAtom";
+import ApplierDeleteDialog from "./ApplierDeleteDialog";
 
 function ApplierForm() {
   const { clubID } = useParams();
+  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [newQuestion, setNewQuestion] = useState("");
   const [dialogType, setDialogType] = useState("");
@@ -78,19 +80,6 @@ function ApplierForm() {
     }
   );
 
-  const { mutate: applierDeleteMutate } = useMutation(
-    () => deleteApplier(clubID || ""),
-    {
-      onSuccess: (data) => {
-        // console.log(data);
-        window.location.reload();
-      },
-      onError: (error: any) => {
-        alert(error.response.data.error);
-      },
-    }
-  );
-
   const { mutate: applierCreateMutate } = useMutation(
     (newApplier: NewApplierType) => createApplier(newApplier),
     {
@@ -105,7 +94,7 @@ function ApplierForm() {
   );
 
   const handleApplierDeleteBtnClick = () => {
-    applierDeleteMutate();
+    setDeleteDialogOpen(true);
   };
 
   const handleApplierCreateBtnClick = () => {
@@ -182,16 +171,22 @@ function ApplierForm() {
         </Typography>
 
         {data ? (
-          <Button
-            variant="contained"
-            // component={RouterLink}
-            // to="#"
-            onClick={handleApplierDeleteBtnClick}
-            color="error"
-            startIcon={<Iconify icon="eva:plus-fill" />}
-          >
-            지원서 삭제하기
-          </Button>
+          <>
+            <Button
+              variant="contained"
+              // component={RouterLink}
+              // to="#"
+              onClick={handleApplierDeleteBtnClick}
+              color="error"
+              startIcon={<Iconify icon="eva:plus-fill" />}
+            >
+              지원서 삭제하기
+            </Button>
+            <ApplierDeleteDialog
+              open={deleteDialogOpen}
+              setOpen={setDeleteDialogOpen}
+            />
+          </>
         ) : (
           <Button
             variant="contained"

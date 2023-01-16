@@ -47,12 +47,20 @@ export default function ClubCard({ club }: IClubCard) {
   const onApplyBtnClick = () => {
     navigate(`/apply/${_id}`, { state: name });
   };
+
+  const handleImageError = (
+    event: React.SyntheticEvent<HTMLImageElement, Event>
+  ) => {
+    event.currentTarget.src = Sunkyun;
+  };
+
   return (
     <Card>
       <Box sx={{ pt: "100%", position: "relative" }}>
         <ProductImgStyle
           alt={name}
           src={image ? BASE_URL + "/" + image : Sunkyun}
+          onError={handleImageError}
         />
       </Box>
 

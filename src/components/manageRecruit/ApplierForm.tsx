@@ -38,6 +38,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import Iconify from "../Iconify";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { applierState, currentClubInfoState } from "../../atoms/utilAtom";
+import { useEffect } from "react";
 
 function ApplierForm() {
   const { clubID } = useParams();
@@ -56,6 +57,7 @@ function ApplierForm() {
     () => getApplierByClubID(clubID || ""),
     {
       onSuccess: (data) => {
+        console.log(data);
         setApplier(data);
       },
       onError: (error) => console.log(error),
@@ -82,7 +84,7 @@ function ApplierForm() {
     () => deleteApplier(clubID || ""),
     {
       onSuccess: (data) => {
-        // console.log(data);
+        //console.log(data);
         window.location.reload();
       },
       onError: (error: any) => {
@@ -95,7 +97,7 @@ function ApplierForm() {
     (newApplier: NewApplierType) => createApplier(newApplier),
     {
       onSuccess: (data) => {
-        // console.log(data);
+        console.log(data);
         queryClient.invalidateQueries("getApplierByClubID");
       },
       onError: (error: any) => {
@@ -168,6 +170,7 @@ function ApplierForm() {
       // }
     }
   };
+
   return (
     <>
       <Stack

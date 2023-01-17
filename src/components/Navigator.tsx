@@ -246,6 +246,7 @@ function Navigator() {
               <LoginOption
                 onClick={handleLogoutBtnClick}
                 whileHover={{ backgroundColor: "#d4e7c6bf" }}
+                style={{ border: "none" }}
               >
                 로그아웃
               </LoginOption>

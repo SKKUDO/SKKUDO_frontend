@@ -125,7 +125,7 @@ export default function ManageAuth() {
         mb={5}
       >
         <Typography variant="h4" gutterBottom>
-          "동아리 이름" 권한 관리
+          권한 관리
         </Typography>
       </Stack>
 

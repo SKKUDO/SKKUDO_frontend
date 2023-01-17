@@ -8,9 +8,11 @@ import { ReactQueryDevtools } from "react-query/devtools";
 import { CookiesProvider } from "react-cookie";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
+import axios from "axios";
 
 function App() {
   const queryClient = new QueryClient();
+  axios.defaults.withCredentials = true;
   return (
     <>
       <GlobalStyles />

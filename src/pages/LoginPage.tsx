@@ -97,7 +97,6 @@ function LoginPage() {
       // console.log(data);
       setIsLoggedIn(true);
       navigate("/");
-      window.location.reload();
     },
     onError: (error: { response: { data: { error: string } } }) =>
       alert(error.response.data.error),

@@ -130,12 +130,14 @@ function LoginPage() {
             <LoginInput
               required
               minLength={5}
+              placeholder="ID"
               onChange={handleIDChange}
             ></LoginInput>
             <LoginInput
               required
               minLength={5}
               type="password"
+              placeholder="Password"
               onChange={handlePWChange}
             ></LoginInput>
           </LoginInputContainer>

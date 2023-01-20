@@ -73,7 +73,6 @@ const Option = styled.li`
 export default function AdminClubDetailPage() {
   const [isSettingOpen, setIsSettingOpen] = useState(false);
   const { clubID } = useParams();
-  console.log(clubID);
   const { data: clubData } = useQuery<ClubType>(
     "getOneClub",
     () => getOneClub(clubID || ""),

@@ -1,6 +1,7 @@
 import { useQuery } from "react-query";
 import { getAllTodos } from "../../utils/fetch/fetchTodo";
 import { ToDoType } from "../../types/todo";
+import { ClubType } from "../../types/club";
 import moment from "moment";
 import { filter } from "lodash";
 import {
@@ -23,6 +24,8 @@ import SearchNotFound from "../../components/user/SearchNotFound";
 import { Box } from "@mui/system";
 import { PageTitle } from "../../components/admin/PageTitle";
 import TodoDetailDialog from "../../components/admin/TodoDetailDialog";
+import ClubTag from "../../components/ClubTag";
+import { getAllClubs } from "../../utils/fetch/fetchClub";
 
 const TABLE_HEAD = [
   { id: "title", label: "제목", alignRight: false },
@@ -31,9 +34,15 @@ const TABLE_HEAD = [
 
 export default function AllCalendarPage() {
   const { data } = useQuery<ToDoType[]>("getAllTodos", getAllTodos, {
-    onSuccess: (data) => console.log(data),
+    onSuccess: (data) => {},
     onError: (error) => console.log(error),
   });
+  const { data: clubs } = useQuery<ClubType[]>("getAllClubs", getAllClubs, {
+    onSuccess: (data) => {},
+    onError: (error) => console.log(error),
+  });
+
+  const [usingToDos, setUsingToDos] = useState<ToDoType[]>(data ? data : []);
 
   const [order, setOrder] = useState<"desc" | "asc">("asc");
   const [orderBy, setOrderBy] = useState<"title" | "date">("title");
@@ -176,6 +185,7 @@ export default function AllCalendarPage() {
   return (
     <>
       <PageTitle>전체 일정</PageTitle>
+      <ClubTag clubs={clubs} usingItems={usingToDos} setItems={setUsingToDos} />
       <Box
         sx={{
           width: "100%",

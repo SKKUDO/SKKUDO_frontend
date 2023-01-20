@@ -6,7 +6,7 @@ const LOGIN_URL = `${BASE_URL}/auth/login`;
 export const loginFromServer = async (userID: string, password: string) =>
   axios
     .post(LOGIN_URL, { userID, password }, { withCredentials: true })
-    .then((res) => res.data);
+    .then((res) => res.data.data);
 
 const LOGOUT_URL = `${BASE_URL}/auth/logout`;
 

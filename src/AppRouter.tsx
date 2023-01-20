@@ -80,37 +80,32 @@ function AppRouter() {
           }
         />
 
-        <Route element={<PrivateRoute />}>
-          <Route path="/myPage" element={<MyPage />} />
-          <Route path="/club/:clubID" element={<ClubDetailPage />}>
-            <Route path="notice" element={<NoticePage />} />
-            <Route path="calendar" element={<CalendarPage />} />
-            <Route path="members" element={<MembersPage />} />
-            <Route path="notice/add" element={<AddNoticePage />} />
-            <Route path="notice/:noticeID" element={<UpdateNoticePage />} />
-            <Route path="profile" element={<ProfilePage />} />
-          </Route>
+        <Route path="/myPage" element={<MyPage />} />
+        <Route path="/club/:clubID" element={<ClubDetailPage />}>
+          <Route path="notice" element={<NoticePage />} />
+          <Route path="calendar" element={<CalendarPage />} />
+          <Route path="members" element={<MembersPage />} />
+          <Route path="notice/add" element={<AddNoticePage />} />
+          <Route path="notice/:noticeID" element={<UpdateNoticePage />} />
+          <Route path="profile" element={<ProfilePage />} />
+        </Route>
 
-          <Route path="/manage/:clubID" element={<ClubManagePage />}>
-            <Route path="main" element={<DashboardApp />} />
-            <Route path="user" element={<ManageUser />} />
-            <Route path="recruit" element={<ManageRecruit />} />
-            <Route path="auth" element={<ManageAuth />} />
-            <Route path="notes" element={<ManageNotes />} />
-            <Route path="club" element={<ManageClub />} />
-            <Route path="accountBook" element={<ManageAccountBook />} />
-          </Route>
-          <Route path="/admin/" element={<AdminMainPage />}>
-            <Route path="clubCreate" element={<ClubCreatePage />} />
-            <Route path="allUsers" element={<AllUsersPage />} />
-            <Route path="allNotices" element={<AllNoticesPage />} />
-            <Route path="allCalendar" element={<AllCalendarPage />} />
-            <Route path="allClubs" element={<AllClubsPage />} />
-            <Route
-              path="clubDetail/:clubID"
-              element={<AdminClubDetailPage />}
-            />
-          </Route>
+        <Route path="/manage/:clubID" element={<ClubManagePage />}>
+          <Route path="main" element={<DashboardApp />} />
+          <Route path="user" element={<ManageUser />} />
+          <Route path="recruit" element={<ManageRecruit />} />
+          <Route path="auth" element={<ManageAuth />} />
+          <Route path="notes" element={<ManageNotes />} />
+          <Route path="club" element={<ManageClub />} />
+          <Route path="accountBook" element={<ManageAccountBook />} />
+        </Route>
+        <Route path="/admin/" element={<AdminMainPage />}>
+          <Route path="clubCreate" element={<ClubCreatePage />} />
+          <Route path="allUsers" element={<AllUsersPage />} />
+          <Route path="allNotices" element={<AllNoticesPage />} />
+          <Route path="allCalendar" element={<AllCalendarPage />} />
+          <Route path="allClubs" element={<AllClubsPage />} />
+          <Route path="clubDetail/:clubID" element={<AdminClubDetailPage />} />
         </Route>
         <Route path="*" element={<Page404 />} />
       </Routes>

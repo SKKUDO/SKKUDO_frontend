@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { useCookies } from "react-cookie";
 import { useMutation } from "react-query";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { Outlet } from "react-router-dom";
-import { useSetRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { isLoggedInState } from "../atoms/loginAtom";
 import { loggedInUserState, userInfoState } from "../atoms/userAtom";
 import { VerifyUserResponseType } from "../types/user";
@@ -11,7 +11,9 @@ import { verifyUser } from "../utils/fetch/fetchAuth";
 
 export default function PrivateRoute() {
   const [cookies, setCookies, removeCoolies] = useCookies(["x_auth"]);
-  const setIsLoggedIn = useSetRecoilState(isLoggedInState);
+  const [isLoggedIn, setIsLoggedIn] = useRecoilState(isLoggedInState);
+
+  const navigate = useNavigate();
 
   const setUserInfoState = useSetRecoilState(userInfoState);
   const setLoggedInUser = useSetRecoilState(loggedInUserState);
@@ -38,6 +40,7 @@ export default function PrivateRoute() {
         major: "",
         contact: "",
       });
+      navigate("/login");
     },
   });
 
@@ -45,5 +48,6 @@ export default function PrivateRoute() {
     mutate();
   }, []);
 
-  return cookies["x_auth"] ? <Outlet /> : <Navigate replace to="/login" />;
+  // return cookies["x_auth"] ? <Outlet /> : <Navigate replace to="/login" />;
+  return <Outlet />;
 }

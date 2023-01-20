@@ -6,7 +6,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { isManageState } from "../atoms/NavigatorAtom";
 import { useMutation } from "react-query";
 import { isLoggedInState } from "../atoms/loginAtom";
-import { userInfoState } from "../atoms/userAtom";
+import { loggedInUserState } from "../atoms/userAtom";
 import { motion } from "framer-motion";
 import { logoutFromServer } from "../utils/fetch/fetchAuth";
 import logo from "../assets/images/skkudo_logo.png";
@@ -173,7 +173,7 @@ const ImgContainer = styled.img`
 
 function Navigator() {
   const [isLoggedIn, setIsLoggedIn] = useRecoilState(isLoggedInState);
-  const user = useRecoilValue(userInfoState);
+  const user = useRecoilValue(loggedInUserState);
   const [isLoginOptionOpened, setIsLoginOptionOpened] = useState(false);
   const isManage = useRecoilValue(isManageState);
   const handleLoginBtnClick = () => {
@@ -190,6 +190,7 @@ function Navigator() {
       alert(error.response.data.error);
     },
   });
+
   const handleLogoutBtnClick = () => {
     logoutMutate();
     navigate("/");
@@ -224,7 +225,7 @@ function Navigator() {
           </NavigationUl>
         </NavigationContainer>
         <LoginBtn onClick={handleLoginBtnClick}>
-          <UserInfo>{isLoggedIn ? "Hello, " + user.name : "로그인"}</UserInfo>
+          <UserInfo>{isLoggedIn ? "Hello, " + user?.name : "로그인"}</UserInfo>
           <IoPersonOutline size="35%" />
           <LoginOptionContainer isLoginOptionOpened={isLoginOptionOpened}>
             {!isLoggedIn ? (

@@ -35,7 +35,6 @@ export default function useTableHead(isManage: boolean) {
   useEffect(() => {
     getOneClub(clubID || "")
       .then((club: ClubType) => {
-        console.log(club);
         const userColumns: ITableHeadItem[] = club.userColumns.map((item) => {
           const elem: ITableHeadItem = {
             id: item.key,

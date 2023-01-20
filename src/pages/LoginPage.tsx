@@ -2,9 +2,11 @@ import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
-import { useSetRecoilState } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
 import { isLoggedInState } from "../atoms/loginAtom";
+import { loggedInUserState } from "../atoms/userAtom";
+import { UserType } from "../types/user";
 import { loginFromServer } from "../utils/fetch/fetchAuth";
 
 const LoginPageContainer = styled.div`
@@ -89,15 +91,16 @@ function LoginPage() {
   const [ID, setID] = useState("");
   const [PW, setPW] = useState("");
 
+  const setLoggedInUser = useSetRecoilState(loggedInUserState);
+
   const setIsLoggedIn = useSetRecoilState(isLoggedInState);
 
   const { mutate } = useMutation(() => loginFromServer(ID, PW), {
     //need to fix
-    onSuccess: (data) => {
-      //1. data로 로그인된 유저 채우기
+    onSuccess: (data: UserType) => {
+      setLoggedInUser(data);
       setIsLoggedIn(true);
       navigate("/");
-      //2. 새로고침 삭제
     },
     onError: (error: { response: { data: { error: string } } }) =>
       alert(error.response.data.error),
@@ -126,12 +129,14 @@ function LoginPage() {
             <LoginInput
               required
               minLength={5}
+              placeholder="ID"
               onChange={handleIDChange}
             ></LoginInput>
             <LoginInput
               required
               minLength={5}
               type="password"
+              placeholder="Password"
               onChange={handlePWChange}
             ></LoginInput>
           </LoginInputContainer>

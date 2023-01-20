@@ -43,7 +43,7 @@ interface UserTableType {
 
 export default function UserTable({ isManage }: UserTableType) {
   const { clubID } = useParams();
-  console.log(clubID);
+
   const [page, rowsPerPage, handleChangePage, handleChangeRowsPerPage] =
     useTablePage();
 

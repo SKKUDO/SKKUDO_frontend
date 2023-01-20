@@ -94,9 +94,10 @@ function LoginPage() {
   const { mutate } = useMutation(() => loginFromServer(ID, PW), {
     //need to fix
     onSuccess: (data) => {
-      // console.log(data);
+      //1. data로 로그인된 유저 채우기
       setIsLoggedIn(true);
       navigate("/");
+      //2. 새로고침 삭제
     },
     onError: (error: { response: { data: { error: string } } }) =>
       alert(error.response.data.error),

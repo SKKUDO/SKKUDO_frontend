@@ -10,7 +10,6 @@ import { VerifyUserResponseType } from "../types/user";
 import { verifyUser } from "../utils/fetch/fetchAuth";
 
 export default function PrivateRoute() {
-  const [cookies, setCookies, removeCoolies] = useCookies(["x_auth"]);
   const [isLoggedIn, setIsLoggedIn] = useRecoilState(isLoggedInState);
 
   const navigate = useNavigate();
@@ -48,6 +47,5 @@ export default function PrivateRoute() {
     mutate();
   }, []);
 
-  // return cookies["x_auth"] ? <Outlet /> : <Navigate replace to="/login" />;
-  return <Outlet />;
+  return isLoggedIn ? <Outlet /> : <Navigate replace to="/login" />;
 }

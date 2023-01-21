@@ -224,7 +224,7 @@ function Navigator() {
           </NavigationUl>
         </NavigationContainer>
         <LoginBtn onClick={handleLoginBtnClick}>
-          <UserInfo>{user ? "로그아웃" : "로그인"}</UserInfo>
+          <UserInfo>{isLoggedIn ? "로그아웃" : "로그인"}</UserInfo>
           <IoPersonOutline size="35%" />
           <LoginOptionContainer isLoginOptionOpened={isLoginOptionOpened}>
             {!isLoggedIn ? (

@@ -58,6 +58,7 @@ function ApplierForm() {
     () => getApplierByClubID(clubID || ""),
     {
       onSuccess: (data) => {
+        console.log(data);
         setApplier(data);
       },
       onError: (error) => console.log(error),
@@ -84,7 +85,7 @@ function ApplierForm() {
     (newApplier: NewApplierType) => createApplier(newApplier),
     {
       onSuccess: (data) => {
-        // console.log(data);
+        console.log(data);
         queryClient.invalidateQueries("getApplierByClubID");
       },
       onError: (error: any) => {
@@ -157,6 +158,7 @@ function ApplierForm() {
       // }
     }
   };
+
   return (
     <>
       <Stack

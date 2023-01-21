@@ -4,7 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import { isLoggedInState } from "../atoms/loginAtom";
+import { loggedInUserState } from "../atoms/userAtom";
 import { loginFromServer } from "../utils/fetch/fetchAuth";
+import { UserType } from "../types/user";
 
 const Container = styled.div`
   width: 100%;
@@ -60,6 +62,7 @@ const usingInfo: LoginInfo[] = [
 export default function TestPage() {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useRecoilState(isLoggedInState);
+  const [user, setUser] = useRecoilState(loggedInUserState);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -69,14 +72,13 @@ export default function TestPage() {
     ({ userID, password }: LoginInfo) => loginFromServer(userID, password),
     {
       //need to fix
-      onSuccess: (data) => {
-        // console.log(data);
+      onSuccess: (data: UserType) => {
         setIsLoggedIn(true);
+        setUser(data);
         alert(
           "테스트 유저로 로그인했습니다. 마이페이지에서 내 동아리 정보를 확인하세요."
         );
         navigate("/");
-        window.location.reload();
       },
       onError: (error: { response: { data: { error: string } } }) =>
         alert(error.response.data.error),

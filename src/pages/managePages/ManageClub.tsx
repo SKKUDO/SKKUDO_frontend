@@ -79,9 +79,7 @@ function ManageClub() {
     "getOneClub",
     () => getOneClub(clubID || ""),
     {
-      onSuccess: (data) => {
-        console.log(data);
-      },
+      onSuccess: (data) => {},
       onError: (error: any) => alert(error.response.data.error),
     }
   );
@@ -106,7 +104,6 @@ function ManageClub() {
     uploadImage(clubID as string, formData)
       .then((data) => {
         alert("업로드에 성공했습니다.");
-        window.location.reload();
       })
       .catch(() => alert("알 수 없는 오류가 발견되었습니다."));
   };

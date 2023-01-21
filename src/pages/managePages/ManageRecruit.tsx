@@ -368,17 +368,14 @@ function ManageRecruit() {
                       <TableCell component="th" scope="row" padding="none">
                         <Stack direction="row" alignItems="center" spacing={2}>
                           <Typography variant="subtitle2" noWrap>
-                            {name}
+                            {studentId}
                           </Typography>
                         </Stack>
                       </TableCell>
                       <TableCell sx={{ fontSize: "14px" }} align="left">
-                        {studentId}
-                      </TableCell>
-
-                      <TableCell sx={{ fontSize: "14px" }} align="left">
                         {major}
                       </TableCell>
+
                       <TableCell sx={{ fontSize: "14px" }} align="left">
                         {contact}
                       </TableCell>

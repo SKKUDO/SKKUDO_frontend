@@ -105,7 +105,6 @@ function ManageAccountBook() {
       ],
     };
     await csvDownload(dataToConvert);
-    window.location.reload();
   };
 
   const { mutate: deleteBudgetMutate } = useMutation(
@@ -114,7 +113,6 @@ function ManageAccountBook() {
       onSuccess: (data) => {
         // console.log(data);
         alert("가계부가 삭제되었습니다.");
-        window.location.reload();
       },
       onError: (error: any) => {
         alert(error.response.data.error);
@@ -128,7 +126,7 @@ function ManageAccountBook() {
       onSuccess: (data) => {
         // console.log(data);
         alert("가계부가 성공적으로 생성되었습니다!");
-        window.location.reload();
+
         // queryClient.invalidateQueries("getBudgetByClubID");
       },
       onError: (error: any) => {
@@ -200,8 +198,7 @@ function ManageAccountBook() {
 
   return (
     <AccountBookPageContainer>
-      {data ? //   color="error" // <DeleteBtn
-      //   variant="contained"
+      {data ? //   variant="contained" //   color="error" // <DeleteBtn
       //   onClick={handleDeleteBtnClick}
       // >
       //   가계부 삭제

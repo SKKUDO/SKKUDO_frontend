@@ -47,5 +47,5 @@ export default function PrivateRoute() {
     mutate();
   }, []);
 
-  return isLoggedIn ? <Outlet /> : <Navigate replace to="/login" />;
+  return <Outlet />;
 }

@@ -93,13 +93,8 @@ function MyPage() {
   );
 
   useEffect(() => {
-    if (!isLoggedIn) {
-      // navigate("/login");
-      // console.log("nont logged in");
-    } else {
-      if (loggedInUser) {
-        setUserClubs(Object.values(loggedInUser.registeredClubs));
-      }
+    if (isLoggedIn && loggedInUser) {
+      setUserClubs(Object.values(loggedInUser.registeredClubs));
     }
   }, [isLoggedIn, loggedInUser]);
 

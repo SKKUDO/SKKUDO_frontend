@@ -512,7 +512,7 @@ function ManageRecruit() {
         appliedUsers={data}
       />
 
-      <ApplierForm></ApplierForm>
+      <ApplierForm />
     </Container>
   );
 }

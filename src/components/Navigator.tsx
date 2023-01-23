@@ -187,6 +187,7 @@ function Navigator() {
       alert("로그아웃 되었습니다");
     },
     onError: (error: any) => {
+      // console.log(error);
       alert(error.response.data.error);
     },
   });

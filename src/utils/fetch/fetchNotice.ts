@@ -23,13 +23,13 @@ export const createNotice = async (newNotice: NewNoticeType) =>
 export const deleteNotice = async (deleteNoticeInfo: DeleteNoticeType) =>
   axios
     .delete(GET_ALL_NOTICES_URL.concat("/", deleteNoticeInfo._id), {
-      data: { clubId: deleteNoticeInfo.clubID },
+      data: { clubId: deleteNoticeInfo.clubId },
     })
     .then((res) => res.data);
 
 export const updateNotice = async (newNotice: UpdateNoticeType) =>
   axios
-    .patch(GET_ALL_NOTICES_URL.concat("/", newNotice.noticeID), newNotice)
+    .patch(GET_ALL_NOTICES_URL.concat("/", newNotice._id), newNotice)
     .then((res) => res.data);
 
 const GET_ALL_NOTICE_TAGS_URL = `${BASE_URL}/notices/noticeTags`;
@@ -46,6 +46,6 @@ export const getNoticeTagsByClubID = async (clubID: string) =>
 export const deleteNoticeTag = async (deleteNoticeTagInfo: DeleteNoticeType) =>
   axios
     .delete(GET_ALL_NOTICE_TAGS_URL.concat("/", deleteNoticeTagInfo._id), {
-      data: { clubId: deleteNoticeTagInfo.clubID },
+      data: { clubId: deleteNoticeTagInfo.clubId },
     })
     .then((res) => res.data);

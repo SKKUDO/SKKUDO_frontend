@@ -10,33 +10,20 @@ export interface ApplierType {
   updatedAt: Date;
 }
 
-export interface NewApplierType {
-  clubId: string;
-  documentQuestions: string[];
-  interviewQuestions: string[];
-  appliedUserColumns: ColumnType[];
-}
-
-export interface AppliedUserType {
+export type NewApplierType = Pick<
+  ApplierType,
+  "clubId" | "documentQuestions" | "interviewQuestions" | "appliedUserColumns"
+>;
+interface AdditionalAppliedUserType {
   _id: string;
-  userID: string;
-  clubId: string;
-  studentId: string;
-  name: string;
-  major: string;
-  moreColumns: {
-    column: ColumnType;
-    value: string;
-  }[];
-  contact: string;
-  documentAnswers: string[]; //서류 답변
-  documentScores: number[]; //서류 점수
   interviewAnswers: string[]; //면접 답변
-  interviewScores: number[]; //면접 점수
   pass?: boolean; //합불여부
   createdAt?: Date;
   updatedAt?: Date;
 }
+
+export type AppliedUserType = Omit<ApplyFormType, "clubName"> &
+  AdditionalAppliedUserType;
 
 export interface ApplyFormType {
   clubId: string;
@@ -66,8 +53,7 @@ export interface UpdateApplierType {
   appliedUserColumns?: { key: string; valueType: string; _id?: string }[];
 }
 
-export interface UpdateAppliedUserType {
-  documentScores: number[];
-  interviewScores: number[];
-  clubID: string;
-}
+export type UpdateAppliedUserType = Pick<
+  AppliedUserType,
+  "documentScores" | "interviewScores" | "clubId"
+>;

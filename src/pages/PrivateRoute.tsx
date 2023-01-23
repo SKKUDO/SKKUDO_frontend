@@ -18,6 +18,7 @@ export default function PrivateRoute() {
   const setLoggedInUser = useSetRecoilState(loggedInUserState);
   const { mutate } = useMutation<VerifyUserResponseType>(verifyUser, {
     onSuccess: (data) => {
+      // console.log("success");
       setIsLoggedIn(true);
 
       setUserInfoState({
@@ -30,6 +31,7 @@ export default function PrivateRoute() {
       setLoggedInUser(data.authUser);
     },
     onError: (error: any) => {
+      // console.log("false");
       setIsLoggedIn(false);
 
       setUserInfoState({

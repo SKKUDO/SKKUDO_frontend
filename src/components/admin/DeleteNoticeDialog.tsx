@@ -20,7 +20,7 @@ export default function DeleteNoticeDialog({
   clubId,
 }: DeleteNoticeDialogType) {
   const queryClient = useQueryClient();
-  const { mutate } = useMutation(() => deleteNotice({ clubID: clubId, _id }), {
+  const { mutate } = useMutation(() => deleteNotice({ clubId, _id }), {
     onSuccess: (data) => {
       console.log(data);
       queryClient.invalidateQueries("getAllNotices");

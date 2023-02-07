@@ -7,7 +7,7 @@ import { useMutation, useQuery, useQueryClient } from "react-query";
 
 import { useParams } from "react-router-dom";
 import styled from "@emotion/styled";
-import { DeleteNoticetype, NoticeTagType } from "../../types/notice";
+import { DeleteNoticeType, NoticeTagType } from "../../types/notice";
 import {
   createNoticeTag,
   deleteNoticeTag,
@@ -16,16 +16,16 @@ import {
 
 export const CategoryList = styled.ul`
   width: 100%;
-  border-top: 1px solid #0c4426;
+  border-top: 1px solid #000069;
 `;
 export const CategoryListItem = styled.li`
   width: 100%;
-
+  color: #000069;
   display: flex;
   justify-content: center;
   align-items: ceter;
   position: relative;
-  border-bottom: 1px solid #0c4426;
+  border-bottom: 1px solid;
   height: 60px;
   align-items: center;
 `;
@@ -72,7 +72,7 @@ function CategoryAddDialog(props: SimpleDialogProps) {
   );
 
   const { mutate: deleteNoticeTagMutate } = useMutation(
-    (tagInfo: DeleteNoticetype) => deleteNoticeTag(tagInfo),
+    (tagInfo: DeleteNoticeType) => deleteNoticeTag(tagInfo),
     {
       onSuccess: (data) => {
         queryClient.invalidateQueries("getNoticeTagsByClubID");
@@ -98,18 +98,20 @@ function CategoryAddDialog(props: SimpleDialogProps) {
 
   const handleCategoryDeleteBtnClick = (tagID: string) => {
     if (clubID) {
-      deleteNoticeTagMutate({ _id: tagID, clubID: clubID });
+      deleteNoticeTagMutate({ _id: tagID, clubId: clubID });
     }
   };
   return (
     <Dialog onClose={handleClose} open={open}>
-      <DialogTitle>공지 카테고리 추가하기</DialogTitle>
+      <DialogTitle sx={{ width: "428px", color: "#000069" }}>
+        공지 카테고리 추가하기
+      </DialogTitle>
       <Box
         component="form"
         sx={{
           display: "flex",
           flexDirection: "column",
-          width: "400px",
+          width: "100%",
           padding: "50px",
         }}
         noValidate
@@ -118,7 +120,7 @@ function CategoryAddDialog(props: SimpleDialogProps) {
       >
         <TextField
           id="outlined-basic"
-          label="Outlined"
+          label="새 카테고리"
           variant="outlined"
           onChange={handleCategoryInputChange}
           value={newCategory}
@@ -129,7 +131,7 @@ function CategoryAddDialog(props: SimpleDialogProps) {
           sx={{ color: "white", marginTop: "20px" }}
           type="submit"
         >
-          Success
+          추가
         </Button>
       </Box>
       <CategoryList>
@@ -144,7 +146,7 @@ function CategoryAddDialog(props: SimpleDialogProps) {
                 color="error"
                 onClick={() => handleCategoryDeleteBtnClick(category._id)}
               >
-                Delete
+                삭제
               </CategoryDeleteBtn>
             </CategoryListItem>
           ))

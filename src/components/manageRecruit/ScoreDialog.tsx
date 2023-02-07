@@ -81,7 +81,7 @@ export default function ScoreDialog({
       mutate({
         documentScores: numDocScores,
         interviewScores: numInterScores,
-        clubID: clubID || "",
+        clubId: clubID || "",
       });
     }
     alert("점수가 반영되었습니다!");

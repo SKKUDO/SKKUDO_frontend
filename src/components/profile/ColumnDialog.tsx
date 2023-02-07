@@ -49,7 +49,7 @@ function ColumnDialog({
 
   return (
     <Dialog open={dialogOpen} onClose={handleClose}>
-      <DialogTitle>{`${keyword} 수정`}</DialogTitle>
+      <DialogTitle sx={{ color: "#000069" }}>{`${keyword} 수정`}</DialogTitle>
       <>
         <DialogContent style={{ width: "512px" }}>
           <TextField
@@ -65,8 +65,12 @@ function ColumnDialog({
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>취소</Button>
-          <Button onClick={handleUpdateSubmit}>수정</Button>
+          <Button color="error" onClick={handleClose}>
+            취소
+          </Button>
+          <Button color="success" onClick={handleUpdateSubmit}>
+            수정
+          </Button>
         </DialogActions>
       </>
     </Dialog>

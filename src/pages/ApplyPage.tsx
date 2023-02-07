@@ -23,7 +23,7 @@ const ApplyWrapper = styled("div")({
 const ApplyClubPageContainer = styled("form")({
   paddingTop: "50px",
   width: "100%",
-  maxWidth: "1024px",
+  maxWidth: "70%",
   backgroundColor: "#fff",
   borderRadius: "3px",
   margin: "0 auto",
@@ -45,6 +45,7 @@ const ApplyInputContainer = styled("div")({
 const InputCell = styled("div")({});
 const InputTitle = styled("div")({
   marginBottom: "20px",
+  color: "#000069",
 });
 
 type answerType = Map<number, string>;
@@ -175,7 +176,7 @@ function ApplyPage() {
             ))
           )}
           {isLoading ? (
-            <div>아직 지원을 받고 있지 않는 동아리입니다</div>
+            <></>
           ) : (
             data?.appliedUserColumns.map((column) => (
               <InputCell key={column._id}>
@@ -199,8 +200,9 @@ function ApplyPage() {
           // onClick={handleApplySubmit}
           type="submit"
           variant="outlined"
+          color="success"
         >
-          submit
+          제출
         </Button>
       </ApplyClubPageContainer>
     </ApplyWrapper>

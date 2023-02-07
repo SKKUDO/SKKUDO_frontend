@@ -66,7 +66,7 @@ export default function UserListHead({
   return (
     <TableHead>
       <TableRow>
-        {isManaging ? (
+        {/* {isManaging ? (
           <TableCell padding="checkbox">
             <Checkbox
               indeterminate={numSelected > 0 && numSelected < rowCount}
@@ -76,14 +76,14 @@ export default function UserListHead({
           </TableCell>
         ) : (
           ""
-        )}
+        )} */}
 
         {headLabel.map((headCell) => (
           <TableCell
             key={headCell.id}
             align={headCell.alignRight ? "right" : "left"}
             sortDirection={orderBy === headCell.id ? order : false}
-            sx={{ padding: "10px" }}
+            sx={{ padding: "10px", color: "#000069" }}
           >
             <TableSortLabel
               hideSortIcon

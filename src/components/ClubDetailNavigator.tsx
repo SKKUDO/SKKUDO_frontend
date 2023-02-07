@@ -16,11 +16,15 @@ import { motion } from "framer-motion";
 
 const NavigatorContainer = styled.div`
   width: 100%;
-  max-width: 1024px;
+  max-width: 80%;
   margin: 0 auto;
   display: flex;
   justify-content: flex-end;
   padding-top: 100px;
+
+  @media screen and (max-width: 490px) {
+    max-width: 70%;
+  }
 `;
 
 const NavigationButton = styled(motion.button)`
@@ -28,6 +32,7 @@ const NavigationButton = styled(motion.button)`
   border: none;
   border-radius: 10px;
   padding: 10px;
+  color: #000069;
 `;
 
 const DrawerTitle = styled.div`
@@ -37,11 +42,12 @@ const DrawerTitle = styled.div`
   align-items: center;
   height: 50px;
 
-  background: linear-gradient(45deg, #0c4426, #206d44);
-  color: #dde143;
+  color: #000069;
   font-size: 25px;
   font-weight: 900;
-  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.6);
+  @media screen and (max-width: 490px) {
+    font-size: 15px;
+  }
 `;
 
 const NavigateToManagePageButton = styled.button`
@@ -51,10 +57,15 @@ const NavigateToManagePageButton = styled.button`
   border: none;
   text-align: start;
   padding-left: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   :hover {
     background-color: #fbf7f7;
   }
+
+
 `;
 
 const navigationList = [
@@ -79,7 +90,7 @@ function ClubDetailNavigator() {
 
   const list = () => (
     <Box
-      sx={{}}
+      // sx={{ backgroundColor: "#e0e7e9" }}
       role="presentation"
       onClick={() => toggleDrawer(false)}
       onKeyDown={() => toggleDrawer(false)}
@@ -89,7 +100,7 @@ function ClubDetailNavigator() {
       <List>
         {navigationList.map((navigationItem, index) => (
           <ListItem
-            sx={{ color: "#0c4426", marginBottom: "10px" }}
+            sx={{ color: "#000069", marginBottom: "10px" }}
             key={navigationItem.navigationTitle}
             disablePadding
           >
@@ -112,10 +123,9 @@ function ClubDetailNavigator() {
         <ListItemText
           disableTypography
           sx={{
-            color: "#0c4426",
+            color: "#000069",
             fontWeight: 800,
             fontSize: "22px",
-            marginTop: "20px",
             paddingLeft: "10px",
           }}
         >
@@ -130,7 +140,7 @@ function ClubDetailNavigator() {
         whileHover={{ backgroundColor: "rgba(0,0,0,0.4)" }}
         onClick={() => toggleDrawer(true)}
       >
-        <AiOutlineMenu size="2.5rem" />
+        <AiOutlineMenu size="3vh" />
       </NavigationButton>
       <Drawer anchor="right" open={state} onClose={() => toggleDrawer(false)}>
         {list()}

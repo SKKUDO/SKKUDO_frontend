@@ -39,6 +39,7 @@ function ClubManagePage() {
   const navigate = useNavigate();
 
   const { clubID } = useParams();
+
   const { data } = useQuery<ClubType>(
     "getOneClub",
     () => getOneClub(clubID || ""),
@@ -60,7 +61,7 @@ function ClubManagePage() {
 
   return (
     <RootStyle>
-      <DashboardNavBar onOpenSidebar={() => setOpen(true)} />
+      <DashboardNavBar isAdmin={false} onOpenSidebar={() => setOpen(true)} />
       <DashboardSidebar
         isOpenSidebar={open}
         onCloseSidebar={() => setOpen(false)}

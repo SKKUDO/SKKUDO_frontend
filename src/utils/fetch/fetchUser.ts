@@ -5,6 +5,12 @@ import { BASE_URL } from "./fetch";
 
 const GET_ONE_USER_URL = `${BASE_URL}/users/`;
 
+export const getAllUsers = async () =>
+  axios.get(GET_ONE_USER_URL).then((res) => res.data.data);
+
+export const deleteUser = async (userID: string) =>
+  axios.delete(GET_ONE_USER_URL.concat(userID)).then((res) => res.data);
+
 export const getOneUser = async (userID: string) =>
   axios.get(GET_ONE_USER_URL.concat(userID)).then((res) => res.data.data);
 
@@ -31,9 +37,8 @@ export const getClubMembers = async (clubID: string) =>
 
 const CREATE_USER_URL = `${BASE_URL}/users`;
 
-export const createUser = async (userInfo: NewUserType) => {
+export const createUser = async (userInfo: NewUserType) =>
   axios.post(CREATE_USER_URL, userInfo).then((res) => res.data);
-};
 
 export const REGISTER_CLUB_URL = `${BASE_URL}/users/club/register/`;
 
@@ -49,6 +54,21 @@ export const registerClub = async (
 export const deregisterClub = async (userID: string, clubID: string) =>
   axios
     .patch(CREATE_USER_URL.concat("/club/deregister/", userID, "/", clubID), {})
+    .then((res) => res.data);
+
+export const deregisterClubOneSelf = async (userID: string, clubID: string) =>
+  axios
+    .patch(
+      CREATE_USER_URL.concat("/club/deregister/self/", userID, "/", clubID),
+      {}
+    )
+    .then((res) => res.data);
+
+export const deregisterClubByAdmin = async (userID: string, clubID: string) =>
+  axios
+    .patch(
+      CREATE_USER_URL.concat("/club/deregister/admin/", userID, "/", clubID)
+    )
     .then((res) => res.data);
 
 export const UPDATE_ROLE_URL = `${BASE_URL}/users/club/role`;

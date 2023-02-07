@@ -8,13 +8,16 @@ import { loginFromServer } from "../../utils/fetch/fetchAuth";
 
 const MainWrapper = styled("div")({
   width: 170,
-  height: 400,
+  height: 310,
   position: "absolute",
   backgroundColor: "#dde143",
   borderRadius: 5,
   paddingLeft: 13,
   top: 200,
   right: 0,
+  "@media (max-width: 800px)": {
+    display: "none",
+  },
 });
 
 const ButtonWrapper = styled("div")({
@@ -127,12 +130,12 @@ export default function QuickLogin() {
             >
               부원
             </SideButton>
-            <SideButton
+            {/* <SideButton
               whileHover={{ scale: 1.1 }}
               onClick={() => navigate("/admin/clubCreate")}
             >
               ADMIN
-            </SideButton>
+            </SideButton> */}
           </ButtonWrapper>
         </ButtonGroup>
       </MainWrapper>

@@ -103,39 +103,6 @@ export default function ManageAuth() {
     }
   };
 
-  // const handleChange = (event: SelectChangeEvent, authKey: string) => {
-  //   // setAuth(event.target.value);
-  //   if (authKey === "noticeRead") {
-  //     setNoticeRead(event.target.value);
-  //   } else if (authKey === "noticeWrite") {
-  //     setNoticeWrite(event.target.value);
-  //   } else if (authKey === "userRead") {
-  //     setUserRead(event.target.value);
-  //   } else if (authKey === "userWrite") {
-  //     setUserWrite(event.target.value);
-  //   } else if (authKey === "userColumnWrite") {
-  //     setUserColumnWrite(event.target.value);
-  //   } else if (authKey === "todoRead") {
-  //     setTodoRead(event.target.value);
-  //   } else if (authKey === "todoWrite") {
-  //     setTodoWrite(event.target.value);
-  //   } else if (authKey === "applyRead") {
-  //     setApplyRead(event.target.value);
-  //   } else if (authKey === "applyWrite") {
-  //     setApplyWrite(event.target.value);
-  //   } else if (authKey === "validationRead") {
-  //     setValidationRead(event.target.value);
-  //   } else if (authKey === "validationWrite") {
-  //     setValidationWrite(event.target.value);
-  //   } else if (authKey === "clubRead") {
-  //     setClubRead(event.target.value);
-  //   } else if (authKey === "clubWrite") {
-  //     setClubWrite(event.target.value);
-  //   } else {
-  //     setNoticeRead(event.target.value);
-  //   }
-  // };
-
   const setIsAuthConfirmAlertOpen = useSetRecoilState(
     isAuthConfirmAlertOpenState
   );
@@ -158,7 +125,7 @@ export default function ManageAuth() {
         mb={5}
       >
         <Typography variant="h4" gutterBottom>
-          "동아리 이름" 권한 관리
+          권한 관리
         </Typography>
       </Stack>
 

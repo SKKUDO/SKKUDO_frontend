@@ -149,7 +149,7 @@ export default function DashboardApp() {
 
   return (
     <Container maxWidth="xl">
-      <Typography variant="h2" sx={{ mb: 5 }}>
+      <Typography variant="h2" sx={{ mb: 5, color: "#000069" }}>
         동아리 정보를 한눈에, 대시보드
       </Typography>
 

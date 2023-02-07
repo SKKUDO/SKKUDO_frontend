@@ -47,18 +47,26 @@ export default function ClubCard({ club }: IClubCard) {
   const onApplyBtnClick = () => {
     navigate(`/apply/${_id}`, { state: name });
   };
+
+  const handleImageError = (
+    event: React.SyntheticEvent<HTMLImageElement, Event>
+  ) => {
+    event.currentTarget.src = Sunkyun;
+  };
+
   return (
     <Card>
       <Box sx={{ pt: "100%", position: "relative" }}>
         <ProductImgStyle
           alt={name}
           src={image ? BASE_URL + "/" + image : Sunkyun}
+          onError={handleImageError}
         />
       </Box>
 
       <Stack spacing={2} sx={{ p: 3 }}>
         <Link to="#" color="inherit" underline="hover" component={RouterLink}>
-          <Typography variant="h4" noWrap>
+          <Typography variant="h4" noWrap sx={{ color: "#000069" }}>
             {name}
           </Typography>
         </Link>
@@ -68,29 +76,26 @@ export default function ClubCard({ club }: IClubCard) {
           alignItems="center"
           justifyContent="space-between"
         >
-          <Typography variant="subtitle1" sx={{ width: "100%" }}>
-            <ClubInfoContainer>
-              <Typography
-                component="span"
-                variant="h5"
-                sx={{
-                  color: "text.disabled",
-                }}
-              >
-                {type.name}
-              </Typography>
-              <Typography
-                component="span"
-                variant="h5"
-                sx={{
-                  color: "text.disabled",
-                }}
-              >
-                {location}
-              </Typography>
-            </ClubInfoContainer>
-            {/* &nbsp; */}
-          </Typography>
+          <ClubInfoContainer>
+            <Typography
+              component="span"
+              variant="h5"
+              sx={{
+                color: "#1c3879",
+              }}
+            >
+              {type && type.hasOwnProperty("name") && type.name}
+            </Typography>
+            <Typography
+              component="span"
+              variant="h5"
+              sx={{
+                color: "#1c3879",
+              }}
+            >
+              {location}
+            </Typography>
+          </ClubInfoContainer>
         </Stack>
       </Stack>
       <CardOverlay whileHover={{ opacity: 1 }}>

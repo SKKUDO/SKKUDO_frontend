@@ -5,21 +5,25 @@ import { ClubType } from "../types/club";
 import { getOneClub } from "../utils/fetch/fetchClub";
 
 const ClubHeader = styled("div")({
-  // paddingTop: "10px",
   display: "flex",
   width: "100%",
-  maxWidth: "1024px",
+  maxWidth: "80%",
   margin: "0 auto",
-  gap: "30px",
-  fontSize: "45px",
+  gap: "2%",
+  fontSize: "calc(10px + 1.8vw)",
   color: "#0C4426",
-  borderBottom: "4px solid #0C4426",
-  paddingBottom: "15px",
-  marginBottom: "20px",
+  borderBottom: "4px solid #000069",
+  paddingBottom: "1%",
+  marginBottom: "1%",
+  fontWeight: 800,
+});
+
+const Title = styled("div")({
+  color: "#000069",
 });
 
 interface ClubDetailHeaderType {
-  pageType: "공지사항" | "일정" | "동아리원" | "내 프로필";
+  pageType: string;
 }
 function ClubDetailHeader({ pageType }: ClubDetailHeaderType) {
   const { clubID } = useParams();
@@ -37,8 +41,8 @@ function ClubDetailHeader({ pageType }: ClubDetailHeaderType) {
   );
   return (
     <ClubHeader>
-      <h1>{clubData?.name}</h1>
-      <h4>{pageType}</h4>
+      <Title>{clubData?.name}</Title>
+      <Title>{pageType}</Title>
     </ClubHeader>
   );
 }

@@ -6,9 +6,10 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { isManageState } from "../atoms/NavigatorAtom";
 import { useMutation } from "react-query";
 import { isLoggedInState } from "../atoms/loginAtom";
-import { userNameState } from "../atoms/userAtom";
+import { loggedInUserState, userInfoState } from "../atoms/userAtom";
 import { motion } from "framer-motion";
 import { logoutFromServer } from "../utils/fetch/fetchAuth";
+import logo from "../assets/images/skkudo_logo.png";
 
 interface INavigationConatiner {
   isManage: boolean;
@@ -17,10 +18,10 @@ const NavigatorContainer = styled.header<INavigationConatiner>`
   position: fixed;
   width: 100%;
   height: 8vh;
-  background-color: #0c4426;
+  background-color: #e0e7e9;
   display: ${(props) => (props.isManage ? "none" : "block")};
   z-index: 100;
-  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
+  opacity: 0.9;
 `;
 
 const ItemsContainer = styled.div`
@@ -46,17 +47,29 @@ const LogoContainer = styled(Link)`
   @media screen and (max-width: 768px) {
     margin-left: 8vw;
   }
+  @media screen and (max-width: 490px) {
+    margin-left: 4%;
+    width: 28vw;
+    margin-right: 2vw;
+  }
 `;
 
 const Logo = styled.div`
   font-size: 2em;
   font-family: "Poppins", sans-serif;
-  color: #dde143;
+  color: #000069;
+  @media screen and (max-width: 490px) {
+    font-size: 80%;
+  }
+  font-weight: 600;
 `;
 
 const NavigationContainer = styled.nav`
   @media screen and (max-width: 768px) {
     margin-left: 5vw;
+  }
+  @media screen and (max-width: 490px) {
+    margin-left: 0.5%;
   }
 `;
 
@@ -74,12 +87,15 @@ const NavigationLi = styled.li`
 
 const NavigationLink = styled(Link)`
   text-decoration: none;
-  color: #dde143;
+  color: #000069;
   font-size: 1.3rem;
   white-space: nowrap;
   font-family: "Heebo", sans-serif;
   @media screen and (max-width: 768px) {
     font-size: 1.2rem;
+  }
+  @media screen and (max-width: 490px) {
+    font-size: 0.8rem;
   }
 `;
 
@@ -89,11 +105,14 @@ const LoginBtn = styled.div`
   background-color: transparent;
   margin-right: 2vw;
   margin-left: auto;
-  color: #dde143;
+  color: #000069;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  @media screen and (max-width: 490px) {
+    margin-left: auto;
+  }
 `;
 
 interface ILoginOptionContainer {
@@ -102,12 +121,15 @@ interface ILoginOptionContainer {
 const LoginOptionContainer = styled.ul<ILoginOptionContainer>`
   position: absolute;
   width: 100px;
-  background-color: #d4e7c6;
-  border: 2px solid #0c4426;
+  background-color: #1c3879;
+  /* border: 2px solid #0c4426; */
   right: 0;
   top: 70px;
   border-radius: 5px;
   display: ${(props) => (props.isLoginOptionOpened ? "block" : "none")};
+  @media screen and (max-width: 490px) {
+    width: 80px;
+  }
 `;
 
 const LoginOption = styled(motion.div)`
@@ -115,31 +137,44 @@ const LoginOption = styled(motion.div)`
   text-align: start;
   width: 100%;
   background-color: transparent;
-  color: #0c4426;
-  border-bottom: 0.5px solid #0c4426;
+  color: white;
+  border-bottom: 0.5px solid white;
   padding: 10px;
   font-size: 1em;
   padding-top: 1.2vh;
   display: flex;
   padding-bottom: 1.2vh;
   font-weight: 500;
+  @media screen and (max-width: 490px) {
+    font-size: 15%;
+  }
 `;
 
 const UserInfo = styled.h2`
   font-size: 1.2rem;
   white-space: nowrap;
   font-weight: 520;
-  color: #dde143;
+  color: #000069;
   margin-right: 1vw;
   cursor: pointer;
   @media screen and (max-width: 768px) {
     font-size: 1.1rem;
   }
+  @media screen and (max-width: 490px) {
+    font-size: 25%;
+  }
+`;
+
+const ImgContainer = styled.img`
+  width: 100%;
+
+  margin-top: -5%;
+  /* margin-bottom: -4%; */
 `;
 
 function Navigator() {
   const [isLoggedIn, setIsLoggedIn] = useRecoilState(isLoggedInState);
-  const user = useRecoilValue(userNameState);
+  const user = useRecoilValue(loggedInUserState);
   const [isLoginOptionOpened, setIsLoginOptionOpened] = useState(false);
   const isManage = useRecoilValue(isManageState);
   const handleLoginBtnClick = () => {
@@ -153,13 +188,13 @@ function Navigator() {
       alert("로그아웃 되었습니다");
     },
     onError: (error: any) => {
+      // console.log(error);
       alert(error.response.data.error);
     },
   });
   const handleLogoutBtnClick = () => {
     logoutMutate();
     navigate("/");
-    // window.location.reload();
   };
 
   const handleLoginOptionClick = () => {
@@ -174,7 +209,8 @@ function Navigator() {
     <NavigatorContainer isManage={isManage}>
       <ItemsContainer>
         <LogoContainer to="/">
-          <Logo>SKKUDO</Logo>
+          {/* <Logo>SKKUDO</Logo> */}
+          <ImgContainer src={logo} />
         </LogoContainer>
         <NavigationContainer>
           <NavigationUl>
@@ -190,8 +226,8 @@ function Navigator() {
           </NavigationUl>
         </NavigationContainer>
         <LoginBtn onClick={handleLoginBtnClick}>
-          <UserInfo>{isLoggedIn ? "Hello, " + user : "로그인"}</UserInfo>
-          <IoPersonOutline size="2.3em" />
+          <UserInfo>{isLoggedIn ? "로그아웃" : "로그인"}</UserInfo>
+          <IoPersonOutline size="35%" />
           <LoginOptionContainer isLoginOptionOpened={isLoginOptionOpened}>
             {!isLoggedIn ? (
               <>
@@ -212,6 +248,7 @@ function Navigator() {
               <LoginOption
                 onClick={handleLogoutBtnClick}
                 whileHover={{ backgroundColor: "#d4e7c6bf" }}
+                style={{ border: "none" }}
               >
                 로그아웃
               </LoginOption>

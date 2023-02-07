@@ -27,7 +27,7 @@ export default function AccountPopover() {
     {
       label: "Home",
       icon: "eva:home-fill",
-      linkTo: "/",
+      linkTo: `/club/${clubID}/notice`,
     },
     {
       label: "Profile",
@@ -99,7 +99,7 @@ export default function AccountPopover() {
           }),
         }}
       >
-        <Avatar src={account.photoURL} alt="photoURL" />
+        <Avatar src={account.photoURL} alt="" />
       </IconButton>
 
       <MenuPopover

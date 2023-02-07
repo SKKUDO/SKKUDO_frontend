@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { IDayDetailOverlay } from "../../pages/CalendarPage";
-import { MdExpandLess, MdExpandMore, MdOutlineAlarmAdd } from "react-icons/md";
+import { MdOutlineAlarmAdd } from "react-icons/md";
 import { useState } from "react";
 import TodoAddDialog from "./TodoAddDialog";
 import { useRecoilValue } from "recoil";
@@ -17,23 +17,27 @@ const BoardContainer = styled.div<IDayDetailOverlay>`
   transform: translateX(-50%);
   left: 50%;
   width: 100%;
-  max-width: 1024px;
-  height: 800px;
-  background-color: white;
+  max-width: 70%;
+  height: 80%;
+  background-color: #e0e7e9;
   display: ${(props) => (props.isDayDetailOpened ? "flex" : "none")};
   flex-direction: column;
-  border-radius: 20px;
+  border-radius: 10px;
   z-index: 10;
 `;
 
-const TodoAddBtn = styled(motion.button)`
+const TodoAddBtn = styled.button`
   border: none;
-  background-color: transparent;
-  box-shadow: 0px 3px 3px #0c4426;
-
-  background: linear-gradient(45deg, #0c4426, #244f36);
+  color: white;
+  background-color: #1c3879;
   padding: 10px;
-  color: #dde143;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+
+  &:hover {
+    color: #000069;
+    background-color: transparent;
+  }
 `;
 
 interface DayDetailBoardType {
@@ -54,25 +58,26 @@ function DayDetailBoard({ isDayDetailOpened, date }: DayDetailBoardType) {
 
   return (
     <BoardContainer isDayDetailOpened={isDayDetailOpened}>
-      <TodoAddBtn
-        whileHover={{
-          background: "linear-gradient(45deg,  #244f36, #0c4426)",
-        }}
-        onClick={handleTodoAddBtnClick}
-      >
+      <TodoAddBtn onClick={handleTodoAddBtnClick}>
         <MdOutlineAlarmAdd size="3rem" />
       </TodoAddBtn>
 
       <List
-        sx={{ width: "100%", bgcolor: "background.paper" }}
-        component="nav"
+        sx={{
+          width: "100%",
+          bgcolor: "#e0e7e9",
+          padding: 0,
+        }}
+        // component="nav"
         aria-labelledby="nested-list-subheader"
         subheader={
           <ListSubheader
             sx={{
-              fontSize: "35px",
+              fontSize: "2vw",
               width: "100%",
               padding: "20px",
+              backgroundColor: "#e0e7e9",
+              color: "#000069",
             }}
             component="div"
             id="nested-list-subheader"

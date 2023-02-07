@@ -5,75 +5,90 @@ import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
 import { isManageState } from "../atoms/NavigatorAtom";
 import QuickLogin from "../components/mainPage/QuickLogin";
-// import myeong from "../assets/images/myeong.jpeg";
-// import yul from "../assets/images/yul.png";
+import myeong from "../assets/images/myeong.jpeg";
+import yul from "../assets/images/yul.png";
+import logo from "../assets/images/skkudo_logo.png";
 
 const HomePageContainer = styled.div`
-  padding-top: 7vh;
+  /* padding-top: 7vh; */
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 `;
 
 const Banner = styled.div`
   display: flex;
-  background-color: white;
   align-items: center;
-  height: 65vh;
+  height: 90%;
 `;
 
 const Phrase = styled.div`
-  padding-top: 50px;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 40px;
+  /* gap: 10px; */
+  color: #000069;
 `;
 
-// const ImgContainer = styled.img`
-//   width: 25%;
-//     @media screen and (max-width: 1024px){
-//   width: 20%;
-//   }
-//   @media screen and (max-width: 768px){
-//   display: none;
-//   }
-// `;
-
-// const LineOne = styled.div`
-//   font-size: 50px;
-// `;
-
-// const LineTwo = styled.div`
-//   font-size: 60px;
-// `;
+const ImgContainer = styled.img`
+  width: 45%;
+  @media screen and (max-width: 490px) {
+      width: 60%;
+  }
+`;
 
 const Name = styled(motion.div)`
-  font-size: 7em;
+  font-size: 13em;
   font-weight: 700;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
+  @media screen and (max-width: 490px) {
+    font-size: 4em;
+  }
+  margin-bottom: -3%;
+`;
+
+const SubName = styled.div`
+  font-size: 1.7em;
+  margin-top: 1.3%;
+  @media screen and (max-width: 1024px) {
+    font-size: 1em;
+  }
+  @media screen and (max-width: 490px) {
+    font-size: 0.5em;
+  }
 `;
 
 const ButtonsContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 9vh;
-  gap: 12vw;
+  flex: 1;
+  /* margin-top: 9vh; */
 `;
 
 const MainPageBtn = styled(motion.button)`
-  width: 20vw;
-  height: 10vh;
-  background-color: #0c4426;
-  border-radius: 3vw;
-  font-size: 1.2em;
+  height: 100%;
+  flex: 1;
+  font-size: 1.4em;
   border: none;
-  color: #dde143;
+  color: #000069;
   font-weight: 550;
   cursor: pointer;
-  @media screen and (max-width: 768px){
+  @media screen and (max-width: 768px) {
     font-size: 1em;
     border-radius: 8vw;
     width: 35vw;
+  }
+  @media screen and (max-width: 490px) {
+    width: 30%;
+    font-size: 80%;
+  }
+  background-color: #e0e7e9;
+
+  &:hover {
+    background-color: #1c3879;
+    color: white;
   }
 `;
 
@@ -90,6 +105,8 @@ function HomePage() {
       navigate("/clubs");
     } else if (btnType === "make") {
       navigate("/applyClub");
+    } else if (btnType === "test") {
+      navigate("/test");
     } else {
       return;
     }
@@ -99,31 +116,33 @@ function HomePage() {
       <Banner>
         {/* <ImgContainer src={myeong} /> */}
         <Phrase>
-          <Name
+          {/* <Name
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
           >
             SKKUDO
-          </Name>
+          </Name> */}
+          <ImgContainer src={logo} />
+          <SubName>
+            {" "}
+            복잡한 동아리 관리를 한번에! 성균관대학교 동아리 플랫폼 스꾸도
+          </SubName>
         </Phrase>
         {/* <ImgContainer src={yul} /> */}
       </Banner>
       <ButtonsContainer>
-        <MainPageBtn
-          whileHover={{ scale: 1.1 }}
-          onClick={() => handleMainPageBtnClick("search")}
-        >
+        <MainPageBtn onClick={() => handleMainPageBtnClick("search")}>
           동아리 둘러보기
         </MainPageBtn>
-        <MainPageBtn
-          whileHover={{ scale: 1.1 }}
-          onClick={() => handleMainPageBtnClick("make")}
-        >
+        <MainPageBtn onClick={() => handleMainPageBtnClick("make")}>
           동아리 만들기
         </MainPageBtn>
+        <MainPageBtn onClick={() => handleMainPageBtnClick("test")}>
+          체험해보기
+        </MainPageBtn>
       </ButtonsContainer>
-      <QuickLogin />
+      {/* <QuickLogin /> */}
     </HomePageContainer>
   );
 }

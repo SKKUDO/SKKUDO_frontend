@@ -1,15 +1,13 @@
 import { useEffect, useState } from "react";
-import { Link as RouterLink, useLocation, useParams } from "react-router-dom";
+import { Link as RouterLink, useParams } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import { Box, Link, Drawer, Typography, Avatar } from "@mui/material";
 import useResponsive from "../../hooks/useResponsive";
 import Scrollbar from "./Scrollbar";
 import NavSection from "./NavSection";
 import navConfig from "../../config/NavConfig";
-
 import { useRecoilValue } from "recoil";
 import { loggedInUserState } from "../../atoms/userAtom";
-
 import { ColumnType, RoleType } from "../../types/common";
 
 const DRAWER_WIDTH = 280;
@@ -26,11 +24,11 @@ const AccountStyle = styled("div")(({ theme }) => ({
   alignItems: "center",
   padding: theme.spacing(2, 2.5),
   borderRadius: Number(theme.shape.borderRadius) * 1.5,
-  backgroundColor: theme.palette.grey[500],
+  backgroundColor: "#000069",
 }));
 
 const Logo = styled(RouterLink)({
-  color: "#dde143",
+  color: "white",
   textDecoration: "none",
   fontSize: "50px",
   fontWeight: 900,
@@ -51,7 +49,7 @@ export default function DashboardSidebar({
     photoURL: "/static/mock-images/avatars/avatar_default.jpg",
   };
 
-  const { pathname } = useLocation();
+  // const { pathname } = useLocation();
   const { clubID } = useParams();
 
   const isDesktop = useResponsive("up", "lg");
@@ -78,7 +76,7 @@ export default function DashboardSidebar({
         moreColumns: registedClubs.get(clubID || "").moreColumns,
       });
     }
-  }, [pathname, loggedInUser]);
+  }, [loggedInUser]);
 
   const renderContent = (
     <Scrollbar
@@ -96,14 +94,18 @@ export default function DashboardSidebar({
       </Box>
 
       <Box sx={{ mb: 5, mx: 2.5 }}>
-        <Link underline="none" component={RouterLink} to="#">
+        <Link
+          underline="none"
+          component={RouterLink}
+          to={`/club/${clubID}/profile`}
+        >
           <AccountStyle>
-            <Avatar src={account.photoURL} alt="photoURL" />
+            <Avatar src={account.photoURL} alt="" />
             <Box sx={{ ml: 2 }}>
-              <Typography variant="h5" sx={{ color: "text.primary" }}>
+              <Typography variant="h5" sx={{ color: "#e0e7e9" }}>
                 {loggedInUser?.name}
               </Typography>
-              <Typography variant="subtitle1" sx={{ color: "#0c4426" }}>
+              <Typography variant="subtitle1" sx={{ color: "#e0e7e9" }}>
                 {specificInfo?.role}
               </Typography>
             </Box>
@@ -126,7 +128,7 @@ export default function DashboardSidebar({
           PaperProps={{
             sx: {
               width: DRAWER_WIDTH,
-              bgcolor: "#0c4426",
+              bgcolor: "#1c3879",
             },
           }}
         >
@@ -141,10 +143,8 @@ export default function DashboardSidebar({
           PaperProps={{
             sx: {
               width: DRAWER_WIDTH,
-              bgcolor: "#0c4426",
-              borderRight: "1px solid yellow",
-              color: "#dde143",
-              boxShadow: "-3px 0px 0px 0px #dde143 inset",
+              bgcolor: "#1c3879",
+              color: "white",
             },
           }}
         >

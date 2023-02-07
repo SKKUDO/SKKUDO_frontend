@@ -1,5 +1,3 @@
-import { UserType } from "./user";
-
 export interface NoticeTagType {
   _id: string;
   clubId: string;
@@ -8,19 +6,8 @@ export interface NoticeTagType {
   updatedAt: Date;
 }
 
-export interface NewNoticeTagType {
-  clubId: string;
-  name: string;
-}
+export type NewNoticeTagType = Pick<NoticeTagType, "clubId" | "name">;
 
-export interface NewNoticeType {
-  clubId: string;
-  title: string;
-  content: string;
-  private: boolean;
-  writer: string;
-  noticeTags: string[];
-}
 export interface NoticeType {
   _id: string;
   writer: string;
@@ -33,24 +20,16 @@ export interface NoticeType {
   updatedAt: Date;
 }
 
+export type NewNoticeType = Omit<NoticeType, "_id" | "createdAt" | "updatedAt">;
 export interface ClickedNoticeInfoType {
   writer: string;
   title: string;
   content: string;
   noticeTags: string[]; //태그
+  _id?: string;
+  clubId?: string;
 }
 
-export interface DeleteNoticetype {
-  clubID: string;
-  _id: string;
-}
+export type DeleteNoticeType = Pick<NoticeType, "clubId" | "_id">;
 
-export interface UpdateNoticeType {
-  noticeID: string;
-  clubId: string;
-  title: string;
-  content: string;
-  writer: string;
-  noticeTags: string[];
-  private: boolean;
-}
+export type UpdateNoticeType = Omit<NoticeType, "createdAt" | "updatedAt">;

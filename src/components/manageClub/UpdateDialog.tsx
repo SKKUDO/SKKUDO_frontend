@@ -135,6 +135,7 @@ function ProperInput({ keyword, handleClose }: ProperInputType) {
     }
     handleClose();
   };
+
   if (keyword === "name") {
     return (
       <>
@@ -147,13 +148,17 @@ function ProperInput({ keyword, handleClose }: ProperInputType) {
             fullWidth
             variant="standard"
             value={name}
-            sx={{ marginTop: "20px", fontSize: "30px" }}
+            sx={{ marginTop: "20px", fontSize: "30px", color: "#000069" }}
             onChange={handleNameChange}
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>취소</Button>
-          <Button onClick={handleUpdateSubmit}>수정</Button>
+          <Button onClick={handleClose} color="error">
+            취소
+          </Button>
+          <Button onClick={handleUpdateSubmit} color="success">
+            수정
+          </Button>
         </DialogActions>
       </>
     );
@@ -182,8 +187,12 @@ function ProperInput({ keyword, handleClose }: ProperInputType) {
           </Select>
         </FormControl>
         <DialogActions>
-          <Button onClick={handleClose}>취소</Button>
-          <Button onClick={handleUpdateSubmit}>수정</Button>
+          <Button onClick={handleClose} color="error">
+            취소
+          </Button>
+          <Button onClick={handleUpdateSubmit} color="success">
+            수정
+          </Button>
         </DialogActions>
       </DialogContent>
     );
@@ -204,8 +213,12 @@ function ProperInput({ keyword, handleClose }: ProperInputType) {
           </FormControl>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>취소</Button>
-          <Button onClick={handleUpdateSubmit}>수정</Button>
+          <Button onClick={handleClose} color="error">
+            취소
+          </Button>
+          <Button onClick={handleUpdateSubmit} color="success">
+            수정
+          </Button>
         </DialogActions>
       </>
     );
@@ -226,8 +239,12 @@ function ProperInput({ keyword, handleClose }: ProperInputType) {
           </FormControl>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>취소</Button>
-          <Button onClick={handleUpdateSubmit}>수정</Button>
+          <Button onClick={handleClose} color="error">
+            취소
+          </Button>
+          <Button onClick={handleUpdateSubmit} color="success">
+            수정
+          </Button>
         </DialogActions>
       </>
     );
@@ -246,8 +263,12 @@ function ProperInput({ keyword, handleClose }: ProperInputType) {
           </FormControl>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>취소</Button>
-          <Button onClick={handleUpdateSubmit}>수정</Button>
+          <Button onClick={handleClose} color="error">
+            취소
+          </Button>
+          <Button onClick={handleUpdateSubmit} color="success">
+            수정
+          </Button>
         </DialogActions>
       </>
     );
@@ -268,7 +289,9 @@ export default function UpdateDialog({
 
   return (
     <Dialog open={dialogOpen} onClose={handleClose}>
-      <DialogTitle sx={{ fontSize: "30px" }}>{`동아리 정보 변경`}</DialogTitle>
+      <DialogTitle
+        sx={{ fontSize: "30px", color: "#000069" }}
+      >{`동아리 정보 변경`}</DialogTitle>
       <ProperInput
         keyword={clubUpdate.keyword}
         handleClose={handleClose}

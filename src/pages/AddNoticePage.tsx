@@ -16,7 +16,7 @@ import React, { useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { useNavigate, useParams } from "react-router-dom";
 import { useRecoilValue } from "recoil";
-import { userNameState } from "../atoms/userAtom";
+import { userInfoState } from "../atoms/userAtom";
 import { NoticeTagType } from "../types/notice";
 import ClubDetailHeader from "../components/ClubDetailHeader";
 import {
@@ -26,32 +26,36 @@ import {
 
 const AddNoticePageContainer = styled("form")({
   width: "100%",
-  maxWidth: "1024px",
+  maxWidth: "90%",
   margin: "0 auto",
-  paddingTop: "60px",
   display: "flex",
   flexDirection: "column",
   position: "relative",
 });
 
 const TitleInput = styled("input")({
-  width: "400px",
+  width: "80%",
   height: "50px",
+  margin: "0 auto",
   marginBottom: "20px",
+  marginTop: "20px",
   borderRadius: "5px",
   backgroundColor: "#fff",
-  border: "2px solid #0c4426",
+  color: "#000069",
+  border: "2px solid",
   fontSize: "1.5rem",
   paddingLeft: "10px",
 });
 
 const ContentInput = styled("textarea")({
   backgroundColor: "#fff",
+  margin: "0 auto",
   marginTop: "20px",
-  border: "2px solid #0c4426",
+  border: "2px solid #000069",
   fontSize: "1.2rem",
   borderRadius: "5px",
   padding: "10px",
+  width: "80%",
 });
 
 const ButtonContainer = styled("div")({
@@ -62,7 +66,7 @@ const ButtonContainer = styled("div")({
 });
 const AddButton = styled(Button)({
   width: "200px",
-  color: "#dde143",
+  color: "white",
   marginBottom: "40px",
 });
 
@@ -93,7 +97,7 @@ function AddNoticePage() {
   const { clubID } = useParams();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const userName = useRecoilValue(userNameState);
+  const user = useRecoilValue(userInfoState);
 
   const [private_, setPrivate] = useState<boolean>(false);
   const [tags, setTags] = useState<string[]>([]);
@@ -122,7 +126,7 @@ function AddNoticePage() {
         clubId: clubID || "",
         title,
         content,
-        writer: userName,
+        writer: user.name,
         noticeTags: tags,
         private: private_,
       }),
@@ -168,13 +172,13 @@ function AddNoticePage() {
   // const { mutate } = useMutation(() => );
   return (
     <AddNoticePageContainer>
-      <ClubDetailHeader pageType="공지사항" />
+      <ClubDetailHeader pageType="공지사항 추가" />
       <TitleInput
         required
         onChange={handleTitleChange}
         placeholder={"공지 제목"}
       />
-      <FormControl sx={{ m: 1, width: "100%", margin: 0 }}>
+      <FormControl sx={{ m: 1, width: "80%", margin: "0 auto" }}>
         <InputLabel
           id="demo-multiple-chip-label"
           sx={{ margin: 0, padding: 0 }}
@@ -215,7 +219,7 @@ function AddNoticePage() {
           ))}
         </Select>
       </FormControl>
-      <FormControl fullWidth>
+      <FormControl sx={{ m: 1, width: "80%", margin: "0 auto" }}>
         <InputLabel
           id="demo-multiple-chip-label"
           sx={{ margin: 0, padding: 0 }}

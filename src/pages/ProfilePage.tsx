@@ -1,4 +1,5 @@
 import {
+  Button,
   Paper,
   Table,
   TableBody,
@@ -17,21 +18,25 @@ import { RegisteredClubType } from "../types/user";
 import { FaPen } from "react-icons/fa";
 import { motion } from "framer-motion";
 import ColumnDialog from "../components/profile/ColumnDialog";
+import DeregisterDialog from "../components/profile/DeregisterDialog";
 
 const ProfileContainer = styled.div`
   width: 100%;
-  max-width: 1024px;
+  max-width: 80%;
   margin: 0 auto;
   margin-top: 40px;
+  position: relative;
 `;
 
 const Name = styled.span`
-  font-size: 40px;
+  font-size: 160%;
   margin-right: 20px;
+  color: #000069;
 `;
 const Role = styled.span`
-  font-size: 30px;
+  font-size: 150%;
   font-weight: 600;
+  color: #000069;
 `;
 
 const BtnContainer = styled(motion.button)`
@@ -49,6 +54,7 @@ function ProfilePage() {
   const loggedInUser = useRecoilValue(loggedInUserState);
   const [clubProfile, setClubProfile] = useState<RegisteredClubType>();
   const [keyword, setKeyword] = useState("");
+  const [deregisterDialogOpen, setDeregisterDialogOpen] = useState(false);
 
   useEffect(() => {
     if (loggedInUser) {
@@ -65,10 +71,26 @@ function ProfilePage() {
     setDialogOpen(true);
     setKeyword(selectedKeyword);
   };
+
+  const handleDeregisterBtnClcik = () => {
+    setDeregisterDialogOpen(true);
+  };
   return (
     <>
       <ClubDetailHeader pageType="내 프로필" />
       <ProfileContainer>
+        <Button
+          color="error"
+          variant="contained"
+          onClick={handleDeregisterBtnClcik}
+          sx={{ position: "absolute", right: 0 }}
+        >
+          탈퇴
+        </Button>
+        <DeregisterDialog
+          open={deregisterDialogOpen}
+          setOpen={setDeregisterDialogOpen}
+        />
         <Name>{loggedInUser?.name}</Name>
         <Role>{clubProfile?.role}</Role>
 
@@ -82,6 +104,7 @@ function ProfilePage() {
                     textAlign: "center",
                     fontSize: "22px",
                     fontWeight: "600",
+                    color: "#000069",
                   }}
                 >
                   정보
@@ -89,9 +112,11 @@ function ProfilePage() {
                 <TableCell
                   align="right"
                   sx={{
+                    width: "50%",
                     textAlign: "center",
                     fontSize: "22px",
                     fontWeight: "600",
+                    color: "#000069",
                   }}
                 >
                   답변
@@ -110,7 +135,11 @@ function ProfilePage() {
                   <TableCell
                     component="th"
                     scope="row"
-                    sx={{ textAlign: "center", fontSize: "20px" }}
+                    sx={{
+                      textAlign: "center",
+                      fontSize: "20px",
+                      color: "#1c3879",
+                    }}
                   >
                     {ele.column.key}
                   </TableCell>
@@ -119,6 +148,7 @@ function ProfilePage() {
                       textAlign: "center",
                       position: "relative",
                       fontSize: "20px",
+                      color: "#1c3879",
                     }}
                     align="right"
                   >

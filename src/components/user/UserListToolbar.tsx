@@ -6,6 +6,7 @@ import {
   Typography,
   OutlinedInput,
   InputAdornment,
+  Button,
 } from "@mui/material";
 import Iconify from "../Iconify";
 
@@ -70,19 +71,7 @@ export default function UserListToolbar({
         />
       )}
 
-      {/* {numSelected > 0 ? (
-        <Tooltip title="Delete">
-          <IconButton>
-            <Iconify icon="eva:trash-2-fill" />
-          </IconButton>
-        </Tooltip>
-      ) : (
-        <Tooltip title="Filter list">
-          <IconButton>
-            <Iconify icon="ic:round-filter-list" />
-          </IconButton>
-        </Tooltip>
-      )} */}
+      {/* <Button>export to CSV</Button> */}
     </RootStyle>
   );
 }

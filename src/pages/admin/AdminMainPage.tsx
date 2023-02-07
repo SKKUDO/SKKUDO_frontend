@@ -4,6 +4,7 @@ import { Outlet } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import AdminSidebar from "../../components/admin/AdminSideBar";
 import { isManageState } from "../../atoms/NavigatorAtom";
+import DashboardNavBar from "../../components/dashboard/DashboardNavBar";
 
 const APP_BAR_MOBILE = 64;
 const APP_BAR_DESKTOP = 92;
@@ -37,6 +38,7 @@ export default function AdminMainPage() {
 
   return (
     <RootStyle>
+      <DashboardNavBar isAdmin={true} onOpenSidebar={() => setOpen(true)} />
       <AdminSidebar
         isOpenSidebar={open}
         onCloseSidebar={() => setOpen(false)}

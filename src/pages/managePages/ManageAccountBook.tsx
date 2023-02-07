@@ -41,6 +41,7 @@ const DeleteBtn = styled(Button)({
   float: "right",
   fontSize: "20px",
   marginBottom: "50px",
+  marginLeft: "20px",
 });
 
 interface MutateType {
@@ -104,7 +105,6 @@ function ManageAccountBook() {
       ],
     };
     await csvDownload(dataToConvert);
-    window.location.reload();
   };
 
   const { mutate: deleteBudgetMutate } = useMutation(
@@ -113,7 +113,6 @@ function ManageAccountBook() {
       onSuccess: (data) => {
         // console.log(data);
         alert("가계부가 삭제되었습니다.");
-        window.location.reload();
       },
       onError: (error: any) => {
         alert(error.response.data.error);
@@ -127,7 +126,7 @@ function ManageAccountBook() {
       onSuccess: (data) => {
         // console.log(data);
         alert("가계부가 성공적으로 생성되었습니다!");
-        window.location.reload();
+
         // queryClient.invalidateQueries("getBudgetByClubID");
       },
       onError: (error: any) => {
@@ -199,15 +198,12 @@ function ManageAccountBook() {
 
   return (
     <AccountBookPageContainer>
-      {data ? (
-        <DeleteBtn
-          color="error"
-          variant="contained"
-          onClick={handleDeleteBtnClick}
-        >
-          가계부 삭제
-        </DeleteBtn>
-      ) : (
+      {data ? //   variant="contained" //   color="error" // <DeleteBtn
+      //   onClick={handleDeleteBtnClick}
+      // >
+      //   가계부 삭제
+      // </DeleteBtn>
+      null : (
         <DeleteBtn
           color="success"
           variant="contained"
@@ -216,7 +212,7 @@ function ManageAccountBook() {
           새 가계부 생성
         </DeleteBtn>
       )}
-      <DeleteBtn color="error" variant="contained" onClick={downloadCSV}>
+      <DeleteBtn variant="contained" onClick={downloadCSV}>
         Export to CSV
       </DeleteBtn>
       <TableContainer component={Paper}>
@@ -224,20 +220,37 @@ function ManageAccountBook() {
           <TableHead>
             <TableRow>
               <TableCell />
-              <TableCell sx={{ fontSize: "24px" }}>날짜</TableCell>
-              <TableCell sx={{ fontSize: "24px" }} align="right">
+              <TableCell sx={{ fontSize: "24px", color: "#000069" }}>
+                날짜
+              </TableCell>
+              <TableCell
+                sx={{ fontSize: "24px", color: "#000069" }}
+                align="right"
+              >
                 수입
               </TableCell>
-              <TableCell sx={{ fontSize: "24px" }} align="right">
+              <TableCell
+                sx={{ fontSize: "24px", color: "#000069" }}
+                align="right"
+              >
                 지출
               </TableCell>
-              <TableCell sx={{ fontSize: "24px" }} align="right">
+              <TableCell
+                sx={{ fontSize: "24px", color: "#000069" }}
+                align="right"
+              >
                 누가
               </TableCell>
-              <TableCell sx={{ fontSize: "24px" }} align="right">
+              <TableCell
+                sx={{ fontSize: "24px", color: "#000069" }}
+                align="right"
+              >
                 내용
               </TableCell>
-              <TableCell sx={{ fontSize: "24px" }} align="right">
+              <TableCell
+                sx={{ fontSize: "24px", color: "#000069" }}
+                align="right"
+              >
                 잔액
               </TableCell>
             </TableRow>

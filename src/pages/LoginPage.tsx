@@ -2,9 +2,11 @@ import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
-import { useSetRecoilState } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
 import { isLoggedInState } from "../atoms/loginAtom";
+import { loggedInUserState } from "../atoms/userAtom";
+import { UserType } from "../types/user";
 import { loginFromServer } from "../utils/fetch/fetchAuth";
 
 const LoginPageContainer = styled.div`
@@ -16,7 +18,7 @@ const LoginPageContainer = styled.div`
 `;
 
 const LoginCard = styled.div`
-  background-color: #0c4426;
+  background-color: #000069;
   width: 33vw;
   height: 35vh;
   border-radius: 1vw;
@@ -37,7 +39,7 @@ const LoginCard = styled.div`
 const Title = styled.div`
   font-size: 3.3em;
   margin-top: 4.7vh;
-  color: #dde143;
+  color: #e0e7e9;
   font-family: "Poppins", sans-serif;
 `;
 
@@ -69,9 +71,9 @@ const LoginInput = styled.input`
 const LoginButton = styled(motion.button)`
   width: 10vw;
   cursor: pointer;
-  color: #dde143;
+  color: #e0e7e9;
   background-color: transparent;
-  border: 2px solid #dde143;
+  border: 2px solid #e0e7e9;
   border-radius: 1vw;
   font-weight: 600;
   font-size: 1.7em;
@@ -89,15 +91,17 @@ function LoginPage() {
   const [ID, setID] = useState("");
   const [PW, setPW] = useState("");
 
+  const setLoggedInUser = useSetRecoilState(loggedInUserState);
+
   const setIsLoggedIn = useSetRecoilState(isLoggedInState);
 
   const { mutate } = useMutation(() => loginFromServer(ID, PW), {
     //need to fix
-    onSuccess: (data) => {
-      // console.log(data);
+    onSuccess: (data: UserType) => {
+      console.log(data);
+      setLoggedInUser(data);
       setIsLoggedIn(true);
       navigate("/");
-      window.location.reload();
     },
     onError: (error: { response: { data: { error: string } } }) =>
       alert(error.response.data.error),
@@ -123,8 +127,19 @@ function LoginPage() {
         <Title>SKKUDO</Title>
         <LoginForm onSubmit={handleSubmit}>
           <LoginInputContainer>
-            <LoginInput onChange={handleIDChange}></LoginInput>
-            <LoginInput type="password" onChange={handlePWChange}></LoginInput>
+            <LoginInput
+              required
+              minLength={5}
+              placeholder="ID"
+              onChange={handleIDChange}
+            ></LoginInput>
+            <LoginInput
+              required
+              minLength={5}
+              type="password"
+              placeholder="Password"
+              onChange={handlePWChange}
+            ></LoginInput>
           </LoginInputContainer>
           <LoginButton
             type="submit"

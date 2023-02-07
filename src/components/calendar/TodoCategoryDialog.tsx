@@ -82,7 +82,7 @@ function TodoCategoryDialog(props: SimpleDialogProps) {
         sx={{
           display: "flex",
           flexDirection: "column",
-          width: "400px",
+          width: "100%",
           padding: "50px",
         }}
         noValidate
@@ -91,7 +91,7 @@ function TodoCategoryDialog(props: SimpleDialogProps) {
       >
         <TextField
           id="outlined-basic"
-          label="Outlined"
+          label="새 카테고리"
           variant="outlined"
           onChange={handleCategoryInputChange}
           value={newCategory}
@@ -102,7 +102,7 @@ function TodoCategoryDialog(props: SimpleDialogProps) {
           sx={{ color: "white", marginTop: "20px" }}
           type="submit"
         >
-          Success
+          추가
         </Button>
       </Box>
       <CategoryList>
@@ -117,7 +117,7 @@ function TodoCategoryDialog(props: SimpleDialogProps) {
                 color="error"
                 onClick={() => handleCategoryDeleteBtnClick(category._id)}
               >
-                Delete
+                삭제
               </CategoryDeleteBtn>
             </CategoryListItem>
           ))

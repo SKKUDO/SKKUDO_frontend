@@ -32,10 +32,10 @@ export default function FilterTag({
   const [value, setValue] = useState<string>("전체");
   return (
     <MainWrapper>
-      <FormControl sx={{ m: 1, minWidth: 180 }} color="success">
+      <FormControl sx={{ m: 1, minWidth: 100 }} color="success">
         <InputLabel id="demo-simple-select-helper-label">Filter</InputLabel>
         <Select
-          sx={{ height: "50px" }}
+          sx={{ height: "13%", fontSize: "30%" }}
           labelId="demo-simple-select-helper-label"
           id="demo-simple-select-helper"
           value={value}

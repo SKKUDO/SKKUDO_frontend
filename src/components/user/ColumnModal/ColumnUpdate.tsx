@@ -48,7 +48,10 @@ export default function ColumnUpdate() {
   const clubId: string = useParams().clubID as string;
 
   useEffect(() => {
-    getOneClub(clubId).then(({ userColumns }) => setUserColumns(userColumns));
+    getOneClub(clubId).then(({ userColumns }) => {
+      // console.log(userColumns);
+      setUserColumns(userColumns);
+    });
   }, []);
 
   const handleSubmit = () => {
@@ -59,7 +62,10 @@ export default function ColumnUpdate() {
           alert("열을 수정했습니다.");
           window.location.reload();
         })
-        .catch((error) => alert(error.response.data.error));
+        .catch((error) => {
+          // console.log(error);
+          alert(error.response.data.error);
+        });
     }
   };
 

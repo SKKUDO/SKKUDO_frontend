@@ -14,7 +14,7 @@ import { useParams } from "react-router-dom";
 import useOrderWithFilter from "../../hooks/useOrderWithFilter";
 import useTableHead from "../../hooks/useTableHead";
 import useTablePage from "../../hooks/useTablePage";
-import { ColumnType, RoleType } from "../../types/common";
+import { ColumnType } from "../../types/common";
 import { UserType } from "../../types/user";
 import { getClubMembers } from "../../utils/fetch/fetchUser";
 import { ClubType } from "../../types/club";
@@ -25,6 +25,12 @@ import UserListToolbar from "./UserListToolbar";
 import UserMoreMenu from "./UserMoreMenu";
 import { getOneClub } from "../../utils/fetch/fetchClub";
 import csvDownload from "json-to-csv-export";
+import Paper from "@mui/material/Paper";
+import styled from "styled-components";
+
+const TableCard = styled.div`
+  position: relative;
+`;
 
 type IMoreColumn = {
   column: ColumnType;
@@ -34,8 +40,10 @@ type IMoreColumn = {
 interface UserTableType {
   isManage: boolean;
 }
+
 export default function UserTable({ isManage }: UserTableType) {
   const { clubID } = useParams();
+
   const [page, rowsPerPage, handleChangePage, handleChangeRowsPerPage] =
     useTablePage();
 
@@ -51,7 +59,7 @@ export default function UserTable({ isManage }: UserTableType) {
     () => getClubMembers(clubID || ""),
     {
       onSuccess: (data) => {
-        console.log(data);
+        // console.log(data);
       },
       onError: (error: any) => alert(error.response.data.error),
     }
@@ -147,16 +155,21 @@ export default function UserTable({ isManage }: UserTableType) {
   };
 
   return (
-    <>
+    <TableCard>
       <UserListToolbar
         numSelected={selected.length}
         filterName={filterName}
         onFilterName={handleFilterByName}
       />
 
-      <TableContainer sx={{ minWidth: 800 }}>
-        <Button onClick={downloadCSV}>export to CSV</Button>
-        <Table>
+      <TableContainer component={Paper} sx={{ tableLayout: "auto" }}>
+        <Button
+          onClick={downloadCSV}
+          sx={{ position: "absolute", top: 20, right: 20 }}
+        >
+          export to CSV
+        </Button>
+        <Table sx={{ overflowX: "scroll" }}>
           <UserListHead
             isManaging={isManage}
             order={order}
@@ -192,29 +205,38 @@ export default function UserTable({ isManage }: UserTableType) {
                     selected={isItemSelected}
                     aria-checked={isItemSelected}
                   >
-                    {isManage && (
+                    {/* {isManage && (
                       <TableCell padding="checkbox">
                         <Checkbox
                           checked={isItemSelected}
                           onChange={(event) => handleClick(event, name)}
                         />
                       </TableCell>
-                    )}
+                    )} */}
 
                     <TableCell
-                      sx={{ fontSize: isManage ? "20px" : "13px" }}
+                      sx={{
+                        fontSize: isManage ? "20px" : "13px",
+                        color: "#1c3879",
+                      }}
                       align="left"
                     >
                       {name}
                     </TableCell>
                     <TableCell
-                      sx={{ fontSize: isManage ? "20px" : "13px" }}
+                      sx={{
+                        fontSize: isManage ? "20px" : "13px",
+                        color: "#1c3879",
+                      }}
                       align="left"
                     >
                       {studentId}
                     </TableCell>
                     <TableCell
-                      sx={{ fontSize: isManage ? "20px" : "13px" }}
+                      sx={{
+                        fontSize: isManage ? "20px" : "13px",
+                        color: "#1c3879",
+                      }}
                       align="left"
                     >
                       {clubID && data
@@ -223,20 +245,29 @@ export default function UserTable({ isManage }: UserTableType) {
                         : ""}
                     </TableCell>
                     <TableCell
-                      sx={{ fontSize: isManage ? "20px" : "13px" }}
+                      sx={{
+                        fontSize: isManage ? "20px" : "13px",
+                        color: "#1c3879",
+                      }}
                       align="left"
                     >
                       {major}
                     </TableCell>
                     <TableCell
-                      sx={{ fontSize: isManage ? "20px" : "13px" }}
+                      sx={{
+                        fontSize: isManage ? "20px" : "13px",
+                        color: "#1c3879",
+                      }}
                       align="left"
                     >
                       {location}
                     </TableCell>
                     {isManage && (
                       <TableCell
-                        sx={{ fontSize: isManage ? "20px" : "13px" }}
+                        sx={{
+                          fontSize: isManage ? "20px" : "13px",
+                          color: "#1c3879",
+                        }}
                         align="left"
                       >
                         {contact}
@@ -248,7 +279,10 @@ export default function UserTable({ isManage }: UserTableType) {
                           .moreColumns.map((item: IMoreColumn, index: any) => {
                             return (
                               <TableCell
-                                sx={{ fontSize: isManage ? "20px" : "13px" }}
+                                sx={{
+                                  fontSize: isManage ? "20px" : "13px",
+                                  color: "#1c3879",
+                                }}
                                 key={index}
                                 align="left"
                               >
@@ -302,6 +336,6 @@ export default function UserTable({ isManage }: UserTableType) {
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
-    </>
+    </TableCard>
   );
 }

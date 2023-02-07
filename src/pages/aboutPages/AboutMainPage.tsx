@@ -4,6 +4,7 @@ import { TiGroupOutline } from "react-icons/ti";
 import { TbPlugConnected } from "react-icons/tb";
 import myeong from "../../assets/images/myeong.jpeg";
 import yul from "../../assets/images/yul.png";
+import { useEffect } from "react";
 
 const Intro = styled.div`
   width: 100%;
@@ -13,19 +14,20 @@ const Intro = styled.div`
   font-size: 3em;
   font-weight: 700;
   margin-bottom: 10vh;
-  @media screen and (max-width: 1200px){
+  @media screen and (max-width: 1200px) {
     font-size: 1.9em;
   }
-  @media screen and (max-width: 768px){
-     width: 80%;
-     margin-left: 4vw;
+  @media screen and (max-width: 768px) {
+    width: 80%;
+    margin-left: 4vw;
   }
+  color: #000069;
 `;
 
 const IntroduceContainer = styled.div`
   border-top-style: solid;
   border-width: 1px;
-  border-color: #0c4426;
+  border-color: #000069;
   display: flex;
   flex-direction: row;
   padding-top: 10vh;
@@ -35,32 +37,34 @@ const IntroduceMassageContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 40vw;
-   @media screen and (max-width:768px){
+  @media screen and (max-width: 768px) {
     width: 70vw;
   }
 `;
+
 const ImageContainer = styled.div`
   padding: 2vw;
   width: 40%;
   display: flex;
   justify-content: center;
   align-items: center;
-  @media screen and (max-width:768px){
+  @media screen and (max-width: 768px) {
     display: none;
   }
 `;
+
 const Content = styled.div`
   font-size: 1.2rem;
   line-height: 2.2rem;
   font-weight: 600;
-    @media screen and (max-width: 768px){
-      font-size: 1rem;
-      line-height: 2rem;
+  @media screen and (max-width: 768px) {
+    font-size: 1rem;
+    line-height: 2rem;
   }
 `;
 
 const SloganContainer = styled.div`
-  background-color: #0c4426;
+  background-color: #000069;
   padding-top: 10vh;
   padding-bottom: 10vh;
   display: flex;
@@ -69,48 +73,52 @@ const SloganContainer = styled.div`
   width: 139.4%;
   margin-left: -21.5vw;
   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.7);
-  @media screen and (max-width: 1200px){
+  @media screen and (max-width: 1200px) {
     display: none;
   }
 `;
+
 const SloganMassage = styled.div`
   display: flex;
   justify-content: center;
-  color: #dde143;
+  color: #e0e7e9;
   font-size: 60px;
   font-weight: 700;
 
-  @media screen and (max-width: 1200px){
+  @media screen and (max-width: 1200px) {
     display: none;
   }
 `;
 
 const VisionContainer = styled.div`
-  border-color: #0c4426;
+  border-color: #000069;
   padding-top: 10vh;
   padding-bottom: 10vh;
   display: flex;
   flex-direction: column;
-  @media screen and (max-width: 1200px){
+  @media screen and (max-width: 1200px) {
     display: none;
   }
 `;
+
 const VisionMassageContainer = styled.div`
   padding-bottom: 5vh;
   text-align: center;
   font-size: 30px;
   font-weight: 700;
-  color: #0c4426;
-  @media screen and (max-width: 1200px){
+  color: #000069;
+  @media screen and (max-width: 1200px) {
     display: none;
   }
 `;
+
 const IconContainer = styled.div`
   display: flex;
   padding-top: 5vh;
   flex-direction: row;
   justify-content: center;
 `;
+
 const MainIconContainer = styled.div`
   padding-left: 5%;
   padding-right: 5%;
@@ -120,12 +128,13 @@ const MainIconContainer = styled.div`
   margin-right: 3vw;
   border-style: solid;
   border-width: 1px;
-  border-color: #0c4426;
+  border-color: #000069;
   display: flex;
   flex-direction: column;
   border-radius: 1rem;
-  color: #0c4426;
+  color: #000069;
 `;
+
 const MainIConMassageContainer = styled.div`
   display: flex;
   margin-top: 8vh;
@@ -136,12 +145,11 @@ const MainIConMassageContainer = styled.div`
 const DistinctContainer = styled.div`
   border-top-style: solid;
   border-width: 1px;
-  border-color: #0c4426;
+  border-color: #000069;
   padding-top: 5%;
   padding-bottom: 5%;
   display: flex;
   flex-direction: row;
-
 `;
 
 const DistinctMassageContainer = styled.div`
@@ -154,6 +162,9 @@ const DistinctMassageContainer = styled.div`
 `;
 
 function AboutMainPage() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <Intro>안녕하세요, SKKUDO 입니다.</Intro>
@@ -197,15 +208,15 @@ function AboutMainPage() {
         <VisionMassageContainer>SKKUDO의 비전</VisionMassageContainer>
         <IconContainer>
           <MainIconContainer>
-            <ImWrench size="150px" color="#0c4426"></ImWrench>
+            <ImWrench size="150px" color="#000069"></ImWrench>
             <MainIConMassageContainer>Customizable</MainIConMassageContainer>
           </MainIconContainer>
           <MainIconContainer>
-            <TiGroupOutline size="150px" color="#0c4426"></TiGroupOutline>
+            <TiGroupOutline size="150px" color="#000069"></TiGroupOutline>
             <MainIConMassageContainer>Communication</MainIConMassageContainer>
           </MainIconContainer>
           <MainIconContainer>
-            <TbPlugConnected size="150px" color="#0c4426"></TbPlugConnected>
+            <TbPlugConnected size="150px" color="#000069"></TbPlugConnected>
             <MainIConMassageContainer>Easy to Use</MainIConMassageContainer>
           </MainIconContainer>
         </IconContainer>

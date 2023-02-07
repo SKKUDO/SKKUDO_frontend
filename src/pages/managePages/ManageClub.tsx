@@ -19,7 +19,8 @@ const ManageClubContainer = styled.div`
   padding-left: 100px;
 `;
 const ClubName = styled.div`
-  border-bottom: 1px solid #0c4426;
+  color: #000069;
+  border-bottom: 1px solid;
   display: inline-block;
   padding: 10px;
   font-size: 30px;
@@ -42,7 +43,8 @@ const RowContainer = styled.div`
 `;
 
 const InfoContainer = styled.div`
-  border-bottom: 1px solid #0c4426;
+  color: #000069;
+  border-bottom: 1px solid;
   display: inline-block;
   padding: 10px;
 `;
@@ -57,6 +59,7 @@ const BtnContainer = styled(motion.button)`
   margin: 0;
   border: none;
   background-color: transparent;
+  color: #000069;
 `;
 
 const ImageContainer = styled.div`
@@ -64,7 +67,7 @@ const ImageContainer = styled.div`
   width: 100%;
   max-width: 1000px;
   height: 600px;
-  border: 1px dashed #0c4426;
+  border: 1px dashed #000069;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -101,7 +104,6 @@ function ManageClub() {
     uploadImage(clubID as string, formData)
       .then((data) => {
         alert("업로드에 성공했습니다.");
-        window.location.reload();
       })
       .catch(() => alert("알 수 없는 오류가 발견되었습니다."));
   };

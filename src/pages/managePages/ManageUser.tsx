@@ -4,7 +4,6 @@ import { Card, Stack, Button, Container, Typography } from "@mui/material";
 import Iconify from "../../components/Iconify";
 import ColumnModal from "../../components/user/ColumnModal/ColumnModal";
 import UserTable from "../../components/user/UserTable";
-import { flexbox } from "@mui/system";
 
 export default function User() {
   const [addColumnModalOpen, setColumnModalOpen] = useState<boolean>(false);
@@ -17,7 +16,7 @@ export default function User() {
         justifyContent="space-between"
         mb={5}
       >
-        <Typography variant="h4" gutterBottom>
+        <Typography variant="h4" gutterBottom sx={{ color: "#000069" }}>
           User
         </Typography>
         <div>

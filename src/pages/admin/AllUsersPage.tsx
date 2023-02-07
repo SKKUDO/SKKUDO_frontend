@@ -1,7 +1,21 @@
-import styled from "styled-components";
-
-const Title = styled.div``;
+import { Box } from "@mui/material";
+import { PageTitle } from "../../components/admin/PageTitle";
+import AllUsersTable from "../../components/admin/AllUsersTable";
 
 export default function AllUsersPage() {
-  return <Title>전체 유저</Title>;
+  return (
+    <>
+      <PageTitle>전체 유저</PageTitle>
+      <Box
+        sx={{
+          width: "100%",
+          maxWidth: 1024,
+          bgcolor: "background.paper",
+          margin: "0 auto",
+        }}
+      >
+        <AllUsersTable isManage={true} />
+      </Box>
+    </>
+  );
 }

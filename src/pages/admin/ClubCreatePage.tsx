@@ -9,13 +9,7 @@ import { NotAcceptedClubType } from "../../types/club";
 import NotAcceptedClubDialog from "../../components/admin/NotAcceptedClubDialog";
 import { useState } from "react";
 import { getNotAcceptedClubs } from "../../utils/fetch/fetchClub";
-
-const Title = styled.div`
-  width: 100%;
-  max-width: 1024px;
-  margin: 0 auto;
-  margin-bottom: 40px;
-`;
+import { PageTitle } from "../../components/admin/PageTitle";
 
 export default function ClubCreatePage() {
   const [open, setOpen] = useState(false);
@@ -24,7 +18,9 @@ export default function ClubCreatePage() {
     "getNotAcceptedClubs",
     getNotAcceptedClubs,
     {
-      onSuccess: (data) => console.log(data),
+      onSuccess: (data) => {
+        // console.log(data);
+      },
       onError: (error) => console.log(error),
     }
   );
@@ -35,7 +31,7 @@ export default function ClubCreatePage() {
   };
   return (
     <>
-      <Title>새 동아리 신청서</Title>
+      <PageTitle>새 동아리 신청서</PageTitle>
       <Box
         sx={{
           width: "100%",

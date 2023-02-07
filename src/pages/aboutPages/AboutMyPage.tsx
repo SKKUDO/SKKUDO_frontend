@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import styled from "styled-components";
 import mypage from "../../assets/images/mypage/mypage.png";
 
@@ -21,8 +22,8 @@ const MyPageMassageContainer = styled.div`
   width: 100%;
   text-align: center;
   margin-bottom: 10vh;
-   @media screen and (max-width: 1024px){
-     font-size: 1em;
+  @media screen and (max-width: 1024px) {
+    font-size: 1em;
   }
 `;
 
@@ -32,6 +33,10 @@ const MyPageImageContainer = styled.div`
 `;
 
 function AboutMyPage() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <AboutMyPageContainer>
       <MyPageContainer>

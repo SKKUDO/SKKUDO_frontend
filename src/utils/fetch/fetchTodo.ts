@@ -5,6 +5,9 @@ import { BASE_URL } from "./fetch";
 
 const GET_ALL_TODOS_URL = `${BASE_URL}/todos/ToDos`;
 
+export const getAllTodos = async () =>
+  axios.get(GET_ALL_TODOS_URL).then((res) => res.data.data);
+
 export const getTodosByClubID = async (clubID: string) =>
   axios
     .get(GET_ALL_TODOS_URL.concat("/club/", clubID))

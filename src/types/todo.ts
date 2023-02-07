@@ -24,16 +24,11 @@ export interface ToDoType {
   updatedAt?: Date;
 }
 
-export interface NewToDoType {
-  clubId: string;
-  title: string;
-  private: boolean;
-  content: string;
+export interface NewToDoType
+  extends Omit<ToDoType, "_id" | "writer" | "date" | "startTime" | "endTime"> {
   date: string;
   startTime: string;
   endTime: string;
-  attendingUsers: string[];
-  tags: string[];
 }
 
 export interface UpdateTodoType extends NewToDoType {

@@ -2,7 +2,6 @@ import { alpha, styled } from "@mui/material/styles";
 import { Box, Stack, AppBar, Toolbar, IconButton } from "@mui/material";
 import Iconify from "../Iconify";
 import AccountPopover from "./AcoountPopover";
-import NotificationsPopover from "./NotificationPopover";
 
 const DRAWER_WIDTH = 280;
 const APPBAR_MOBILE = 64;
@@ -27,9 +26,10 @@ const ToolbarStyle = styled(Toolbar)(({ theme }) => ({
 }));
 
 interface IDashboardNavBar {
+  isAdmin: boolean;
   onOpenSidebar(): void;
 }
-function DashboardNavBar({ onOpenSidebar }: IDashboardNavBar) {
+function DashboardNavBar({ isAdmin, onOpenSidebar }: IDashboardNavBar) {
   return (
     <RootStyle>
       <ToolbarStyle>
@@ -47,8 +47,7 @@ function DashboardNavBar({ onOpenSidebar }: IDashboardNavBar) {
           alignItems="center"
           spacing={{ xs: 0.5, sm: 1.5 }}
         >
-          {/* <NotificationsPopover /> */}
-          <AccountPopover />
+          {isAdmin ? null : <AccountPopover />}
         </Stack>
       </ToolbarStyle>
     </RootStyle>

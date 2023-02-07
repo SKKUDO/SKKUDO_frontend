@@ -56,12 +56,12 @@ const INFO = {
 };
 
 const SUCCESS = {
-  lighter: "#E9FCD4",
-  light: "#AAF27F",
-  main: "#0c4426",
-  dark: "#229A16",
-  darker: "#08660D",
-  contrastText: "#dde143",
+  lighter: "#1c3879",
+  light: "#1c3879",
+  main: "#000069",
+  dark: "#1c3879",
+  darker: "#1c3879",
+  contrastText: "#e0e7e9",
 };
 
 const WARNING = {
@@ -221,7 +221,7 @@ const palette = {
   chart: CHART_COLORS,
   divider: GREY[500_24],
   text: { primary: GREY[800], secondary: GREY[600], disabled: GREY[500] },
-  background: { paper: "#fff", default: "#D4E7C6", neutral: GREY[200] },
+  background: { paper: "#fff", default: "#e0e7e9", neutral: GREY[200] },
   action: {
     active: GREY[600],
     hover: GREY[500_8],

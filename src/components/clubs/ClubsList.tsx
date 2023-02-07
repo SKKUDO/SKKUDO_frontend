@@ -1,15 +1,6 @@
-import PropTypes from "prop-types";
-// material
 import { Grid } from "@mui/material";
 import ClubCard from "./ClubCard";
 import { ClubType } from "../../types/club";
-
-interface IProduct {
-  id: number;
-  name: string;
-  cover: string;
-  status: string;
-}
 
 interface IClubsList {
   clubs: ClubType[];
@@ -19,11 +10,12 @@ interface IClubsList {
 export default function ClubsList({ clubs, ...other }: IClubsList) {
   return (
     <Grid sx={{ marginBottom: "40px" }} container spacing={3} {...other}>
-      {clubs.map((club) => (
-        <Grid key={club._id} item xs={12} sm={6} md={3}>
-          <ClubCard club={club} />
-        </Grid>
-      ))}
+      {clubs &&
+        clubs.map((club) => (
+          <Grid key={club._id} item xs={12} sm={6} md={3}>
+            <ClubCard club={club} />
+          </Grid>
+        ))}
     </Grid>
   );
 }

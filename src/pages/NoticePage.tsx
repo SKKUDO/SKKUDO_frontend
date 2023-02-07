@@ -1,9 +1,9 @@
-import { Paper, Stack, styled } from "@mui/material";
+import { Paper, Stack } from "@mui/material";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { BiMessageSquareAdd } from "react-icons/bi";
 import {
   ClickedNoticeInfoType,
-  DeleteNoticetype,
+  DeleteNoticeType,
   NoticeType,
   UpdateNoticeType,
 } from "../types/notice";
@@ -13,8 +13,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { useState, useEffect } from "react";
 import NoticeDetail from "../components/notice/NoticeDetail";
-import { useSetRecoilState } from "recoil";
-import { isNoticeDetailOpenState } from "../atoms/utilAtom";
 import CategoryAddDialog from "../components/notice/CategoryAddDialog";
 import { motion } from "framer-motion";
 import {
@@ -22,6 +20,7 @@ import {
   getNoticesByClubID,
   getNoticeTagsByClubID,
 } from "../utils/fetch/fetchNotice";
+import styled from "@emotion/styled";
 
 interface TagType {
   _id: string;
@@ -34,28 +33,31 @@ interface TagType {
 const BtnContainer = styled("div")({
   position: "relative",
   display: "flex",
-  width: "100%",
-  maxWidth: "1024px",
+  width: "80%",
+
   margin: "0 auto",
   justifyContent: "flex-end",
-  gap: "20px",
-  marginTop: "80px",
+  gap: "1%",
+  marginTop: "2%",
 });
 
 const AddCategoryBtn = styled(motion.button)({
   backgroundColor: "transparent",
-  color: "#0c4426",
+  color: "#000069",
   fontWeight: "600",
   paddingLeft: "10px",
   paddingRight: "10px",
-  fontSize: "20px",
-  border: "2px solid ",
+  fontSize: "1vw",
+  border: "2px solid #000069",
   borderRadius: "10px",
+  marginTop: "8px",
 });
 
 const AddIconContainer = styled(motion.div)({
   display: "flex",
   justifyContent: "right",
+  marginTop: "8px",
+  color: "#000069",
 });
 
 const OptionBtn = styled(motion.button)({
@@ -74,7 +76,7 @@ const NoticeTitle = styled(motion.div)({
   alignItems: "center",
   justifyContent: "flex-start",
   paddingLeft: "40px",
-  fontSize: "25px",
+  fontSize: "100%",
 });
 
 interface OptionContainerType {
@@ -90,7 +92,7 @@ const OptionContainer = styled("div")<OptionContainerType>(
     left: -20,
     zIndex: 3,
     borderRadius: "10px",
-    border: "1px solid #0c4426",
+    border: "1px solid #000069",
   },
   (props) => ({
     display: props.isOptionOpened ? "block" : "none",
@@ -98,33 +100,33 @@ const OptionContainer = styled("div")<OptionContainerType>(
 );
 
 const Option = styled(motion.div)({
-  color: "#0c4426",
+  color: "#000069",
   width: "100%",
   height: "50%",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  fontSize: "16px",
+  fontSize: "1vw",
   fontWeight: "600",
 });
 
 const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
+  // backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+  // ...theme.typography.body2,
+  // padding: theme.spacing(1),
   textAlign: "center",
-  color: theme.palette.text.secondary,
+  // color: theme.palette.text.secondary,
   width: "100%",
   height: "60px",
 }));
 
 export const Tag = styled("div")({
   height: "100%",
-  backgroundColor: "#0c4426",
+  backgroundColor: "#1c3879",
   color: "white",
   borderRadius: "4px",
   padding: "5px",
-  fontSize: "15px",
+  fontSize: "90%",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
@@ -155,7 +157,7 @@ function NoticePage() {
   const [usingItems, setUsingItems] = useState<NoticeType[]>([]);
   const [tags, setTags] = useState<TagType[]>([]);
   const [isOptionOpened, setIsOptionOpened] = useState(false);
-  const [clickedNoticeInfo, setClickedNotiiceInfo] =
+  const [clickedNoticeInfo, setClickedNoticeInfo] =
     useState<ClickedNoticeInfoType>({
       writer: "",
       title: "",
@@ -163,7 +165,7 @@ function NoticePage() {
       noticeTags: [],
     });
 
-  const setIsNoticeDetailOpen = useSetRecoilState(isNoticeDetailOpenState);
+  const [detailOpened, setDetailOpened] = useState(false);
 
   const [isCategoryDialogOpen, setIsCategoryDialogOpen] = useState(false);
 
@@ -189,13 +191,13 @@ function NoticePage() {
     content: string,
     noticeTags: string[]
   ) => {
-    setClickedNotiiceInfo({ writer, title, content, noticeTags });
-    setIsNoticeDetailOpen(true);
+    setClickedNoticeInfo({ writer, title, content, noticeTags });
+    setDetailOpened(true);
     setIsOptionOpened((prev) => !prev);
   };
 
   const { mutate } = useMutation(
-    (deleteNoticeInfo: DeleteNoticetype) => deleteNotice(deleteNoticeInfo),
+    (deleteNoticeInfo: DeleteNoticeType) => deleteNotice(deleteNoticeInfo),
     {
       onSuccess: (data) => {
         queryClient.invalidateQueries("getNoticesByClubID");
@@ -206,7 +208,7 @@ function NoticePage() {
     }
   );
 
-  const handleNoticeDeleteBtnClick = (deleteNoticeInfo: DeleteNoticetype) => {
+  const handleNoticeDeleteBtnClick = (deleteNoticeInfo: DeleteNoticeType) => {
     mutate(deleteNoticeInfo);
   };
   const localStorage = window.localStorage;
@@ -220,7 +222,7 @@ function NoticePage() {
         content: newNoticeInfo.content,
       })
     );
-    navigate(`${newNoticeInfo.noticeID}`);
+    navigate(`${newNoticeInfo._id}`);
   };
 
   useEffect(() => {
@@ -243,7 +245,7 @@ function NoticePage() {
         </FilterWrapper>
         <AddCategoryBtn
           whileHover={{
-            backgroundColor: "#0c4426",
+            backgroundColor: "#000069",
             color: "#FFFFFF",
             border: "1px solid #FFFFFF",
           }}
@@ -252,7 +254,7 @@ function NoticePage() {
           카테고리 추가
         </AddCategoryBtn>
         <AddIconContainer whileHover={{ scale: 1.1 }}>
-          <BiMessageSquareAdd size="2.5rem" onClick={onNoticeAddBtnClicked} />
+          <BiMessageSquareAdd size="2rem" onClick={onNoticeAddBtnClicked} />
         </AddIconContainer>
       </BtnContainer>
       <CategoryAddDialog open={isCategoryDialogOpen} onClose={handleClose} />
@@ -273,7 +275,10 @@ function NoticePage() {
             <Stack
               key={notice._id}
               spacing={1}
-              sx={{ width: "100%", maxWidth: "1024px" }}
+              sx={{
+                width: "100%",
+                maxWidth: "80%",
+              }}
             >
               <Stack
                 sx={{
@@ -320,11 +325,11 @@ function NoticePage() {
                     }
                   >
                     <Option
-                      style={{ borderBottom: "1px solid #0c4426" }}
+                      style={{ borderBottom: "1px solid #000069" }}
                       onClick={() =>
                         handleNoticeDeleteBtnClick({
                           _id: notice._id,
-                          clubID: notice.clubId,
+                          clubId: notice.clubId,
                         })
                       }
                       whileHover={{ backgroundColor: "rgba(0,0,0,0.2)" }}
@@ -334,7 +339,7 @@ function NoticePage() {
                     <Option
                       onClick={() =>
                         handleNoticeUpdateBtnClick({
-                          noticeID: notice._id,
+                          _id: notice._id,
                           writer: notice.writer,
                           title: notice.title,
                           content: notice.content,
@@ -354,7 +359,12 @@ function NoticePage() {
           ))
         )}
       </Stack>
-      <NoticeDetail noticeInfo={clickedNoticeInfo} />
+      <NoticeDetail
+        noticeInfo={clickedNoticeInfo}
+        detailOpened={detailOpened}
+        setDetailOpened={setDetailOpened}
+        isAdmin={false}
+      />
     </>
   );
 }

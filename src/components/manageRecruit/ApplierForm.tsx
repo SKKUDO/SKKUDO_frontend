@@ -38,9 +38,11 @@ import DialogTitle from "@mui/material/DialogTitle";
 import Iconify from "../Iconify";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { applierState, currentClubInfoState } from "../../atoms/utilAtom";
+import ApplierDeleteDialog from "./ApplierDeleteDialog";
 
 function ApplierForm() {
   const { clubID } = useParams();
+  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [newQuestion, setNewQuestion] = useState("");
   const [dialogType, setDialogType] = useState("");
@@ -56,6 +58,7 @@ function ApplierForm() {
     () => getApplierByClubID(clubID || ""),
     {
       onSuccess: (data) => {
+        console.log(data);
         setApplier(data);
       },
       onError: (error) => console.log(error),
@@ -78,24 +81,11 @@ function ApplierForm() {
     }
   );
 
-  const { mutate: applierDeleteMutate } = useMutation(
-    () => deleteApplier(clubID || ""),
-    {
-      onSuccess: (data) => {
-        // console.log(data);
-        window.location.reload();
-      },
-      onError: (error: any) => {
-        alert(error.response.data.error);
-      },
-    }
-  );
-
   const { mutate: applierCreateMutate } = useMutation(
     (newApplier: NewApplierType) => createApplier(newApplier),
     {
       onSuccess: (data) => {
-        // console.log(data);
+        console.log(data);
         queryClient.invalidateQueries("getApplierByClubID");
       },
       onError: (error: any) => {
@@ -105,7 +95,7 @@ function ApplierForm() {
   );
 
   const handleApplierDeleteBtnClick = () => {
-    applierDeleteMutate();
+    setDeleteDialogOpen(true);
   };
 
   const handleApplierCreateBtnClick = () => {
@@ -168,6 +158,7 @@ function ApplierForm() {
       // }
     }
   };
+
   return (
     <>
       <Stack
@@ -182,16 +173,22 @@ function ApplierForm() {
         </Typography>
 
         {data ? (
-          <Button
-            variant="contained"
-            // component={RouterLink}
-            // to="#"
-            onClick={handleApplierDeleteBtnClick}
-            color="error"
-            startIcon={<Iconify icon="eva:plus-fill" />}
-          >
-            지원서 삭제하기
-          </Button>
+          <>
+            <Button
+              variant="contained"
+              // component={RouterLink}
+              // to="#"
+              onClick={handleApplierDeleteBtnClick}
+              color="error"
+              startIcon={<Iconify icon="eva:plus-fill" />}
+            >
+              지원서 삭제하기
+            </Button>
+            <ApplierDeleteDialog
+              open={deleteDialogOpen}
+              setOpen={setDeleteDialogOpen}
+            />
+          </>
         ) : (
           <Button
             variant="contained"
@@ -256,6 +253,7 @@ function ApplierForm() {
                       variant="outlined"
                       sx={{ width: "100%" }}
                       onClick={() => handleAddBtnClick("document")}
+                      color="success"
                     >
                       질문 추가하기
                     </Button>
@@ -342,6 +340,7 @@ function ApplierForm() {
                       variant="outlined"
                       sx={{ width: "100%" }}
                       onClick={() => handleAddBtnClick("interview")}
+                      color="success"
                     >
                       질문 추가하기
                     </Button>
@@ -351,8 +350,8 @@ function ApplierForm() {
             </>
           )}
           <Dialog open={dialogOpen} onClose={handleDialogClose}>
-            <DialogTitle>질문 추가하기</DialogTitle>
-            <DialogContent style={{ width: "512px" }}>
+            <DialogTitle sx={{ color: "#000069" }}>질문 추가하기</DialogTitle>
+            <DialogContent sx={{ width: "512px" }}>
               <DialogContentText>
                 추가하고 싶은 질문을 적어주세요
               </DialogContentText>

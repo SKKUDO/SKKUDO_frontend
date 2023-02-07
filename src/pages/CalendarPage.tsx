@@ -22,13 +22,14 @@ const CalendarContainer = styled.div`
   padding-top: 40px;
   display: flex;
   justify-content: center;
+  width: 100%;
+  margin: 0 auto;
 `;
 
 const Header = styled("div")({
   position: "relative",
   display: "flex",
-  width: "100%",
-  maxWidth: "1024px",
+  maxWidth: "80%",
   margin: "0 auto",
   justifyContent: "flex-end",
   flexDirection: "row",
@@ -39,15 +40,16 @@ const Header = styled("div")({
 
 const AddCategoryBtn = styled(motion.button)({
   backgroundColor: "transparent",
-  color: "#0c4426",
+  color: "#000069",
   fontWeight: "600",
   marginLeft: "10px",
   marginBottom: "0px",
   height: "50px",
-  width: "160px",
-  border: "2px solid ",
+  width: "120px",
+  border: "2px solid",
   borderRadius: "10px",
-  fontSize: "20px",
+  fontSize: "calc(12px+ 1vw)",
+  marginTop: "8px",
 });
 
 export interface IDayDetailOverlay {
@@ -111,6 +113,7 @@ function CalendarPage() {
     () => getTodosByClubID(clubID || ""),
     {
       onSuccess: (data) => {
+        console.log(data);
         setUsingTodos(data);
       },
       onError: (error: any) => alert(error.response.data.error),
@@ -160,7 +163,7 @@ function CalendarPage() {
         </FilterWrapper>
         <AddCategoryBtn
           whileHover={{
-            backgroundColor: "#0c4426",
+            backgroundColor: "#000069",
             color: "#FFFFFF",
             border: "1px solid #FFFFFF",
           }}

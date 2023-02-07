@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import styled from "styled-components";
 import makeclub from "../../assets/images/makeclub/makeclub.png";
 import register from "../../assets/images/makeclub/register.png";
@@ -13,8 +14,8 @@ const MakeClubMassageContainer = styled.div`
   font-size: 1.2em;
   line-height: 1em;
   font-weight: 600;
-  @media screen and (max-width: 1024px){
-     font-size: 1em;
+  @media screen and (max-width: 1024px) {
+    font-size: 1em;
   }
 `;
 
@@ -33,8 +34,8 @@ const RegisterContainer = styled.div`
   flex-direction: row;
   padding-top: 5%;
   padding-bottom: 5%;
-  @media screen and (max-width: 1024px){
-     display: block;
+  @media screen and (max-width: 1024px) {
+    display: block;
   }
 `;
 
@@ -45,22 +46,26 @@ const RegisterMassageContainer = styled.div`
   font-weight: 600;
   margin-top: 10vh;
   text-align: center;
-    @media screen and (max-width: 1024px){
-     font-size: 1em;
+  @media screen and (max-width: 1024px) {
+    font-size: 1em;
   }
-  @media screen and (max-width: 1724px){
-     margin-top: 0;
+  @media screen and (max-width: 1724px) {
+    margin-top: 0;
   }
 `;
 
 const RegisterImageContainer = styled.div`
   width: 50%;
-    @media screen and (max-width: 1024px){
-     width: 100%;
+  @media screen and (max-width: 1024px) {
+    width: 100%;
   }
 `;
 
 function AboutMakeClubPage() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       <MakeClubContainer>

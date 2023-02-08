@@ -21,6 +21,10 @@ const NavigatorContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   padding-top: 100px;
+
+  @media screen and (max-width: 490px) {
+    max-width: 70%;
+  }
 `;
 
 const NavigationButton = styled(motion.button)`
@@ -41,6 +45,9 @@ const DrawerTitle = styled.div`
   color: #000069;
   font-size: 25px;
   font-weight: 900;
+  @media screen and (max-width: 490px) {
+    font-size: 15px;
+  }
 `;
 
 const NavigateToManagePageButton = styled.button`

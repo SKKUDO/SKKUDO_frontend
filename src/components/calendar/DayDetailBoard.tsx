@@ -73,7 +73,7 @@ function DayDetailBoard({ isDayDetailOpened, date }: DayDetailBoardType) {
         subheader={
           <ListSubheader
             sx={{
-              fontSize: "35px",
+              fontSize: "2vw",
               width: "100%",
               padding: "20px",
               backgroundColor: "#e0e7e9",

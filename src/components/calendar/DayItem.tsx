@@ -73,18 +73,18 @@ export default function DayItem({ todo, setDialogOpen }: DayItemType) {
     <ItemContainer>
       <ListItemButton
         onClick={() => handleClick(todo._id)}
-        sx={{ padding: "20px" }}
+        sx={{ padding: "2%" }}
       >
         <ListItemText
           disableTypography
-          sx={{ fontSize: "24px", fontWeight: 700, color: "#000069" }}
+          sx={{ fontSize: "2vw", fontWeight: 700, color: "#000069" }}
           primary={todo.title}
         />
         <Stack
           sx={{
             justifyContent: "flex-end",
-            height: "30px",
-            marginRight: "40px",
+            height: "15%",
+            marginRight: "1%",
           }}
           spacing={2}
           direction={"row"}
@@ -100,14 +100,14 @@ export default function DayItem({ todo, setDialogOpen }: DayItemType) {
           <ListItemButton sx={{ pl: 4 }}>
             <ListItemText
               disableTypography
-              sx={{ fontSize: "20px", color: "#000069" }}
+              sx={{ fontSize: "2vw", color: "#000069" }}
               primary={todo.content}
             />
           </ListItemButton>
           <ListItemButton sx={{ pl: 4 }}>
             <ListItemText
               disableTypography
-              sx={{ fontSize: "20px", color: "#000069" }}
+              sx={{ fontSize: "2vw", color: "#000069" }}
               primary={`시작 시간 : ${moment(todo.startTime).format(
                 "YYYY-MM-DD HH:mm"
               )}`}
@@ -116,7 +116,7 @@ export default function DayItem({ todo, setDialogOpen }: DayItemType) {
           <ListItemButton sx={{ pl: 4 }}>
             <ListItemText
               disableTypography
-              sx={{ fontSize: "20px", color: "#000069" }}
+              sx={{ fontSize: "2vw", color: "#000069" }}
               primary={`종료 시간 : ${moment(todo.endTime).format(
                 "YYYY-MM-DD HH:mm"
               )}`}
@@ -125,7 +125,7 @@ export default function DayItem({ todo, setDialogOpen }: DayItemType) {
           <ListItemButton sx={{ pl: 4 }}>
             <ListItemText
               disableTypography
-              sx={{ fontSize: "20px", color: "#000069" }}
+              sx={{ fontSize: "2vw", color: "#000069" }}
               primary={`침여 인원 : ${todo.attendingUsers.join(" ")}`}
             />
           </ListItemButton>
@@ -134,7 +134,7 @@ export default function DayItem({ todo, setDialogOpen }: DayItemType) {
               onClick={() => handleTodoDeleteBtnClick(todo._id)}
               sx={{
                 width: "30%",
-                fontSize: "20px",
+                fontSize: "2vw",
                 paddingTop: 0,
                 paddingBottom: 0,
               }}
@@ -160,7 +160,7 @@ export default function DayItem({ todo, setDialogOpen }: DayItemType) {
               }
               sx={{
                 width: "30%",
-                fontSize: "20px",
+                fontSize: "2vw",
                 paddingTop: 0,
                 paddingBottom: 0,
               }}

@@ -8,6 +8,9 @@ const Container = styled.div`
   width: 100%;
   background-color: #1c3879;
   padding: 20px;
+  @media screen and (max-width: 1024px) {
+    display: none;
+  }
 `;
 
 const ItemContainer = styled.div`
@@ -29,9 +32,9 @@ const CompanyItem = styled.div`
 
 const ImgContainer = styled.img`
   width: 250px;
-  /* @media screen and (max-width: 1024px) {
-    width: 20%;
-  } */
+  @media screen and (max-width: 1024px) {
+    width: 50%;
+  }
 `;
 
 const EmailContainer = styled.div`
@@ -75,6 +78,12 @@ const Content = styled(Link)`
   font-size: 15px;
   display: block;
   text-decoration: none;
+  @media screen and (max-width: 1024px) {
+    font-size: 80%;
+  }
+  @media screen and (max-width: 490px) {
+    font-size: 50%;
+  }
 `;
 export default function Footer() {
   return (

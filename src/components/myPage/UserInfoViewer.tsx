@@ -16,6 +16,9 @@ const InfoContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  @media screen and (max-width: 490px) {
+    padding-left: 30px;
+  }
 `;
 
 const RowContainer = styled.div`
@@ -72,8 +75,8 @@ const EditBtnContainer = styled(motion.div)`
   align-items: center;
   border-radius: 7px;
   @media screen and (max-width: 490px) {
-    width: 10%;
-    height: 10%;
+    width: 5%;
+    height: 5%;
   }
 `;
 

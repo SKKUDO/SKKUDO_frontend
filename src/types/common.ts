@@ -10,10 +10,7 @@ export interface ColumnType {
   valueType: ValueType;
 }
 
-export interface NewColumnType {
-  key: string;
-  valueType: ValueType;
-}
+export type NewColumnType = Omit<ColumnType, "_id">;
 
 export interface ErrorType {
   error: {

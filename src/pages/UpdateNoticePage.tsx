@@ -124,7 +124,7 @@ function UpdateNoticePage() {
     () =>
       updateNotice({
         clubId: clubID || "",
-        noticeID: noticeID || "",
+        _id: noticeID || "",
         writer: noticeData.writer,
         title,
         content,

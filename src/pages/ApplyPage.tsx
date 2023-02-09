@@ -176,7 +176,7 @@ function ApplyPage() {
             ))
           )}
           {isLoading ? (
-            <div>아직 지원을 받고 있지 않는 동아리입니다</div>
+            <></>
           ) : (
             data?.appliedUserColumns.map((column) => (
               <InputCell key={column._id}>
@@ -202,7 +202,7 @@ function ApplyPage() {
           variant="outlined"
           color="success"
         >
-          submit
+          제출
         </Button>
       </ApplyClubPageContainer>
     </ApplyWrapper>

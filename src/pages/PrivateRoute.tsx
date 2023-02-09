@@ -10,7 +10,6 @@ import { VerifyUserResponseType } from "../types/user";
 import { verifyUser } from "../utils/fetch/fetchAuth";
 
 export default function PrivateRoute() {
-  const [cookies, setCookies, removeCoolies] = useCookies(["x_auth"]);
   const [isLoggedIn, setIsLoggedIn] = useRecoilState(isLoggedInState);
 
   const navigate = useNavigate();
@@ -19,6 +18,7 @@ export default function PrivateRoute() {
   const setLoggedInUser = useSetRecoilState(loggedInUserState);
   const { mutate } = useMutation<VerifyUserResponseType>(verifyUser, {
     onSuccess: (data) => {
+      // console.log("success");
       setIsLoggedIn(true);
 
       setUserInfoState({
@@ -31,6 +31,7 @@ export default function PrivateRoute() {
       setLoggedInUser(data.authUser);
     },
     onError: (error: any) => {
+      // console.log("false");
       setIsLoggedIn(false);
 
       setUserInfoState({
@@ -48,6 +49,5 @@ export default function PrivateRoute() {
     mutate();
   }, []);
 
-  // return cookies["x_auth"] ? <Outlet /> : <Navigate replace to="/login" />;
   return <Outlet />;
 }

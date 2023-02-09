@@ -34,11 +34,9 @@ const Phrase = styled.div`
 
 const ImgContainer = styled.img`
   width: 45%;
-  /* @media screen and (max-width: 1024px) {
-    width: 20%;
-  } */
-
-  /* margin-bottom: -4%; */
+  @media screen and (max-width: 490px) {
+    width: 60%;
+  }
 `;
 
 const Name = styled(motion.div)`
@@ -53,7 +51,13 @@ const Name = styled(motion.div)`
 
 const SubName = styled.div`
   font-size: 1.7em;
-  top: -2px;
+  margin-top: 1.3%;
+  @media screen and (max-width: 1024px) {
+    font-size: 1em;
+  }
+  @media screen and (max-width: 490px) {
+    font-size: 0.5em;
+  }
 `;
 
 const ButtonsContainer = styled.div`

@@ -26,7 +26,7 @@ import {
 
 const AddNoticePageContainer = styled("form")({
   width: "100%",
-  maxWidth: "70%",
+  maxWidth: "90%",
   margin: "0 auto",
   display: "flex",
   flexDirection: "column",

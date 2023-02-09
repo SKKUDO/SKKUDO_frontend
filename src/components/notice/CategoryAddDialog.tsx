@@ -98,7 +98,7 @@ function CategoryAddDialog(props: SimpleDialogProps) {
 
   const handleCategoryDeleteBtnClick = (tagID: string) => {
     if (clubID) {
-      deleteNoticeTagMutate({ _id: tagID, clubID: clubID });
+      deleteNoticeTagMutate({ _id: tagID, clubId: clubID });
     }
   };
   return (

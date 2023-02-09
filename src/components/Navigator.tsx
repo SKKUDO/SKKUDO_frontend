@@ -6,7 +6,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { isManageState } from "../atoms/NavigatorAtom";
 import { useMutation } from "react-query";
 import { isLoggedInState } from "../atoms/loginAtom";
-import { loggedInUserState } from "../atoms/userAtom";
+import { loggedInUserState, userInfoState } from "../atoms/userAtom";
 import { motion } from "framer-motion";
 import { logoutFromServer } from "../utils/fetch/fetchAuth";
 import logo from "../assets/images/skkudo_logo.png";
@@ -48,8 +48,9 @@ const LogoContainer = styled(Link)`
     margin-left: 8vw;
   }
   @media screen and (max-width: 490px) {
-    margin-left: 10%;
-    width: 3vw;
+    margin-left: 4%;
+    width: 28vw;
+    margin-right: 2vw;
   }
 `;
 
@@ -68,7 +69,7 @@ const NavigationContainer = styled.nav`
     margin-left: 5vw;
   }
   @media screen and (max-width: 490px) {
-    margin-left: 2%;
+    margin-left: 0.5%;
   }
 `;
 
@@ -94,7 +95,7 @@ const NavigationLink = styled(Link)`
     font-size: 1.2rem;
   }
   @media screen and (max-width: 490px) {
-    font-size: 15%;
+    font-size: 0.8rem;
   }
 `;
 
@@ -187,6 +188,7 @@ function Navigator() {
       alert("로그아웃 되었습니다");
     },
     onError: (error: any) => {
+      // console.log(error);
       alert(error.response.data.error);
     },
   });

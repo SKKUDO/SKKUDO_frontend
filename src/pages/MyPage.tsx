@@ -47,6 +47,10 @@ const Title = styled.div`
   margin-bottom: 5vh;
   font-weight: 600;
   padding-left: 0.5vw;
+  @media screen and (max-width: 490px) {
+    font-size: 1.2em;
+    margin-left: -20vw;
+  }
 `;
 
 const ClubCardsContainer = styled.div`
@@ -73,6 +77,10 @@ const NoClubLable = styled.div`
   font-size: 20px;
   font-weight: 600;
   padding-left: 0.5vw;
+  @media screen and (max-width: 490px) {
+    font-size: 30%;
+    padding-left: 10vw;
+  }
 `;
 
 function MyPage() {
@@ -80,6 +88,8 @@ function MyPage() {
   const [userClubs, setUserClubs] = useState<RegisteredClubType[]>([]);
   const isLoggedIn = useRecoilValue(isLoggedInState);
   const loggedInUser = useRecoilValue(loggedInUserState);
+  // console.log(isLoggedIn);
+  // console.log(loggedInUser);
 
   const { data: appliedClubs } = useQuery<RegisteredClubType[]>(
     "getAppliedClubsByID",
@@ -93,13 +103,8 @@ function MyPage() {
   );
 
   useEffect(() => {
-    if (!isLoggedIn) {
-      // navigate("/login");
-      // console.log("nont logged in");
-    } else {
-      if (loggedInUser) {
-        setUserClubs(Object.values(loggedInUser.registeredClubs));
-      }
+    if (isLoggedIn && loggedInUser) {
+      setUserClubs(Object.values(loggedInUser.registeredClubs));
     }
   }, [isLoggedIn, loggedInUser]);
 

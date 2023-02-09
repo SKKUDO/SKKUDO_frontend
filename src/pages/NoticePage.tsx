@@ -157,7 +157,7 @@ function NoticePage() {
   const [usingItems, setUsingItems] = useState<NoticeType[]>([]);
   const [tags, setTags] = useState<TagType[]>([]);
   const [isOptionOpened, setIsOptionOpened] = useState(false);
-  const [clickedNoticeInfo, setClickedNotiiceInfo] =
+  const [clickedNoticeInfo, setClickedNoticeInfo] =
     useState<ClickedNoticeInfoType>({
       writer: "",
       title: "",
@@ -191,7 +191,7 @@ function NoticePage() {
     content: string,
     noticeTags: string[]
   ) => {
-    setClickedNotiiceInfo({ writer, title, content, noticeTags });
+    setClickedNoticeInfo({ writer, title, content, noticeTags });
     setDetailOpened(true);
     setIsOptionOpened((prev) => !prev);
   };
@@ -222,7 +222,7 @@ function NoticePage() {
         content: newNoticeInfo.content,
       })
     );
-    navigate(`${newNoticeInfo.noticeID}`);
+    navigate(`${newNoticeInfo._id}`);
   };
 
   useEffect(() => {
@@ -329,7 +329,7 @@ function NoticePage() {
                       onClick={() =>
                         handleNoticeDeleteBtnClick({
                           _id: notice._id,
-                          clubID: notice.clubId,
+                          clubId: notice.clubId,
                         })
                       }
                       whileHover={{ backgroundColor: "rgba(0,0,0,0.2)" }}
@@ -339,7 +339,7 @@ function NoticePage() {
                     <Option
                       onClick={() =>
                         handleNoticeUpdateBtnClick({
-                          noticeID: notice._id,
+                          _id: notice._id,
                           writer: notice.writer,
                           title: notice.title,
                           content: notice.content,

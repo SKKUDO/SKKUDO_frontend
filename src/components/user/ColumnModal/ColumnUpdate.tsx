@@ -60,7 +60,6 @@ export default function ColumnUpdate() {
       updateClubUserColumn(clubId, updateForm.key, updateForm.newColumn)
         .then(() => {
           alert("열을 수정했습니다.");
-          window.location.reload();
         })
         .catch((error) => {
           // console.log(error);

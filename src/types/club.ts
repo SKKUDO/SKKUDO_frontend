@@ -11,7 +11,6 @@ export interface ClubType {
   image: string;
   type: ClubTypeType;
   userColumns: ColumnType[];
-  //description
   recruitType: RecruitType;
   recruitStart: string | null; //모집 시작일
   recruitEnd: string | null; //모집 종료일
@@ -19,24 +18,20 @@ export interface ClubType {
   updatedAt: Date;
 }
 
-export interface NewClubType {
-  name: string;
-  location: LocationType;
+export interface NewClubType
+  extends Pick<ClubType, "name" | "location" | "recruitType"> {
   type: {
     name: string;
   };
-  recruitType: RecruitType;
 }
 
-export interface NotAcceptedClubType {
+export interface NotAcceptedClubType
+  extends Pick<
+    ClubType,
+    "name" | "location" | "recruitType" | "type" | "userColumns" | "_id"
+  > {
   accpeted: boolean;
   initializer: string;
-  name: string;
-  location: string;
-  recruitType: RecruitType;
-  type: ClubTypeType;
-  userColumn: ColumnType[];
-  _id: string;
 }
 export interface ClubTypeType {
   _id: string;
@@ -45,11 +40,9 @@ export interface ClubTypeType {
   updatedAt: Date;
 }
 
-export interface UpdateClubInfoType {
-  name?: string;
+export interface UpdateClubInfoType
+  extends Partial<Pick<ClubType, "name" | "location" | "recruitType">> {
   type?: { name: string };
-  location?: LocationType;
-  recruitType?: RecruitType;
   recruitStart?: Date;
   recruitEnd?: Date;
 }

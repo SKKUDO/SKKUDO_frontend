@@ -40,7 +40,6 @@ export default function ColumnDelete() {
       deleteClubUserColumn(clubId, deletingColumn)
         .then(() => {
           alert("열을 삭제했습니다.");
-          window.location.reload();
         })
         .catch((error) => alert(error.response.data.error));
     }

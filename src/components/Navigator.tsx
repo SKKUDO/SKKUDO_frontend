@@ -148,7 +148,8 @@ const LoginOption = styled(motion.div)`
   padding-bottom: 1.2vh;
   font-weight: 500;
   @media screen and (max-width: 490px) {
-    font-size: 15%;
+    font-size: 0.8em;
+    font-weight: 700;
   }
 `;
 

@@ -85,6 +85,10 @@ const LoginButton = styled(motion.button)`
     width: 20vw;
   }
 
+  @media screen and (max-width: 320px) {
+    font-size: 1.3em;
+  }
+
   &:hover {
     background-color: #e0e7e9;
     color: #000069;

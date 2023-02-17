@@ -95,7 +95,10 @@ const NavigationLink = styled(Link)`
     font-size: 1.2rem;
   }
   @media screen and (max-width: 490px) {
-    font-size: 0.8rem;
+    font-size: 1rem;
+  }
+  @media screen and (max-width: 320px) {
+    font-size: 0.9em;
   }
 `;
 
@@ -122,7 +125,6 @@ const LoginOptionContainer = styled.ul<ILoginOptionContainer>`
   position: absolute;
   width: 100px;
   background-color: #1c3879;
-  /* border: 2px solid #0c4426; */
   right: 0;
   top: 70px;
   border-radius: 5px;
@@ -167,14 +169,11 @@ const UserInfo = styled.h2`
 
 const ImgContainer = styled.img`
   width: 100%;
-
   margin-top: -5%;
-  /* margin-bottom: -4%; */
 `;
 
 function Navigator() {
   const [isLoggedIn, setIsLoggedIn] = useRecoilState(isLoggedInState);
-  const user = useRecoilValue(loggedInUserState);
   const [isLoginOptionOpened, setIsLoginOptionOpened] = useState(false);
   const isManage = useRecoilValue(isManageState);
   const handleLoginBtnClick = () => {
@@ -188,7 +187,6 @@ function Navigator() {
       alert("로그아웃 되었습니다");
     },
     onError: (error: any) => {
-      // console.log(error);
       alert(error.response.data.error);
     },
   });
@@ -209,7 +207,6 @@ function Navigator() {
     <NavigatorContainer isManage={isManage}>
       <ItemsContainer>
         <LogoContainer to="/">
-          {/* <Logo>SKKUDO</Logo> */}
           <ImgContainer src={logo} />
         </LogoContainer>
         <NavigationContainer>

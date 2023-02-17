@@ -3,7 +3,6 @@ import moment from "moment";
 import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import styled from "styled-components";
-
 import ClubsList from "../components/clubs/ClubsList";
 import FilterTag from "../components/FilterTag";
 import { ClubType } from "../types/club";
@@ -32,7 +31,6 @@ const ItemWrapper = styled.div`
 function ClubsPage() {
   const { data, isLoading } = useQuery<ClubType[]>("getAllClubs", getAllClubs, {
     onSuccess(data) {
-      // console.log(data);
       setItems(data);
     },
     onError(error: any) {
@@ -85,7 +83,7 @@ function ClubsPage() {
           flexWrap="wrap-reverse"
           alignItems="center"
           justifyContent="flex-end"
-          sx={{ mb: 5, margin: 0, marginTop: "40px" }}
+          sx={{ margin: 0, mb: 5, marginTop: "40px" }}
         >
           <FilterTag
             isClub={true}

@@ -64,7 +64,7 @@ const LoginInput = styled.input`
     font-size: 1em;
   }
   @media screen and (max-width: 768px) {
-    width: 35vw;
+    width: 45vw;
   }
 `;
 
@@ -82,7 +82,12 @@ const LoginButton = styled(motion.button)`
     width: 13vw;
   }
   @media screen and (max-width: 768px) {
-    width: 15vw;
+    width: 20vw;
+  }
+
+  &:hover {
+    background-color: #e0e7e9;
+    color: #000069;
   }
 `;
 
@@ -143,7 +148,7 @@ function LoginPage() {
           </LoginInputContainer>
           <LoginButton
             type="submit"
-            whileHover={{ backgroundColor: "#dde143", color: "#0c4426" }}
+            // whileHover={{ backgroundColor: "#dde143", color: "#0c4426" }}
           >
             Login
           </LoginButton>

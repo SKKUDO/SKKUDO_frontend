@@ -26,14 +26,14 @@ const Label = styled.div`
 
 const QuickLoginBtn = styled.button`
   width: 300px;
-  height: 50px;
+  height: 55px;
   background-color: #000069;
   color: white;
   border: none;
   margin-bottom: 60px;
   border-radius: 5px;
   font-weight: 700;
-
+  font-size: 18px;
   &:hover {
     background-color: #1c3879;
   }

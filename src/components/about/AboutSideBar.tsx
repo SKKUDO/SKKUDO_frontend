@@ -9,6 +9,12 @@ const AboutSideBarContainer = styled.div`
   flex-direction: column;
   width: 15vw;
   height: 100%;
+  @media screen and (max-width: 490px) {
+    width: 20vw;
+  }
+  @media screen and (max-width: 320px) {
+    width: 25vw;
+  }
 `;
 
 const NestedListHeader = styled.div`
@@ -31,7 +37,7 @@ const MenuLink = styled(Link)`
     font-size: 0.8rem;
   }
   @media screen and (max-width: 490px) {
-    font-size: 10%;
+    font-size: 5%;
   }
 `;
 

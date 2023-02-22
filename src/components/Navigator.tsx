@@ -164,7 +164,7 @@ const UserInfo = styled.h2`
     font-size: 1.1rem;
   }
   @media screen and (max-width: 490px) {
-    font-size: 25%;
+    display: none;
   }
 `;
 
@@ -225,7 +225,7 @@ function Navigator() {
         </NavigationContainer>
         <LoginBtn onClick={handleLoginBtnClick}>
           <UserInfo>{isLoggedIn ? "로그아웃" : "로그인"}</UserInfo>
-          <IoPersonOutline size="35%" />
+          <IoPersonOutline size="50%" />
           <LoginOptionContainer isLoginOptionOpened={isLoginOptionOpened}>
             {!isLoggedIn ? (
               <>

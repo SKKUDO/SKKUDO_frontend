@@ -5,6 +5,7 @@ import { TbPlugConnected } from "react-icons/tb";
 import myeong from "../../assets/images/myeong.jpeg";
 import yul from "../../assets/images/yul.png";
 import { useEffect } from "react";
+import { isMobile } from "react-device-detect";
 
 const Intro = styled.div`
   width: 100%;
@@ -48,9 +49,14 @@ const ImageContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  @media screen and (max-width: 768px) {
-    display: none;
-  }
+`;
+
+const MobileImageContainer = styled.div`
+  padding: 2vw;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Content = styled.div`
@@ -194,10 +200,17 @@ function AboutMainPage() {
             SKKUDO는 이러한 생각으로부터 출발하게 되었습니다.
           </Content>
         </IntroduceMassageContainer>
-        <ImageContainer>
-          <img src={yul}></img>
-        </ImageContainer>
+        {!isMobile ? (
+          <ImageContainer>
+            <img src={yul}></img>
+          </ImageContainer>
+        ) : null}
       </IntroduceContainer>
+      {isMobile ? (
+        <MobileImageContainer>
+          <img src={yul}></img>
+        </MobileImageContainer>
+      ) : null}
       <SloganContainer>
         <SloganMassage>“Customizable, But Easy to Use.”</SloganMassage>
         <SloganMassage style={{ fontSize: "40px" }}>
@@ -222,9 +235,11 @@ function AboutMainPage() {
         </IconContainer>
       </VisionContainer>
       <DistinctContainer>
-        <ImageContainer>
-          <img src={myeong}></img>
-        </ImageContainer>
+        {!isMobile ? (
+          <ImageContainer>
+            <img src={myeong}></img>
+          </ImageContainer>
+        ) : null}
         <DistinctMassageContainer>
           <Content>
             지금까지의 동아리 관리 플랫폼은 모두 동아리 관리자에게 필요한
@@ -247,6 +262,11 @@ function AboutMainPage() {
           </Content>
         </DistinctMassageContainer>
       </DistinctContainer>
+      {isMobile ? (
+        <MobileImageContainer>
+          <img src={myeong}></img>
+        </MobileImageContainer>
+      ) : null}
     </>
   );
 }

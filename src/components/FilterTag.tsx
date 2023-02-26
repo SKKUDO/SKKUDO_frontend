@@ -17,12 +17,6 @@ interface FilterTagProps {
   isClub: boolean;
 }
 
-const MainWrapper = styled("div")({
-  // marginTop: "40px",
-  // marginBottom: "0",
-  // height: "50px",
-});
-
 export default function FilterTag({
   tags,
   usingItems,
@@ -34,7 +28,7 @@ export default function FilterTag({
     <FormControl sx={{ minWidth: 100 }} color="success">
       <InputLabel id="demo-simple-select-helper-label">Filter</InputLabel>
       <Select
-        sx={{ height: "13%", fontSize: "30%" }}
+        sx={{ fontSize: "30%" }}
         labelId="demo-simple-select-helper-label"
         id="demo-simple-select-helper"
         value={value}

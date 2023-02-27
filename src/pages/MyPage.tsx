@@ -76,7 +76,7 @@ const NoClubLable = styled.div`
   font-weight: 600;
   padding-left: 0.5vw;
   @media screen and (max-width: 490px) {
-    font-size: 30%;
+    font-size: 17px;
     padding-left: 10vw;
   }
 `;
@@ -169,7 +169,6 @@ function MyPage() {
           <Title>지원중인 동아리</Title>
           <ClubCardsContainer>
             {appliedClubs && appliedClubs.length === 0 ? (
-              // <DefaultClubCard text="지원한 동아리가 없습니다" />
               <NoClubLable>지원중인 동아리가 없습니다.</NoClubLable>
             ) : (
               appliedClubs?.map((club) => (

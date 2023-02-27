@@ -34,11 +34,10 @@ const BtnContainer = styled("div")({
   position: "relative",
   display: "flex",
   width: "80%",
-
   margin: "0 auto",
   justifyContent: "flex-end",
   gap: "1%",
-  marginTop: "2%",
+  marginTop: "30px",
 });
 
 const AddCategoryBtn = styled(motion.button)({

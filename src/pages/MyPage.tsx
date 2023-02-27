@@ -18,13 +18,11 @@ import { isLoggedInState } from "../atoms/loginAtom";
 import { loggedInUserState } from "../atoms/userAtom";
 import { BASE_URL } from "../utils/fetch/fetch";
 import UserInfoViewer from "../components/myPage/UserInfoViewer";
-import DefaultClubCard from "../components/myPage/DefaultClubCard";
 import Sunkyun from "../assets/images/sunkyun.png";
 
 const MyPageContainer = styled.div`
   margin: 0 auto;
   width: 100%;
-  /* max-width: 55vw; */
   padding-top: 8vh;
   padding-bottom: 10vh;
   @media screen and (max-width: 1024px) {
@@ -88,8 +86,6 @@ function MyPage() {
   const [userClubs, setUserClubs] = useState<RegisteredClubType[]>([]);
   const isLoggedIn = useRecoilValue(isLoggedInState);
   const loggedInUser = useRecoilValue(loggedInUserState);
-  // console.log(isLoggedIn);
-  // console.log(loggedInUser);
 
   const { data: appliedClubs } = useQuery<RegisteredClubType[]>(
     "getAppliedClubsByID",
@@ -133,13 +129,6 @@ function MyPage() {
                   <CardActionArea
                     onClick={() => handleMyClubCardClick(club.clubId)}
                   >
-                    {/* <CardMedia
-                      component="img"
-                      height="140"
-                      image={BASE_URL + "/" + club.image}
-                      alt="green iguana"
-                      sx={{ objectFit: "contain" }}
-                    /> */}
                     <Box sx={{ pt: "100%", position: "relative" }}>
                       <ProductImgStyle
                         alt={club.clubName}

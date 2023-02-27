@@ -1,5 +1,3 @@
-//AboutClubManagePage Page
-
 import styled from "styled-components";
 import data from "../../assets/images/usermanage/data.png";
 import auth from "../../assets/images/usermanage/auth.png";

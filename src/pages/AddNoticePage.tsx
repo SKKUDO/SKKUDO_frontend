@@ -23,52 +23,13 @@ import {
   createNotice,
   getNoticeTagsByClubID,
 } from "../utils/fetch/fetchNotice";
-
-const AddNoticePageContainer = styled("form")({
-  width: "100%",
-  maxWidth: "90%",
-  margin: "0 auto",
-  display: "flex",
-  flexDirection: "column",
-  position: "relative",
-});
-
-const TitleInput = styled("input")({
-  width: "80%",
-  height: "50px",
-  margin: "0 auto",
-  marginBottom: "20px",
-  marginTop: "20px",
-  borderRadius: "5px",
-  backgroundColor: "#fff",
-  color: "#000069",
-  border: "2px solid",
-  fontSize: "1.5rem",
-  paddingLeft: "10px",
-});
-
-const ContentInput = styled("textarea")({
-  backgroundColor: "#fff",
-  margin: "0 auto",
-  marginTop: "20px",
-  border: "2px solid #000069",
-  fontSize: "1.2rem",
-  borderRadius: "5px",
-  padding: "10px",
-  width: "80%",
-});
-
-const ButtonContainer = styled("div")({
-  width: "100%",
-  display: "flex",
-  justifyContent: "right",
-  marginTop: "40px",
-});
-const AddButton = styled(Button)({
-  width: "200px",
-  color: "white",
-  marginBottom: "40px",
-});
+import {
+  AddNoticePageContainer,
+  NoticeAddButton,
+  NoticeButtonContainer,
+  NoticeContentInput,
+  NoticeTitleInput,
+} from "../components/notice/Componenets";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -134,7 +95,6 @@ function AddNoticePage() {
       onSuccess: (data) => {
         navigate(`/club/${clubID}/notice`);
         queryClient.invalidateQueries("getNoticesByClubID");
-        // console.log(data);
       },
       onError: (error: any) => {
         alert(error.response.data.error);
@@ -154,8 +114,9 @@ function AddNoticePage() {
     setContent(event.target.value);
   };
 
-  const handleNewNoticeSubmit = () => {
+  const handleNewNoticeSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     if (data) {
+      event.preventDefault();
       mutate();
     }
   };
@@ -164,16 +125,13 @@ function AddNoticePage() {
     const {
       target: { value },
     } = event;
-    setTags(
-      // On autofill we get a stringified value.
-      typeof value === "string" ? value.split(",") : value
-    );
+    setTags(typeof value === "string" ? value.split(",") : value);
   };
-  // const { mutate } = useMutation(() => );
+
   return (
-    <AddNoticePageContainer>
+    <AddNoticePageContainer onSubmit={handleNewNoticeSubmit}>
       <ClubDetailHeader pageType="공지사항 추가" />
-      <TitleInput
+      <NoticeTitleInput
         required
         onChange={handleTitleChange}
         placeholder={"공지 제목"}
@@ -240,16 +198,12 @@ function AddNoticePage() {
           <MenuItem value={"true"}>비공개</MenuItem>
         </Select>
       </FormControl>
-      <ContentInput required rows={22} onChange={handleContentChange} />
-      <ButtonContainer>
-        <AddButton
-          variant="contained"
-          color="success"
-          onClick={handleNewNoticeSubmit}
-        >
+      <NoticeContentInput required rows={22} onChange={handleContentChange} />
+      <NoticeButtonContainer>
+        <NoticeAddButton variant="contained" color="success" type="submit">
           공지 추가하기
-        </AddButton>
-      </ButtonContainer>
+        </NoticeAddButton>
+      </NoticeButtonContainer>
     </AddNoticePageContainer>
   );
 }

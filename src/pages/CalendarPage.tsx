@@ -113,7 +113,6 @@ function CalendarPage() {
     () => getTodosByClubID(clubID || ""),
     {
       onSuccess: (data) => {
-        console.log(data);
         setUsingTodos(data);
       },
       onError: (error: any) => alert(error.response.data.error),

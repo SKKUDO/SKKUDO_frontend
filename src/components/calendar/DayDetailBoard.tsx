@@ -68,12 +68,14 @@ function DayDetailBoard({ isDayDetailOpened, date }: DayDetailBoardType) {
           bgcolor: "#e0e7e9",
           padding: 0,
         }}
-        // component="nav"
         aria-labelledby="nested-list-subheader"
         subheader={
           <ListSubheader
             sx={{
-              fontSize: "2vw",
+              fontSize: {
+                xs: "18px",
+                lg: "30px",
+              },
               width: "100%",
               padding: "20px",
               backgroundColor: "#e0e7e9",

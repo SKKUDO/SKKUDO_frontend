@@ -110,11 +110,7 @@ const Option = styled(motion.div)({
 });
 
 const Item = styled(Paper)(({ theme }) => ({
-  // backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-  // ...theme.typography.body2,
-  // padding: theme.spacing(1),
   textAlign: "center",
-  // color: theme.palette.text.secondary,
   width: "100%",
   height: "60px",
 }));
@@ -129,6 +125,10 @@ export const Tag = styled("div")({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
+
+  "@media (max-width: 425px)": {
+    fontSize: "12px",
+  },
 });
 
 const FilterWrapper = styled("div")({

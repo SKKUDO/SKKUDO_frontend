@@ -24,6 +24,11 @@ import { Tag } from "../../pages/NoticePage";
 const ItemContainer = styled.div`
   padding-left: 40px;
   padding-right: 40px;
+
+  @media screen and (max-width: 490px) {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
 `;
 
 const DetailBtnContainer = styled.div`
@@ -32,6 +37,9 @@ const DetailBtnContainer = styled.div`
   justify-content: center;
   gap: 50px;
   padding: 10px;
+  @media screen and (max-width: 490px) {
+    gap: 20px;
+  }
 `;
 
 interface DayItemType {
@@ -73,18 +81,26 @@ export default function DayItem({ todo, setDialogOpen }: DayItemType) {
     <ItemContainer>
       <ListItemButton
         onClick={() => handleClick(todo._id)}
-        sx={{ padding: "2%" }}
+        sx={{
+          padding: "2%",
+          display: { xs: "flex" },
+          flexDirection: { xs: "column", sm: "row" },
+        }}
       >
         <ListItemText
           disableTypography
-          sx={{ fontSize: "2vw", fontWeight: 700, color: "#000069" }}
+          sx={{
+            fontSize: { sm: "2vw", xs: "18px" },
+            fontWeight: 700,
+            color: "#000069",
+          }}
           primary={todo.title}
         />
         <Stack
           sx={{
             justifyContent: "flex-end",
             height: "15%",
-            marginRight: "1%",
+            marginRight: { sm: "1%", xs: 0 },
           }}
           spacing={2}
           direction={"row"}
@@ -97,35 +113,46 @@ export default function DayItem({ todo, setDialogOpen }: DayItemType) {
       </ListItemButton>
       <Collapse in={open} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
-          <ListItemButton sx={{ pl: 4 }}>
+          <ListItemButton
+            sx={{ pl: { sm: 4 }, paddingY: { sm: "8px", xs: "0px" } }}
+          >
             <ListItemText
               disableTypography
-              sx={{ fontSize: "2vw", color: "#000069" }}
+              sx={{
+                fontSize: { sm: "2vw", xs: "18px" },
+                color: "#000069",
+              }}
               primary={todo.content}
             />
           </ListItemButton>
-          <ListItemButton sx={{ pl: 4 }}>
+          <ListItemButton
+            sx={{ pl: { sm: 4 }, paddingY: { sm: "8px", xs: "0px" } }}
+          >
             <ListItemText
               disableTypography
-              sx={{ fontSize: "2vw", color: "#000069" }}
+              sx={{ fontSize: { sm: "2vw", xs: "18px" }, color: "#000069" }}
               primary={`시작 시간 : ${moment(todo.startTime).format(
                 "YYYY-MM-DD HH:mm"
               )}`}
             />
           </ListItemButton>
-          <ListItemButton sx={{ pl: 4 }}>
+          <ListItemButton
+            sx={{ pl: { sm: 4 }, paddingY: { sm: "8px", xs: "0px" } }}
+          >
             <ListItemText
               disableTypography
-              sx={{ fontSize: "2vw", color: "#000069" }}
+              sx={{ fontSize: { sm: "2vw", xs: "18px" }, color: "#000069" }}
               primary={`종료 시간 : ${moment(todo.endTime).format(
                 "YYYY-MM-DD HH:mm"
               )}`}
             />
           </ListItemButton>
-          <ListItemButton sx={{ pl: 4 }}>
+          <ListItemButton
+            sx={{ pl: { sm: 4 }, paddingY: { sm: "8px", xs: "0px" } }}
+          >
             <ListItemText
               disableTypography
-              sx={{ fontSize: "2vw", color: "#000069" }}
+              sx={{ fontSize: { sm: "2vw", xs: "18px" }, color: "#000069" }}
               primary={`침여 인원 : ${todo.attendingUsers.join(" ")}`}
             />
           </ListItemButton>
@@ -133,7 +160,7 @@ export default function DayItem({ todo, setDialogOpen }: DayItemType) {
             <Button
               onClick={() => handleTodoDeleteBtnClick(todo._id)}
               sx={{
-                width: "30%",
+                width: { sm: "30%", xs: "45%" },
                 fontSize: "2vw",
                 paddingTop: 0,
                 paddingBottom: 0,
@@ -159,7 +186,7 @@ export default function DayItem({ todo, setDialogOpen }: DayItemType) {
                 })
               }
               sx={{
-                width: "30%",
+                width: { sm: "30%", xs: "45%" },
                 fontSize: "2vw",
                 paddingTop: 0,
                 paddingBottom: 0,

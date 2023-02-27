@@ -30,6 +30,10 @@ const MyPageMassageContainer = styled.div`
 const MyPageImageContainer = styled.div`
   padding-left: 5%;
   margin-bottom: 10vh;
+  @media screen and (max-width: 1660px) {
+    width: 100%;
+    padding-left: 0%;
+  }
 `;
 
 function AboutMyPage() {

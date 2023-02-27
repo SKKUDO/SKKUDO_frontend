@@ -37,28 +37,6 @@ const SecondApplyContainer = styled.div`
   padding-top: 5%;
   padding-bottom: 5%;
 `;
-const SecondApplyMassageContainer = styled.div`
-  font-size: 1.5rem;
-  line-height: 3rem;
-  font-weight: 600;
-  text-align: center;
-  margin-bottom: 14vh;
-  margin-top: 5vh;
-  @media screen and (max-width: 768px) {
-    font-size: 0.9rem;
-    line-height: 2rem;
-  }
-`;
-const SecondApplyImageContainer = styled.div`
-  margin-left: 15%;
-  margin-right: 10vw;
-  display: flex;
-  margin-bottom: 10vh;
-  @media screen and (max-width: 1660px) {
-    margin-left: 10%;
-    margin-right: 6vw;
-  }
-`;
 
 function AboutApplyPage() {
   useEffect(() => {
@@ -70,7 +48,6 @@ function AboutApplyPage() {
       <FirstApplyContainer>
         <FirstApplyMassageContainer>
           <br />
-          <br />
           SKKUDO에서는 현재 SKKUDO에 등록된 다양한 동아리들을 확인할 수
           있습니다.
         </FirstApplyMassageContainer>
@@ -79,18 +56,19 @@ function AboutApplyPage() {
         </FirstApplyImageContainer>
       </FirstApplyContainer>
       <SecondApplyContainer>
-        <SecondApplyMassageContainer>
+        <FirstApplyMassageContainer>
           지원하고 싶은 동아리에 마우스를 올려서 "지원하기" 버튼을 눌러주세요!
-        </SecondApplyMassageContainer>
-        <SecondApplyImageContainer>
+        </FirstApplyMassageContainer>
+        <FirstApplyImageContainer>
           <img src={apply2}></img>
-        </SecondApplyImageContainer>
-        <SecondApplyMassageContainer>
+        </FirstApplyImageContainer>
+        <FirstApplyMassageContainer>
+          <br />
           그러면 위에 그림처럼 해당 동아리의 지원서가 나타납니다.
           <br /> 지원서를 동아리에 대한 자신의 열정을 마음껏 표출해주세요!
           <br /> 지원서가 성공적으로 제출되면 이제 해당 동아리 관리자의 결정을
           기다리기만 하면 됩니다!!
-        </SecondApplyMassageContainer>
+        </FirstApplyMassageContainer>
       </SecondApplyContainer>
     </>
   );

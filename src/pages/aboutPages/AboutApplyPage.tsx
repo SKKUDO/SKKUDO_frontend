@@ -28,7 +28,8 @@ const FirstApplyImageContainer = styled.div`
   width: 80%;
   margin-left: 20%;
   @media screen and (max-width: 1660px) {
-    margin-left: 13%;
+    width: 100%;
+    margin-left: 0%;
   }
 `;
 const SecondApplyContainer = styled.div`

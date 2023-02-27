@@ -11,12 +11,16 @@ import { ToDoType } from "../types/todo";
 import DayDetailBoard from "../components/calendar/DayDetailBoard";
 import TodoCategoryDialog from "../components/calendar/TodoCategoryDialog";
 import { useSetRecoilState } from "recoil";
-import { motion } from "framer-motion";
 import { dayDetailState } from "../atoms/calendarAtom";
 import {
   getTodosByClubID,
   getTodoTagsByClubID,
 } from "../utils/fetch/fetchTodo";
+import {
+  AddCategoryBtn,
+  BtnContainer,
+  FilterWrapper,
+} from "../components/notice/Components";
 
 const CalendarContainer = styled.div`
   padding-top: 40px;
@@ -25,32 +29,6 @@ const CalendarContainer = styled.div`
   width: 100%;
   margin: 0 auto;
 `;
-
-const Header = styled("div")({
-  position: "relative",
-  display: "flex",
-  maxWidth: "80%",
-  margin: "0 auto",
-  justifyContent: "flex-end",
-  flexDirection: "row",
-  gap: "20px",
-  marginTop: "40px",
-  marginBottom: "10px",
-});
-
-const AddCategoryBtn = styled(motion.button)({
-  backgroundColor: "transparent",
-  color: "#000069",
-  fontWeight: "600",
-  marginLeft: "10px",
-  marginBottom: "0px",
-  height: "50px",
-  width: "120px",
-  border: "2px solid",
-  borderRadius: "10px",
-  fontSize: "calc(12px+ 1vw)",
-  marginTop: "8px",
-});
 
 export interface IDayDetailOverlay {
   isDayDetailOpened: boolean;
@@ -63,11 +41,6 @@ interface TagType {
   createdAt: Date | undefined;
   updatedAt: Date | undefined;
 }
-
-const FilterWrapper = styled.div`
-  position: absolute;
-  left: 0;
-`;
 
 const DayDetailOverlay = styled.div<IDayDetailOverlay>`
   position: fixed;
@@ -150,8 +123,7 @@ function CalendarPage() {
   return (
     <>
       <ClubDetailHeader pageType="일정" />
-
-      <Header>
+      <BtnContainer>
         <FilterWrapper>
           <FilterTag
             tags={tags}
@@ -170,8 +142,7 @@ function CalendarPage() {
         >
           카테고리 추가
         </AddCategoryBtn>
-      </Header>
-
+      </BtnContainer>
       <TodoCategoryDialog open={isCategoryDialogOpen} onClose={handleClose} />
       <CalendarContainer>
         <Calendar

@@ -27,7 +27,7 @@ import {
   NoticeButtonContainer,
   NoticeContentInput,
   NoticeTitleInput,
-} from "../components/notice/Componenets";
+} from "../components/notice/Components";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;

@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { Button } from "@mui/material";
+import { motion } from "framer-motion";
 
 export const AddNoticePageContainer = styled("form")({
   width: "100%",
@@ -46,4 +47,34 @@ export const NoticeAddButton = styled(Button)({
   width: "200px",
   color: "white",
   marginBottom: "40px",
+});
+
+export const BtnContainer = styled("div")({
+  position: "relative",
+  display: "flex",
+  width: "80%",
+  margin: "0 auto",
+  justifyContent: "flex-end",
+  gap: "1%",
+  marginTop: "30px",
+});
+
+export const AddCategoryBtn = styled(motion.button)({
+  backgroundColor: "transparent",
+  color: "#000069",
+  fontWeight: "calc(12px+1vw)",
+  paddingLeft: "10px",
+  paddingRight: "10px",
+  fontSize: "1vw",
+  border: "2px solid #000069",
+  borderRadius: "10px",
+  marginTop: "8px",
+  height: "32px",
+});
+
+export const FilterWrapper = styled("div")({
+  position: "absolute",
+  display: "flex",
+  left: 0,
+  justifyContent: "flex-start",
 });

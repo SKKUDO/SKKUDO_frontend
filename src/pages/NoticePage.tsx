@@ -21,6 +21,11 @@ import {
   getNoticeTagsByClubID,
 } from "../utils/fetch/fetchNotice";
 import styled from "@emotion/styled";
+import {
+  AddCategoryBtn,
+  BtnContainer,
+  FilterWrapper,
+} from "../components/notice/Components";
 
 interface TagType {
   _id: string;
@@ -29,28 +34,6 @@ interface TagType {
   createdAt: Date | undefined;
   updatedAt: Date | undefined;
 }
-
-const BtnContainer = styled("div")({
-  position: "relative",
-  display: "flex",
-  width: "80%",
-  margin: "0 auto",
-  justifyContent: "flex-end",
-  gap: "1%",
-  marginTop: "30px",
-});
-
-const AddCategoryBtn = styled(motion.button)({
-  backgroundColor: "transparent",
-  color: "#000069",
-  fontWeight: "600",
-  paddingLeft: "10px",
-  paddingRight: "10px",
-  fontSize: "1vw",
-  border: "2px solid #000069",
-  borderRadius: "10px",
-  marginTop: "8px",
-});
 
 const AddIconContainer = styled(motion.div)({
   display: "flex",
@@ -129,13 +112,6 @@ export const Tag = styled("div")({
   "@media (max-width: 425px)": {
     fontSize: "12px",
   },
-});
-
-const FilterWrapper = styled("div")({
-  position: "absolute",
-  display: "flex",
-  left: 0,
-  justifyContent: "flex-start",
 });
 
 function NoticePage() {

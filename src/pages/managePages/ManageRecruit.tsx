@@ -18,6 +18,7 @@ import {
   Typography,
   TableContainer,
   TablePagination,
+  Paper,
 } from "@mui/material";
 import UserListHead from "../../components/user/UserListHead";
 import { useState, useEffect } from "react";
@@ -78,9 +79,7 @@ function ManageRecruit() {
     "getAppliedUserByClubID",
     () => getAppliedUserByClubID(clubID || ""),
     {
-      onSuccess: (data) => {
-        console.log(data);
-      },
+      onSuccess: (data) => {},
       onError: (error: any) => {
         alert(error.response.data.error);
       },
@@ -107,7 +106,6 @@ function ManageRecruit() {
     (applyId: string) => deleteAppliedUser(applyId, clubID || ""),
     {
       onSuccess: (data) => {
-        // console.log(data);
         queryClient.invalidateQueries("getAppliedUserByClubID");
       },
       onError: (error: any) => {
@@ -320,8 +318,11 @@ function ManageRecruit() {
           onFilterName={handleFilterByName}
         />
 
-        <TableContainer sx={{ minWidth: 800 }}>
-          <Table>
+        <TableContainer
+          component={Paper}
+          sx={{ minWidth: 800, tableLayout: "auto" }}
+        >
+          <Table sx={{ overflowX: "scroll" }}>
             <UserListHead
               isManaging={true}
               order={order}

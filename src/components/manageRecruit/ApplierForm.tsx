@@ -58,7 +58,6 @@ function ApplierForm() {
     () => getApplierByClubID(clubID || ""),
     {
       onSuccess: (data) => {
-        console.log(data);
         setApplier(data);
       },
       onError: (error) => console.log(error),
@@ -118,11 +117,6 @@ function ApplierForm() {
         newQuestions.splice(idx, 1);
         mutate({ interviewQuestions: newQuestions });
       }
-      // else if (key === "more") {
-      //   const newQuestions = data.appliedUserColumns;
-      //   newQuestions.splice(idx, 1);
-      //   mutate({ appliedUserColumns: newQuestions });
-      // }
     }
   };
 
@@ -150,12 +144,6 @@ function ApplierForm() {
         newQuestions.push(newQuestion);
         mutate({ interviewQuestions: newQuestions });
       }
-      // else if (key === "more") {
-      //   const newQuestions: NewAppliedUserColumnsType[] =
-      //     data.appliedUserColumns;
-      //   newQuestions.push({ key: newQuestion, valueType: "string" });
-      //   mutate({ appliedUserColumns: newQuestions });
-      // }
     }
   };
 
@@ -168,7 +156,11 @@ function ApplierForm() {
         mb={5}
         sx={{ marginTop: "80px" }}
       >
-        <Typography variant="h4" gutterBottom>
+        <Typography
+          variant="h4"
+          gutterBottom
+          sx={{ typography: { xs: "h5", sm: "h4" } }}
+        >
           모집 지원서 양식
         </Typography>
 
@@ -176,8 +168,6 @@ function ApplierForm() {
           <>
             <Button
               variant="contained"
-              // component={RouterLink}
-              // to="#"
               onClick={handleApplierDeleteBtnClick}
               color="error"
               startIcon={<Iconify icon="eva:plus-fill" />}
@@ -192,8 +182,6 @@ function ApplierForm() {
         ) : (
           <Button
             variant="contained"
-            // component={RouterLink}
-            // to="#"
             onClick={handleApplierCreateBtnClick}
             color="success"
             startIcon={<Iconify icon="eva:plus-fill" />}
@@ -234,7 +222,7 @@ function ApplierForm() {
                     <ListItem sx={{ pl: 4 }}>
                       <ListItemText
                         disableTypography
-                        sx={{ fontSize: "20px" }}
+                        sx={{ fontSize: { xs: "15px", sm: "20px" } }}
                         primary={q}
                       />
                       <Button
@@ -279,7 +267,7 @@ function ApplierForm() {
                         <ListItemText
                           primary={column.key}
                           disableTypography
-                          sx={{ fontSize: "20px" }}
+                          sx={{ fontSize: { xs: "17px", sm: "22px" } }}
                         />
                       </ListItem>
                     </List>
@@ -289,17 +277,7 @@ function ApplierForm() {
                     추가질문이 없습니다. 멤버관리 페이지에서 추가해보세요!
                   </div>
                 )}
-                {/* {data?.appliedUserColumns.map((column, idx) => (
-                  <List key={column._id} component="div" disablePadding>
-                    <ListItem sx={{ pl: 4 }}>
-                      <ListItemText
-                        primary={column.key}
-                        disableTypography
-                        sx={{ fontSize: "20px" }}
-                      />
-                    </ListItem>
-                  </List>
-                ))} */}
+
                 <List component="div" disablePadding>
                   <ListItem sx={{ pl: 4 }}></ListItem>
                 </List>
@@ -322,7 +300,7 @@ function ApplierForm() {
                       <ListItemText
                         primary={q}
                         disableTypography
-                        sx={{ fontSize: "20px" }}
+                        sx={{ fontSize: { xs: "15px", sm: "20px" } }}
                       />
                       <Button
                         variant="outlined"
@@ -349,9 +327,9 @@ function ApplierForm() {
               </Collapse>
             </>
           )}
-          <Dialog open={dialogOpen} onClose={handleDialogClose}>
+          <Dialog open={dialogOpen} onClose={handleDialogClose} fullWidth>
             <DialogTitle sx={{ color: "#000069" }}>질문 추가하기</DialogTitle>
-            <DialogContent sx={{ width: "512px" }}>
+            <DialogContent>
               <DialogContentText>
                 추가하고 싶은 질문을 적어주세요
               </DialogContentText>
@@ -359,7 +337,7 @@ function ApplierForm() {
                 autoFocus
                 margin="dense"
                 id="name"
-                label="question"
+                label="새 질문"
                 fullWidth
                 variant="standard"
                 value={newQuestion}

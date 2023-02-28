@@ -144,10 +144,10 @@ export default function ManageAuth() {
               sx={{ marginBottom: "50px", bgcolor: "whitesmoke" }}
               disablePadding
             >
-              <ListItemButton sx={{ paddingLeft: "40px" }}>
+              <ListItemButton sx={{ paddingLeft: { xs: "15px", sm: "40px" } }}>
                 <ListItemText
                   disableTypography
-                  sx={{ fontSize: "25px" }}
+                  sx={{ fontSize: { xs: "15px", sm: "25px" } }}
                   primary={ele.label}
                 />
                 <Box sx={{ minWidth: 120 }}>
@@ -162,7 +162,6 @@ export default function ManageAuth() {
                           : data![ele.key as ValidationKeyType]
                       }
                       label="권한"
-                      // onChange={(event) => handleChange(event, ele.key)}
                       onChange={(event) =>
                         handleChange(event, ele.label, ele.key)
                       }

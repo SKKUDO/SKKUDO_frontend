@@ -139,7 +139,7 @@ function ProperInput({ keyword, handleClose }: ProperInputType) {
   if (keyword === "name") {
     return (
       <>
-        <DialogContent style={{ width: "512px" }}>
+        <DialogContent>
           <TextField
             autoFocus
             margin="dense"
@@ -164,7 +164,7 @@ function ProperInput({ keyword, handleClose }: ProperInputType) {
     );
   } else if (keyword === "typeName") {
     return (
-      <DialogContent style={{ width: "512px" }}>
+      <DialogContent>
         <FormControl fullWidth sx={{ marginTop: "20px" }}>
           <InputLabel id="recruitType">주제</InputLabel>
           <Select
@@ -199,7 +199,7 @@ function ProperInput({ keyword, handleClose }: ProperInputType) {
   } else if (keyword === "location") {
     return (
       <>
-        <DialogContent style={{ width: "512px" }}>
+        <DialogContent>
           <FormControl fullWidth sx={{ marginTop: "20px" }}>
             <InputLabel id="location">소속 지역</InputLabel>
             <Select
@@ -225,7 +225,7 @@ function ProperInput({ keyword, handleClose }: ProperInputType) {
   } else if (keyword === "recruitType") {
     return (
       <>
-        <DialogContent style={{ width: "512px" }}>
+        <DialogContent>
           <FormControl fullWidth sx={{ marginTop: "20px" }}>
             <InputLabel id="recruitType">모집방식</InputLabel>
             <Select
@@ -251,7 +251,7 @@ function ProperInput({ keyword, handleClose }: ProperInputType) {
   } else if (keyword === "recruitStart" || keyword === "recruitEnd") {
     return (
       <>
-        <DialogContent style={{ width: "512px" }}>
+        <DialogContent>
           <FormControl fullWidth sx={{ marginTop: "20px" }}>
             <DesktopDatePicker
               label="Date desktop"
@@ -288,7 +288,7 @@ export default function UpdateDialog({
   const clubUpdate = useRecoilValue(clubUpdateState);
 
   return (
-    <Dialog open={dialogOpen} onClose={handleClose}>
+    <Dialog open={dialogOpen} onClose={handleClose} fullWidth>
       <DialogTitle
         sx={{ fontSize: "30px", color: "#000069" }}
       >{`동아리 정보 변경`}</DialogTitle>

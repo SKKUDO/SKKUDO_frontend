@@ -17,6 +17,10 @@ import { BASE_URL } from "../../utils/fetch/fetch";
 const ManageClubContainer = styled.div`
   padding: 50px;
   padding-left: 100px;
+
+  @media screen and (max-width: 425px) {
+    padding: 10px;
+  }
 `;
 const ClubName = styled.div`
   color: #000069;
@@ -31,6 +35,10 @@ const Label = styled.span`
   display: inline-block;
   margin-right: 20px;
   font-size: 35px;
+
+  @media screen and (max-width: 425px) {
+    font-size: 20px;
+  }
 `;
 
 const RowContainer = styled.div`
@@ -40,6 +48,9 @@ const RowContainer = styled.div`
   justify-content: space-between;
   font-size: 20px;
   margin-bottom: 80px;
+  @media screen and (max-width: 425px) {
+    display: block;
+  }
 `;
 
 const InfoContainer = styled.div`
@@ -199,12 +210,20 @@ function ManageClub() {
               ""
             )}
           </ImageContainer>
-          <Box sx={{ marginTop: "20px" }}>
+          <Box
+            sx={{
+              marginTop: "20px",
+              display: {
+                sm: "flex",
+                xs: "block",
+              },
+            }}
+          >
             <Button
               variant="contained"
               component="label"
               color="success"
-              sx={{ marginLeft: "20px", marginRight: "20px" }}
+              sx={{ marginLeft: "10px" }}
             >
               <input
                 accept="image/*"
@@ -218,6 +237,7 @@ function ManageClub() {
               component="label"
               onClick={onImageSubmit}
               color="success"
+              sx={{ marginLeft: "10px", marginTop: { xs: "10px", sm: "0px" } }}
             >
               Upload
             </Button>

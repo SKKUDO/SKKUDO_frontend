@@ -11,9 +11,10 @@ const FirstApplyMassageContainer = styled.div`
   font-size: 1.5em;
   line-height: 2em;
   font-weight: 600;
-  margin-left: 17vw;
+  /* margin-left: 17vw; */
   margin-bottom: 10%;
   width: 80%;
+  text-align: center;
   @media screen and (max-width: 1660px) {
     margin-left: 10vw;
   }
@@ -26,7 +27,7 @@ const FirstApplyMassageContainer = styled.div`
 `;
 const FirstApplyImageContainer = styled.div`
   width: 80%;
-  margin-left: 20%;
+
   @media screen and (max-width: 1660px) {
     width: 100%;
     margin-left: 0%;

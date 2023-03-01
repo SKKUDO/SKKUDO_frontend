@@ -101,9 +101,9 @@ export default function UpdateRowDialog({
   };
 
   return (
-    <Dialog open={dialogOpen} onClose={handleClose}>
+    <Dialog open={dialogOpen} onClose={handleClose} fullWidth>
       <DialogTitle>가계부 수정</DialogTitle>
-      <DialogContent style={{ width: "512px" }}>
+      <DialogContent>
         <DesktopDatePicker
           label="날짜 선택"
           inputFormat="MM/DD/YYYY"

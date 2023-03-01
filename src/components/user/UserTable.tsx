@@ -58,9 +58,7 @@ export default function UserTable({ isManage }: UserTableType) {
     "getClubMembers",
     () => getClubMembers(clubID || ""),
     {
-      onSuccess: (data) => {
-        // console.log(data);
-      },
+      onSuccess: (data) => {},
       onError: (error: any) => alert(error.response.data.error),
     }
   );
@@ -165,7 +163,13 @@ export default function UserTable({ isManage }: UserTableType) {
       <TableContainer component={Paper} sx={{ tableLayout: "auto" }}>
         <Button
           onClick={downloadCSV}
-          sx={{ position: "absolute", top: 20, right: 20 }}
+          sx={{
+            position: "absolute",
+            top: { sm: 20, xs: 20 },
+            right: { sm: 20, xs: 10 },
+            width: { sm: "120px", xs: "20px" },
+            padding: { sm: "8px", xs: 0 },
+          }}
         >
           export to CSV
         </Button>

@@ -124,10 +124,7 @@ function ManageAccountBook() {
     (newBudgetInfo: NewBudgetType) => createBudget(newBudgetInfo),
     {
       onSuccess: (data) => {
-        // console.log(data);
         alert("가계부가 성공적으로 생성되었습니다!");
-
-        // queryClient.invalidateQueries("getBudgetByClubID");
       },
       onError: (error: any) => {
         alert(error.response.data.error);
@@ -198,12 +195,7 @@ function ManageAccountBook() {
 
   return (
     <AccountBookPageContainer>
-      {data ? //   variant="contained" //   color="error" // <DeleteBtn
-      //   onClick={handleDeleteBtnClick}
-      // >
-      //   가계부 삭제
-      // </DeleteBtn>
-      null : (
+      {data ? null : (
         <DeleteBtn
           color="success"
           variant="contained"
@@ -277,8 +269,8 @@ function ManageAccountBook() {
       >
         항목 추가
       </NewRowBtn>
-      <Dialog open={nameDialogOpen} onClose={handleClose}>
-        <DialogTitle sx={{ width: "600px" }}>새 가계부 이름</DialogTitle>
+      <Dialog open={nameDialogOpen} onClose={handleClose} fullWidth>
+        <DialogTitle>새 가계부 이름</DialogTitle>
         <DialogContent>
           <TextField
             autoFocus

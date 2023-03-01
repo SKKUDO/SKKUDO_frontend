@@ -1,5 +1,3 @@
-//AboutClubManagePage Page
-
 import styled from "styled-components";
 import data from "../../assets/images/usermanage/data.png";
 import auth from "../../assets/images/usermanage/auth.png";
@@ -29,6 +27,9 @@ const InfoContainer = styled.div`
   flex-direction: row;
   padding-top: 5%;
   padding-bottom: 5%;
+  @media screen and (max-width: 1024px) {
+    display: block;
+  }
 `;
 
 const Message = styled.div`
@@ -39,6 +40,7 @@ const Message = styled.div`
   width: 50%;
   @media screen and (max-width: 1024px) {
     font-size: 0.7em;
+    width: 100%;
   }
 `;
 
@@ -53,6 +55,11 @@ const ImageContainer = styled.div<ImageContainerType>`
 
   display: flex;
   width: ${(props) => props.width};
+  @media screen and (max-width: 1024px) {
+    width: 100%;
+    padding: 0;
+    margin-top: 20px;
+  }
 `;
 
 function AboutClubManagePage() {

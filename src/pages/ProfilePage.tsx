@@ -95,7 +95,7 @@ function ProfilePage() {
         <Role>{clubProfile?.role}</Role>
 
         <TableContainer component={Paper} sx={{ marginTop: "40px" }}>
-          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <Table aria-label="simple table">
             <TableHead>
               <TableRow>
                 <TableCell

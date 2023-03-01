@@ -5,6 +5,7 @@ import { TbPlugConnected } from "react-icons/tb";
 import myeong from "../../assets/images/myeong.jpeg";
 import yul from "../../assets/images/yul.png";
 import { useEffect } from "react";
+import { isMobile } from "react-device-detect";
 
 const Intro = styled.div`
   width: 100%;
@@ -18,7 +19,6 @@ const Intro = styled.div`
     font-size: 1.9em;
   }
   @media screen and (max-width: 768px) {
-    width: 80%;
     margin-left: 4vw;
   }
   color: #000069;
@@ -32,13 +32,16 @@ const IntroduceContainer = styled.div`
   flex-direction: row;
   padding-top: 10vh;
   padding-bottom: 10vh;
+  justify-content: center;
 `;
+
 const IntroduceMassageContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 40vw;
   @media screen and (max-width: 768px) {
     width: 70vw;
+    justify-content: center;
   }
 `;
 
@@ -48,9 +51,14 @@ const ImageContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  @media screen and (max-width: 768px) {
-    display: none;
-  }
+`;
+
+const MobileImageContainer = styled.div`
+  padding: 2vw;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Content = styled.div`
@@ -183,8 +191,6 @@ function AboutMainPage() {
             낭비하는 학우들의 모습을 보며 SKKUDO는 고민했습니다.
             <br />
             <br />
-          </Content>
-          <Content>
             동아리 관리자들이 더 효율적으로 동아리를 관리할 수 있는 방법이
             없을까? 동아리 부원들이 더 간편하게 동아리의 공지와 일정을 확인할 수
             있는 방법이 없을까? 동아리에 가입하고 싶은 학생들이 더 쉽게
@@ -194,10 +200,17 @@ function AboutMainPage() {
             SKKUDO는 이러한 생각으로부터 출발하게 되었습니다.
           </Content>
         </IntroduceMassageContainer>
-        <ImageContainer>
-          <img src={yul}></img>
-        </ImageContainer>
+        {!isMobile ? (
+          <ImageContainer>
+            <img src={yul}></img>
+          </ImageContainer>
+        ) : null}
       </IntroduceContainer>
+      {isMobile ? (
+        <MobileImageContainer>
+          <img src={yul}></img>
+        </MobileImageContainer>
+      ) : null}
       <SloganContainer>
         <SloganMassage>“Customizable, But Easy to Use.”</SloganMassage>
         <SloganMassage style={{ fontSize: "40px" }}>
@@ -222,9 +235,11 @@ function AboutMainPage() {
         </IconContainer>
       </VisionContainer>
       <DistinctContainer>
-        <ImageContainer>
-          <img src={myeong}></img>
-        </ImageContainer>
+        {!isMobile ? (
+          <ImageContainer>
+            <img src={myeong}></img>
+          </ImageContainer>
+        ) : null}
         <DistinctMassageContainer>
           <Content>
             지금까지의 동아리 관리 플랫폼은 모두 동아리 관리자에게 필요한
@@ -235,8 +250,7 @@ function AboutMainPage() {
             사용하기 불편했죠. 우리 모두가 만족할 수 있는 동아리 관리 플랫폼이
             존재하지 않았던 것입니다.
             <br /> 바로 SKKUDO가 등장하기 전까지는 말이죠!
-          </Content>
-          <Content>
+            <br />
             <br />
             SKKUDO는 동아리마다 각각의 목적에 맞춰 동아리를 관리할 수 있도록
             맞춤형 관리 서비스를 지원합니다.
@@ -247,6 +261,11 @@ function AboutMainPage() {
           </Content>
         </DistinctMassageContainer>
       </DistinctContainer>
+      {isMobile ? (
+        <MobileImageContainer>
+          <img src={myeong}></img>
+        </MobileImageContainer>
+      ) : null}
     </>
   );
 }

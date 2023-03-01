@@ -24,7 +24,7 @@ const MainWrapper = styled("div")({
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
-  width: "400px",
+  // width: "400px",
   height: "200px",
 });
 
@@ -140,6 +140,7 @@ export default function UserMoreMenu({ userID, role }: UserMoreMenuProps) {
         onClose={() => setUpdateRoleModalOpen(false)}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
+        fullWidth
       >
         <MainWrapper>
           <ModalTitle>유저의 역할 수정</ModalTitle>

@@ -27,6 +27,7 @@
     "react-apexcharts": "^1.4.0",
     "react-calendar": "^3.8.0",
     "react-cookie": "^4.1.1",
+    "react-device-detect": "^2.2.3",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.36.1",
     "react-icon": "^1.0.0",

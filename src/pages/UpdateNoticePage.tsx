@@ -21,48 +21,13 @@ import {
   getNoticeTagsByClubID,
   updateNotice,
 } from "../utils/fetch/fetchNotice";
-
-const AddNoticePageContainer = styled("form")({
-  width: "100%",
-  maxWidth: "1024px",
-  margin: "0 auto",
-
-  display: "flex",
-  flexDirection: "column",
-  position: "relative",
-});
-
-const TitleInput = styled("input")({
-  width: "400px",
-  height: "50px",
-  marginBottom: "20px",
-  borderRadius: "5px",
-  backgroundColor: "#fff",
-  border: "2px solid #0c4426",
-  fontSize: "1.5rem",
-  paddingLeft: "10px",
-});
-
-const ContentInput = styled("textarea")({
-  backgroundColor: "#fff",
-  marginTop: "20px",
-  border: "2px solid #0c4426",
-  fontSize: "1.2rem",
-  borderRadius: "5px",
-  padding: "10px",
-});
-
-const ButtonContainer = styled("div")({
-  width: "100%",
-  display: "flex",
-  justifyContent: "right",
-  marginTop: "40px",
-});
-const AddButton = styled(Button)({
-  width: "200px",
-  color: "#dde143",
-  marginBottom: "40px",
-});
+import {
+  AddNoticePageContainer,
+  NoticeAddButton,
+  NoticeButtonContainer,
+  NoticeContentInput,
+  NoticeTitleInput,
+} from "../components/notice/Components";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -161,9 +126,9 @@ function UpdateNoticePage() {
 
   return (
     <AddNoticePageContainer onSubmit={handleNewNoticeSubmit}>
-      <ClubDetailHeader pageType="공지사항" />
-      <TitleInput required value={title} onChange={handleTitleChange} />
-      <FormControl sx={{ m: 1, width: "100%", margin: 0 }}>
+      <ClubDetailHeader pageType="공지사항 수정" />
+      <NoticeTitleInput required value={title} onChange={handleTitleChange} />
+      <FormControl sx={{ m: 1, width: "80%", margin: "0 auto" }}>
         <InputLabel
           id="demo-multiple-chip-label"
           sx={{ margin: 0, padding: 0 }}
@@ -204,7 +169,7 @@ function UpdateNoticePage() {
           ))}
         </Select>
       </FormControl>
-      <FormControl fullWidth>
+      <FormControl sx={{ m: 1, width: "80%", margin: "0 auto" }}>
         <InputLabel
           id="demo-multiple-chip-label"
           sx={{ margin: 0, padding: 0 }}
@@ -225,17 +190,17 @@ function UpdateNoticePage() {
           <MenuItem value={"true"}>비공개</MenuItem>
         </Select>
       </FormControl>
-      <ContentInput
+      <NoticeContentInput
         required
         value={content}
         rows={25}
         onChange={handleContentChange}
       />
-      <ButtonContainer>
-        <AddButton variant="contained" color="success" type="submit">
+      <NoticeButtonContainer>
+        <NoticeAddButton variant="contained" color="success" type="submit">
           공지 수정하기
-        </AddButton>
-      </ButtonContainer>
+        </NoticeAddButton>
+      </NoticeButtonContainer>
     </AddNoticePageContainer>
   );
 }

@@ -48,10 +48,10 @@ function ColumnDialog({
   };
 
   return (
-    <Dialog open={dialogOpen} onClose={handleClose}>
+    <Dialog maxWidth="lg" open={dialogOpen} onClose={handleClose}>
       <DialogTitle sx={{ color: "#000069" }}>{`${keyword} 수정`}</DialogTitle>
       <>
-        <DialogContent style={{ width: "512px" }}>
+        <DialogContent>
           <TextField
             autoFocus
             margin="dense"

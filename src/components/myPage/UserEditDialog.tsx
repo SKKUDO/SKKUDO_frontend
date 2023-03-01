@@ -52,8 +52,8 @@ export default function UserEditDialog({ open, setOpen }: UserEditDialogType) {
   };
 
   return (
-    <Dialog open={open} onClose={handleClose}>
-      <DialogTitle width="500px" sx={{ color: "#000069" }}>
+    <Dialog maxWidth="lg" open={open} onClose={handleClose}>
+      <DialogTitle sx={{ color: "#000069" }}>
         연락처 수정 (번호만 입력해주세요)
       </DialogTitle>
       <form onSubmit={handleContactSubmit}>

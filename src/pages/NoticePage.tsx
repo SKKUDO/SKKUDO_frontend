@@ -21,6 +21,11 @@ import {
   getNoticeTagsByClubID,
 } from "../utils/fetch/fetchNotice";
 import styled from "@emotion/styled";
+import {
+  AddCategoryBtn,
+  BtnContainer,
+  FilterWrapper,
+} from "../components/notice/Components";
 
 interface TagType {
   _id: string;
@@ -29,29 +34,6 @@ interface TagType {
   createdAt: Date | undefined;
   updatedAt: Date | undefined;
 }
-
-const BtnContainer = styled("div")({
-  position: "relative",
-  display: "flex",
-  width: "80%",
-
-  margin: "0 auto",
-  justifyContent: "flex-end",
-  gap: "1%",
-  marginTop: "2%",
-});
-
-const AddCategoryBtn = styled(motion.button)({
-  backgroundColor: "transparent",
-  color: "#000069",
-  fontWeight: "600",
-  paddingLeft: "10px",
-  paddingRight: "10px",
-  fontSize: "1vw",
-  border: "2px solid #000069",
-  borderRadius: "10px",
-  marginTop: "8px",
-});
 
 const AddIconContainer = styled(motion.div)({
   display: "flex",
@@ -111,11 +93,7 @@ const Option = styled(motion.div)({
 });
 
 const Item = styled(Paper)(({ theme }) => ({
-  // backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-  // ...theme.typography.body2,
-  // padding: theme.spacing(1),
   textAlign: "center",
-  // color: theme.palette.text.secondary,
   width: "100%",
   height: "60px",
 }));
@@ -130,13 +108,10 @@ export const Tag = styled("div")({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-});
 
-const FilterWrapper = styled("div")({
-  position: "absolute",
-  display: "flex",
-  left: 0,
-  justifyContent: "flex-start",
+  "@media (max-width: 425px)": {
+    fontSize: "12px",
+  },
 });
 
 function NoticePage() {

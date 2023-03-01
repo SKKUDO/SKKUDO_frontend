@@ -69,10 +69,10 @@ function AboutMakeClubPage() {
   return (
     <>
       <MakeClubContainer>
-        <MakeClubMassageContainer>
+        <RegisterMassageContainer>
           SKKUDO에서 동아리를 새로 생성하려면 SKKUDO 메인페이지 하단에 있는
           동아리 만들기 버튼을 클릭하시면 됩니다.
-        </MakeClubMassageContainer>
+        </RegisterMassageContainer>
         <MakeClubImageContainer>
           <img src={makeclub}></img>
         </MakeClubImageContainer>
@@ -84,6 +84,8 @@ function AboutMakeClubPage() {
           신청서에 자신이 만들고 싶은 동아리의 정보를 기입한 후 제출해주세요.
           <br />
           SKKUDO 관리자의 승인이 이루어지면 새로운 동아리 생성이 완료됩니다!
+          <br />
+          <br />
         </RegisterMassageContainer>
         <RegisterImageContainer>
           <img src={register}></img>

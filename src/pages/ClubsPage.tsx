@@ -32,10 +32,13 @@ function ClubsPage() {
   const { data, isLoading } = useQuery<ClubType[]>("getAllClubs", getAllClubs, {
     onSuccess(data) {
       setItems(data);
+      console.log("do");
     },
     onError(error: any) {
       alert(error.response.data.error);
     },
+    // staleTime: 300000,
+    // cacheTime: 60 * 5 * 1000,
   });
 
   const filterRecruitingClubs = (allClubs: ClubType[] | undefined) => {
